@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 		
 		<!-- 加载数据库配置文件 -->
-		<context:property-placeholder location="classpath:org/BB_Second_hand_Car/xml/mysqljdbc.properties"/>
+		<context:property-placeholder location="classpath:org/BBSHC/xml/mysqljdbc.properties"/>
 		
 		<!-- 数据库链接池 -->
 		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">

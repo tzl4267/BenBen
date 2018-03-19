@@ -12,7 +12,7 @@
   <!-- Spring容器 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:org/BB_Second_hand_Car/xml/Spring.xml</param-value>
+		<param-value>classpath:org/BBSHC/xml/Spring.xml</param-value>
 	</context-param>
 
 	<!-- Spring监听器  -->
@@ -26,7 +26,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:org/BB_Second_hand_Car/xml/Springmvc.xml</param-value>
+			<param-value>classpath:org/BBSHC/xml/Springmvc.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
