@@ -5,6 +5,7 @@ package org.BBSHC.service.impl;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.SCDao;
@@ -13,6 +14,7 @@ import org.BBSHC.service.SCService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//二手车Service接口实现
 @Service
 @Transactional
 public class SCServicesImpl implements ServiceBase<SecondCar>,SCService{

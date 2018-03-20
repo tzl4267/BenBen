@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 		<!-- 扫描Controller -->
-		<context:component-scan base-package="org.BB_Second_hand_Car.web"/>
+		<context:component-scan base-package="org.BBSHC.web"/>
 		
 		<!-- Springmvc三大组件-->
 		<mvc:annotation-driven/>
