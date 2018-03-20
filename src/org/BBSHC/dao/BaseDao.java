@@ -4,7 +4,6 @@ import java.util.List;
 
 //
 public interface BaseDao<T> {
-
 	//查询，返回集合
 	List<T> select(Class cl,String sql);
 	//查询，返回单个对象
