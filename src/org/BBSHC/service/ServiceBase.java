@@ -9,14 +9,16 @@ public interface ServiceBase<T>{
 
 	//查询，返回集合
 		List<T> find();
+		//根据id查询
+		List<T> find(Integer id);
 		//查询，返回单个对象
-		T getOne(String id);
+		T getOne(Integer id);
 		//删除 对象
-		void remove(T t);
+		String remove(T t);
 		//id
-		void remove(String id);
+		String remove(Integer id);
 		//添加 
-		void add(T t);
+		String add(T t);
 		//修改
-		void modify(T t);
+		String modify(T t);
 }
