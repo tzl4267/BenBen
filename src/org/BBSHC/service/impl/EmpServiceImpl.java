@@ -25,9 +25,10 @@ public class EmpServiceImpl implements EmpService{
 
 	@Override
 	public Emp update_select(String eid) {
-		Emp emp = ed.getOne(Emp.class,eid);
-		return emp;
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 
 
 

@@ -35,7 +35,7 @@ public class SCServicesImpl implements ServiceBase<SecondCar>,SCService{
 	 * @see org.BBSHC.service.ServiceBase#getOne(java.lang.Class, java.lang.String)
 	 */
 	@Override
-	public SecondCar getOne(String id) {
+	public SecondCar getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,32 +44,45 @@ public class SCServicesImpl implements ServiceBase<SecondCar>,SCService{
 	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.Object)
 	 */
 	@Override
-	public void remove(SecondCar t) {
+	public String remove(SecondCar t) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.String)
 	 */
 	@Override
-	public void remove(String id) {
+	public String remove(Integer id) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#add(java.lang.Object)
 	 */
 	@Override
-	public void add(SecondCar t) {
+	public String add(SecondCar t) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#modify(java.lang.Object)
 	 */
 	@Override
-	public void modify(SecondCar t) {
+	public String modify(SecondCar t) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.String)
+	 */
+	@Override
+	public List<SecondCar> find(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
