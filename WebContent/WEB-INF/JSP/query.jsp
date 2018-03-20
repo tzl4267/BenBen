@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.0.0.js"></script>
+
 </head>
 <body>
 <table border="1" width="600">
@@ -27,7 +29,7 @@
 <td>${u.upass}</td>
 <td>${u.uLogin}</td>
 <td>${u.uLast}</td>
-<td>${u.voc}</td>
+<td>${u.voc.vid}</td>
 <td>${u.uq}</td>
 <td>${u.ua}</td>
 <td>${u.up}</td>
