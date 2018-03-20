@@ -48,7 +48,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	}
 
 	@Override
-	public T getOne(Class cl, String id) {
+	public T getOne(Class cl, Integer id) {
 		Session session = sf.getCurrentSession();
 		T t = (T) session.get(cl, id);
 		return t;
@@ -61,7 +61,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Integer id) {
 		Session session = sf.getCurrentSession();
 		T t = (T) session.get(cls, id);
 		session.delete(t);
@@ -91,7 +91,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	 * @see org.BBSHC.dao.BaseDao#getOneHql(java.lang.Class, java.lang.String)
 	 */
 	@Override
-	public T getOneHql(Class cl, String id) {
+	public T getOneHql(Class cl, Integer id) {
 		HibernateTemplate jdbc = getHibernateTemplate();
 		T t = (T) jdbc.get(cl, id);
 		return t;
@@ -113,7 +113,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	 * @see org.BBSHC.dao.BaseDao#getOne(java.lang.String)
 	 */
 	@Override
-	public T getOne(String id) {
+	public T getOne(Integer id) {
 		Session session = sf.getCurrentSession();
 		T t = (T) session.get(cls, id);
 		return t;

@@ -35,11 +35,12 @@ public class SecondCar {
 	     private CheckReport cr;//检测报告
 	     private Outstanding os;// 亮点配置
 	     private String jj;//降价信息
-	     private Emp emp;//销售员 
+	     private Emp emp;//销售员
+	     
 	     private ProcedureInfo pi;//手续信息id 
 	     private String sc;//车辆售卖原因
-	     private String zd;//是否置顶
-	     private String czt;//信息状态
+	     private Character zd;//是否置顶
+	     private Character czt;//信息状态 0:已下架 1:在售中
 	     private Character bq;//急售
 	     private String ck;//车况
 	     private Date sjsj;//上架时间
@@ -167,16 +168,16 @@ public class SecondCar {
 		public void setSc(String sc) {
 			this.sc = sc;
 		}
-		public String getZd() {
+		public Character getZd() {
 			return zd;
 		}
-		public void setZd(String zd) {
+		public void setZd(Character zd) {
 			this.zd = zd;
 		}
-		public String getCzt() {
+		public Character getCzt() {
 			return czt;
 		}
-		public void setCzt(String czt) {
+		public void setCzt(Character czt) {
 			this.czt = czt;
 		}
 		public Character getBq() {
