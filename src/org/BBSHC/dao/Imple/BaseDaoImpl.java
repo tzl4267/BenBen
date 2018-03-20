@@ -31,7 +31,6 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Resource
 	private SessionFactory sf;
 	// 实体类
-	@Resource
 	private Class<T> cls;
 
 	public BaseDaoImpl() {
@@ -95,6 +94,28 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	public T getOneHql(Class cl, String id) {
 		HibernateTemplate jdbc = getHibernateTemplate();
 		T t = (T) jdbc.get(cl, id);
+		return t;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.dao.BaseDao#select(java.lang.String)
+	 */
+	@Override
+	public List<T> select(String sql) {
+		Session session = sf.getCurrentSession();
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity(cls);
+		List<T> tlist = query.list();
+		return tlist;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.dao.BaseDao#getOne(java.lang.String)
+	 */
+	@Override
+	public T getOne(String id) {
+		Session session = sf.getCurrentSession();
+		T t = (T) session.get(cls, id);
 		return t;
 	}
 

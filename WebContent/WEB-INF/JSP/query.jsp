@@ -27,7 +27,7 @@
 <td>${u.upass}</td>
 <td>${u.uLogin}</td>
 <td>${u.uLast}</td>
-<td>${u.voc.vid}</td>
+<td>${u.voc}</td>
 <td>${u.uq}</td>
 <td>${u.ua}</td>
 <td>${u.up}</td>

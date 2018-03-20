@@ -8,6 +8,10 @@ public interface BaseDao<T> {
 	List<T> select(Class cl,String sql);
 	//查询，返回单个对象
 	T getOne(Class cl,String id);
+	//查询，返回集合
+	List<T> select(String sql);
+	//查询，返回单个对象
+	T getOne(String id);
 	//删除 对象
 	void delete(T t);
 	//id
