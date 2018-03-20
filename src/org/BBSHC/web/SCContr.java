@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SCContr {
 
-	@Resource 
+	@Resource
 	private SCService scs;
-	@RequestMapping(name="se")
-	public String searchAll(ModelMap mm){
-	List<SecondCar> s = scs.find();	 
-	mm.put("slist", s);
+
+	@RequestMapping(name = "se")
+	public String searchAll(ModelMap mm) {
+
+		List<SecondCar> s = scs.find();
+		mm.put("slistaiojianpingt", s);
 		return "a";
 	}
 }
