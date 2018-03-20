@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript"  src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -25,8 +26,7 @@
 <td>${u.uid}</td>
 <td>${u.uname}</td>
 <td>${u.upass}</td>
-<td>${u.uLogin}</td>
-<td>${u.uLast}</td>
+<td>${u.uLogin}</td><td>${u.uLast}</td>
 <td>${u.voc}</td>
 <td>${u.uq}</td>
 <td>${u.ua}</td>

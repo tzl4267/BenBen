@@ -9,6 +9,7 @@ import org.BBSHC.pojo.SecondCar;
 import org.springframework.stereotype.Repository;
 @Repository
 public class SCDaoImpl extends BaseDaoImpl<SecondCar> implements SCDao{
+	
 
 	
 }
