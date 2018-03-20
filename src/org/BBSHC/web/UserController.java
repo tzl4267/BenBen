@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.BBSHC.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,9 +16,10 @@ public class UserController {
 	@Resource
 	private UserService us;
 	
-	public String queryull(){
+	@RequestMapping("/query")
+	public String queryull(ModelMap map){
 		List<User> ul = us.queryull();
-		System.out.println(ul);
-		return null;
+		map.put("ul", ul);
+		return "query";
 	}
 }

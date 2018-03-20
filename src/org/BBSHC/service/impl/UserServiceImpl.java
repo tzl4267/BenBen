@@ -1,4 +1,4 @@
-package org.BBSHC.service.Imple;
+package org.BBSHC.service.impl;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public List<User> queryull() {
-		List<User> ul = ud.queryull();
-		System.out.println(ul);
-		return null;
+		String sql="select * from user";
+		List ul = ud.select(sql);
+		return ul;
 	}
 
 }

@@ -2,9 +2,10 @@ package org.BBSHC.dao;
 
 import java.util.List;
 
-import org.apache.catalina.User;
+import org.BBSHC.pojo.User;
 
-public interface UserDao extends BaseDao{
-	List<User> queryull();
+
+public interface UserDao extends BaseDao<User>{
+	List<User> queryull(String sql);
 	
 }
