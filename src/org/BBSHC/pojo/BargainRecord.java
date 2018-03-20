@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class BargainRecord {
 
-	private Integer bid;//买车记录
+	private Integer bid;//砍价记录
     private SecondCar sc;// 二手车id
     private User user;// 用户id
     private Double lxjg;//卖家理想价格

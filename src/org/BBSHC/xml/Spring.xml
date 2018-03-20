@@ -29,7 +29,7 @@
 		<prop key="hibernate.format_sql">true</prop>
 		</props>
 		</property>
-		<property name="packagesToScan" value="org.BB_Second_hand_Car.pojo"></property>
+		<property name="packagesToScan" value="org.BBSHC.pojo"></property>
 		</bean>
 		
 		<!--hibernate框架事务管理  -->
@@ -41,7 +41,7 @@
 		<tx:annotation-driven transaction-manager="transactionManager"/>
 		
 		<!-- 扫描dao包和service包 -->
-		<context:component-scan base-package="org.BB_Second_hand_Car.dao,org.BB_Second_hand_Car.service"/>
+		<context:component-scan base-package="org.BBSHC.dao,org.BBSHC.service"/>
 		
 
 

@@ -15,5 +15,8 @@ public interface BaseDao<T> {
 	void delete(String id);
 	//添加 与修改
 	void saveOrupdate(T t);
-	
+	//查询，返回集合
+	List<T> selectHQL(String hql);
+	//查询，返回单个对象
+	T getOneHql(Class cl,String id);
 }

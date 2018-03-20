@@ -42,6 +42,7 @@ public class SecondCar {
 	     private String czt;//信息状态
 	     private Character bq;//急售
 	     private String ck;//车况
+	     private Date sjsj;//上架时间
 	     @Id
          @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getCid() {
@@ -189,6 +190,14 @@ public class SecondCar {
 		}
 		public void setCk(String ck) {
 			this.ck = ck;
+		}
+		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		public Date getSjsj() {
+			return sjsj;
+		}
+		public void setSjsj(Date sjsj) {
+			this.sjsj = sjsj;
 		}
 		public SecondCar() {
 			super();
