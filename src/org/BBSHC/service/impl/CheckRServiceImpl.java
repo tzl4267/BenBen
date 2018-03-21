@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Controller
 public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>{
-
+	//检测报告dao接口
 	@Resource
 	private CheckRDao crd;
 	/* (non-Javadoc)
