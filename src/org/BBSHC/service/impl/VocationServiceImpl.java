@@ -12,9 +12,10 @@ import org.BBSHC.pojo.Vocation;
 import org.BBSHC.service.VocationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //用户职业service接口实现
 @Service
-@Controller
+@Transactional
 public class VocationServiceImpl implements VocationService{
 	//用户职业dao接口
 	@Resource

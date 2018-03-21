@@ -10,7 +10,7 @@ public interface ServiceBase<T>{
 	//查询，返回集合
 		List<T> find();
 		//根据id查询
-		List<T> find(Integer id);
+		List<T> find(Integer id); 
 		//查询，返回单个对象
 		T getOne(Integer id);
 		//删除 对象
