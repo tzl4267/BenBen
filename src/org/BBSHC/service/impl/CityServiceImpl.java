@@ -5,37 +5,42 @@ package org.BBSHC.service.impl;
 
 import java.util.List;
 
-
 import javax.annotation.Resource;
 
-import org.BBSHC.dao.SCDao;
-import org.BBSHC.pojo.SecondCar;
-import org.BBSHC.service.SCService;
-import org.BBSHC.service.ServiceBase;
+import org.BBSHC.pojo.City;
+import org.BBSHC.service.CityService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-//二手车Service接口实现
+//城市service接口实现
 @Service
 @Transactional
-public class SCServicesImpl implements ServiceBase<SecondCar>,SCService{
-
+public class CityServiceImpl implements CityService{
+	//城市dao接口
 	@Resource
-	private SCDao scd;
+	private City city;
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Class)
+	 * @see org.BBSHC.service.ServiceBase#find()
 	 */
 	@Override
-	public List<SecondCar> find() {
-		String sql = "select * from secondcar;";
-		List<SecondCar> slist = scd.select(SecondCar.class, sql);
-		return slist;
+	public List<City> find() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#getOne(java.lang.Class, java.lang.String)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer)
 	 */
 	@Override
-	public SecondCar getOne(String id) {
+	public List<City> find(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#getOne(java.lang.Integer)
+	 */
+	@Override
+	public City getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,32 +49,36 @@ public class SCServicesImpl implements ServiceBase<SecondCar>,SCService{
 	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.Object)
 	 */
 	@Override
-	public void remove(SecondCar t) {
+	public String remove(City t) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.String)
+	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.Integer)
 	 */
 	@Override
-	public void remove(String id) {
+	public String remove(Integer id) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#add(java.lang.Object)
 	 */
 	@Override
-	public void add(SecondCar t) {
+	public String add(City t) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#modify(java.lang.Object)
 	 */
 	@Override
-	public void modify(SecondCar t) {
+	public String modify(City t) {
 		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
