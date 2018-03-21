@@ -21,7 +21,7 @@ public class CheckReport {
 	           private String jb;//常见功能检查
 	           private String qd;//启动检测
 	           private String jg;//检测结果
-	           private String hg;//是否合格
+	           private Character hg;//是否合格 0:不合格 1:合格
 	           private Emp emp;//检测专员id
 	           private SellIntention se;//卖车意向id
 	           @Id
@@ -68,10 +68,10 @@ public class CheckReport {
 			public void setJg(String jg) {
 				this.jg = jg;
 			}
-			public String getHg() {
+			public Character getHg() {
 				return hg;
 			}
-			public void setHg(String hg) {
+			public void setHg(Character hg) {
 				this.hg = hg;
 			}
 			@OneToOne
@@ -91,7 +91,7 @@ public class CheckReport {
 				this.se = se;
 			}
 			public CheckReport(Integer crid, String sg, String hx, String ms, String jb, String qd, String jg,
-					String hg, Emp emp, SellIntention se) {
+					Character hg, Emp emp, SellIntention se) {
 				super();
 				this.crid = crid;
 				this.sg = sg;

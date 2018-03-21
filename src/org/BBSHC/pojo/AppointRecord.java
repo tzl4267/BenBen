@@ -18,6 +18,7 @@ public class AppointRecord {
 	private Integer arid;//约看记录
     private SecondCar sc;// 二手车id
     private User user;// 用户id
+    private Character asta;//信息状态0:未处理 1:已处理
     @Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getArid() {
@@ -43,6 +44,13 @@ public class AppointRecord {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public Character getAsta() {
+		return asta;
+	}
+	public void setAsta(Character asta) {
+		this.asta = asta;
 	}
 	public AppointRecord() {
 		super();
