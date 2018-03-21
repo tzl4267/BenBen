@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.BBSHC.dao.CityDao;
 import org.BBSHC.pojo.City;
 import org.BBSHC.service.CityService;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CityServiceImpl implements CityService{
 	//城市dao接口
 	@Resource
-	private City city;
+	private CityDao cd;
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#find()
 	 */

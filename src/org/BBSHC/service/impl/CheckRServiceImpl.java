@@ -13,9 +13,10 @@ import org.BBSHC.service.CheckRService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //检测报告service接口实现
 @Service
-@Controller
+@Transactional
 public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>{
 	//检测报告dao接口
 	@Resource

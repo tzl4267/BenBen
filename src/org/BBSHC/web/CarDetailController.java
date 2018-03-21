@@ -1,14 +1,12 @@
 package org.BBSHC.web;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.service.CarDetailService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CarDetailController {
@@ -16,10 +14,8 @@ public class CarDetailController {
 	private CarDetailService cds;
 	
 	@RequestMapping(value="/abcd")
-	@ResponseBody
-	public List<SecondCar> querySecondCar(){
-		 List<SecondCar> list = cds.querySecondCar();
-		 System.out.println(list);
-		 return list;
+	public String querySecondCar(ModelMap map){		
+		map.put("sList", cds.querySecondCar());
+		 return "carDetail";
 		}
 }

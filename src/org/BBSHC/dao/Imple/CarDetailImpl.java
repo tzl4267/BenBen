@@ -39,10 +39,10 @@ public class CarDetailImpl<T> extends BaseDaoImpl<SecondCar> implements CarDetai
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public List<SecondCar> querySecondCar(String hql) {
 		return null;
 				
-	}
+	}*/
 
 }

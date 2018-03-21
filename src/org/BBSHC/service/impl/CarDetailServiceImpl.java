@@ -17,8 +17,8 @@ public class CarDetailServiceImpl implements CarDetailService {
 	private CarDetailDao cdd;
 
 	@Override
-	public List<SecondCar> querySecondCar() {
-		String hql = "select from SecondCar";
-		return cdd.querySecondCar(hql);
+	public List<SecondCar>querySecondCar() {
+		String hql = "from SecondCar";
+		return cdd.selectHQL(hql);
 	}
 }
