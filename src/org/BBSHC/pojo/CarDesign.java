@@ -20,7 +20,7 @@ public class CarDesign {
 	    private Character bs;// 变速箱 0：不限 1：自动 2：手动
 	    private Character dr;// 驱动形式 0：不限 1：两驱 2：四驱
 	   // private Character lc;//车辆行驶里程 0：不限 
-	    private Character pl;//排量 0：不限 1：1-1.6 2：1.6-2.0 3：2.0-3.0 4：3.0-4.0 5：4.0以上
+	    private String pl;//排量 0：不限 1：1-1.6 2：1.6-2.0 3：2.0-3.0 4：3.0-4.0 5：4.0以上
 	    private Character pf;//排放标准  0：不限 1：国二 2：国三 3：国四
 	    private Character ft;//燃料类型 0：不限 1：汽油 2：柴油 3：混动 4：电动
 	    private Character zw;//座位数量 0：不限 1：两座  
@@ -58,10 +58,10 @@ public class CarDesign {
 		public void setLc(Character lc) {
 			this.lc = lc;
 		}*/
-		public Character getPl() {
+		public String getPl() {
 			return pl;
 		}
-		public void setPl(Character pl) {
+		public void setPl(String pl) {
 			this.pl = pl;
 		}
 		public Character getPf() {
@@ -91,7 +91,7 @@ public class CarDesign {
 		public void setCs(CarSeries cs) {
 			this.cs = cs;
 		}
-		public CarDesign(Integer cdid, String cdname, Character bs, Character dr, Character pl,
+		public CarDesign(Integer cdid, String cdname, Character bs, Character dr, String pl,
 				Character pf, Character ft, Character zw, CarSeries cs) {
 			super();
 			this.cdid = cdid;
