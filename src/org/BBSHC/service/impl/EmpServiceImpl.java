@@ -9,7 +9,7 @@ import org.BBSHC.pojo.Emp;
 import org.BBSHC.service.EmpService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+//员工service接口
 @Service
 @Transactional
 public class EmpServiceImpl implements EmpService{
