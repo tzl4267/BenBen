@@ -13,10 +13,11 @@ import org.BBSHC.service.SIService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //卖车约看记录service接口实现
 @Service
-@Controller
+@Transactional
 public class SIServicesImpl implements ServiceBase<SellIntention>,SIService{
 
 	/* (non-Javadoc)
