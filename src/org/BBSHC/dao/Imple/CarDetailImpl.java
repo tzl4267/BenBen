@@ -22,19 +22,19 @@ public class CarDetailImpl<T> extends BaseDaoImpl<SecondCar> implements CarDetai
 	}
 
 	@Override
-	public SecondCar getOne(Class cl, String id) {
+	public SecondCar getOne(Class cl, Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public SecondCar getOne(String id) {
+	public SecondCar getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public SecondCar getOneHql(Class cl, String id) {
+	public SecondCar getOneHql(Class cl, Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
