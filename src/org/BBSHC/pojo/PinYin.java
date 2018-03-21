@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//拼音首字母
+//城市拼音首字母
 @Entity
 public class PinYin {
 

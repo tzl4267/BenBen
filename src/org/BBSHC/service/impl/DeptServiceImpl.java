@@ -5,12 +5,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.DeptDao;
-import org.BBSHC.dao.EmpDao;
 import org.BBSHC.pojo.Dept;
 import org.BBSHC.service.DeptService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+//部门service接口
 @Service
 @Transactional
 public class DeptServiceImpl implements DeptService{
