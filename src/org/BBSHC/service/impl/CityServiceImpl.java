@@ -7,42 +7,40 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.BBSHC.dao.CheckRDao;
-import org.BBSHC.pojo.CheckReport;
-import org.BBSHC.service.CheckRService;
-import org.BBSHC.service.ServiceBase;
-import org.springframework.stereotype.Controller;
+import org.BBSHC.pojo.City;
+import org.BBSHC.service.CityService;
 import org.springframework.stereotype.Service;
-//检测报告service接口实现
+import org.springframework.transaction.annotation.Transactional;
+//城市service接口实现
 @Service
-@Controller
-public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>{
-	//检测报告dao接口
+@Transactional
+public class CityServiceImpl implements CityService{
+	//城市dao接口
 	@Resource
-	private CheckRDao crd;
+	private City city;
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#find()
 	 */
 	@Override
-	public List<CheckReport> find() {
+	public List<City> find() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#find(java.lang.String)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer)
 	 */
 	@Override
-	public List<CheckReport> find(Integer id) {
+	public List<City> find(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#getOne(java.lang.String)
+	 * @see org.BBSHC.service.ServiceBase#getOne(java.lang.Integer)
 	 */
 	@Override
-	public CheckReport getOne(Integer id) {
+	public City getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,13 +49,13 @@ public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>
 	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.Object)
 	 */
 	@Override
-	public String remove(CheckReport t) {
+	public String remove(City t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/* (non-Javadoc)
-	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.String)
+	 * @see org.BBSHC.service.ServiceBase#remove(java.lang.Integer)
 	 */
 	@Override
 	public String remove(Integer id) {
@@ -69,18 +67,18 @@ public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>
 	 * @see org.BBSHC.service.ServiceBase#add(java.lang.Object)
 	 */
 	@Override
-	public String add(CheckReport t) {
-		crd.saveOrupdate(t);
-		return "ok";
+	public String add(City t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#modify(java.lang.Object)
 	 */
 	@Override
-	public String modify(CheckReport t) {
-		crd.saveOrupdate(t);
-		return "ok";
+	public String modify(City t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
