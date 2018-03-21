@@ -29,13 +29,5 @@ public class EmpController {
 		map.put("dl", dl);
 		return "selectEmp";
 	}
-	@RequestMapping("/update_select")
-	public String update_select(String eid,ModelMap map){
-		Emp emp = es.update_select(eid);
-		List<Dept> dl = ds.querydl();
-		map.put("dl", dl);
-		map.put("emp", emp);
-		return "updatea";
-	}
 
 }

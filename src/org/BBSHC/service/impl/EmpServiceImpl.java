@@ -23,14 +23,5 @@ public class EmpServiceImpl implements EmpService{
 		return el;
 	}
 
-	@Override
-	public Emp update_select(String eid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
 
 }
