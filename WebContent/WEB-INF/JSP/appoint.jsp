@@ -13,6 +13,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" language = "JavaScript">
+
 $(function(){
 	$("button:contains('上传')").click(function(){
 		$("#insertModal").modal("show");
@@ -49,6 +50,7 @@ $(function(){
 		top:3px;
 		}
 		</style>
+
 </head>
 <body>
 <button  type="button" >上传</button>
@@ -164,6 +166,7 @@ $(function(){
   </div><!--描述: 上传模态框dialog结束  -->
 </div> <!--描述: 上传模态框结束  -->	
 
+
 <!--描述: 检测报告模态框开始  -->     
     <div class="modal fade" id="checkRecordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <!--描述: 检测报告模态框dialog开始  -->
@@ -255,5 +258,29 @@ $(function(){
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 	    	        	     
+
+		<!--描述：container开始  --><div class = "container" id="all">
+			<!--描述：面板row开始  --><div class = "row">
+				<div class = "col-lg-12">
+					<div class="panel panel-info"> 
+                      <div class="panel-body">
+             <form class="form" role="form">
+             	
+    <div class="control-label col-lg-5 col-sm-5"></div>
+    <div class="col-lg-3 col-sm-3"><input type="text"  id="select_classname" placeholder="输入板块名称关键字"></div>
+      <div class="col-lg-4 col-sm-4"><button type="button" class="btn btn-info"  onclick="query();"><i class="glyphicon glyphicon-search"></i>&nbsp; 板块信息查询</button></div>
+                           
+             </form>
+                    </div>
+                   </div>
+				</div>				
+			</div><!--描述：面板row结束 -->
+			<!--描述：表格row开始  --><div class = "row">
+				<div class = "col-lg-12">
+					<table id = "tab"></table>
+				</div>
+			</div><!--描述：表格row结束  -->
+		</div><!--描述：container结束  --> 
+
 </body>
 </html>
