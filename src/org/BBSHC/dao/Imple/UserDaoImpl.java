@@ -19,5 +19,13 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 		
 		return null;
 	}
+	@Override
+	public User selectone(String sql) {
+		SessionFactory sf=getSessionFactory();
+		Session session = sf.getCurrentSession();
+		SQLQuery query =session.createSQLQuery(sql).addEntity(User.class);
+		User user = (User) query.uniqueResult();
+		return user;
+	}
 
 }

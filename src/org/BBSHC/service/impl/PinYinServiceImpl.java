@@ -12,9 +12,10 @@ import org.BBSHC.pojo.PinYin;
 import org.BBSHC.service.PinYinService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //城市拼音首字母service接口实现
 @Service
-@Controller
+@Transactional
 public class PinYinServiceImpl implements PinYinService{
 	//城市拼音首字母dao接口
 	@Resource

@@ -13,10 +13,11 @@ import org.BBSHC.service.ARService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //买车约看记录service接口实现
 @Service
-@Controller
+@Transactional
 public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 
 	/* (non-Javadoc)
