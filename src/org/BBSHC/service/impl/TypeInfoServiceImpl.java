@@ -12,9 +12,10 @@ import org.BBSHC.pojo.TypeInfo;
 import org.BBSHC.service.TypeInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //图片类别备注service接口实现
 @Service
-@Controller
+@Transactional
 public class TypeInfoServiceImpl implements TypeInfoService{
 
 	//图片类别备注dao接口
