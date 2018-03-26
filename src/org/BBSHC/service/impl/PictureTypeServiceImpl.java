@@ -12,9 +12,10 @@ import org.BBSHC.pojo.PictureType;
 import org.BBSHC.service.PictureTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //图片类型表service接口实现
 @Service
-@Controller
+@Transactional
 public class PictureTypeServiceImpl implements PictureTypeService{
 	//图片类型表dao接口
 	@Resource
@@ -80,6 +81,12 @@ public class PictureTypeServiceImpl implements PictureTypeService{
 	public String modify(PictureType t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<PictureType> queryPictureType() {
+		String hql = "from PictureType";
+		return ptd.selectHQL(hql);		
 	}
 
 }

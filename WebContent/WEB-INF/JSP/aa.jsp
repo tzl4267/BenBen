@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="home/list"></jsp:forward>
+00000
 </body>
 </html>

@@ -8,4 +8,5 @@ public interface CarDetailService {
 	List<SecondCar> querySecondCar();
 
 	List<SecondCar> selectHQL();
+	String add(SecondCar sc);
 }
