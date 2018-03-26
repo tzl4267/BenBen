@@ -11,12 +11,12 @@ import org.BBSHC.dao.PIDao;
 import org.BBSHC.pojo.ProcedureInfo;
 import org.BBSHC.service.PIService;
 import org.BBSHC.service.ServiceBase;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //手续信息service接口实现
 @Service
-@Controller
+@Transactional
 public class PIServiceImpl implements ServiceBase<ProcedureInfo>,PIService{
 
 	/* (non-Javadoc)

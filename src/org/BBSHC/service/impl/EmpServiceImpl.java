@@ -29,8 +29,8 @@ public class EmpServiceImpl implements EmpService{
 		return null;
 	}
 
-
-
-
-
+	@Override
+	public void insertEmp(Emp emp) {
+		ed.saveOrupdate(emp);	
+	}
 }

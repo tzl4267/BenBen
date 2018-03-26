@@ -7,4 +7,6 @@ import org.BBSHC.pojo.Emp;
 public interface EmpService {
 	List<Emp> queryel();
 	Emp update_select(String eid);
+	void insertEmp(Emp emp);
+	
 }

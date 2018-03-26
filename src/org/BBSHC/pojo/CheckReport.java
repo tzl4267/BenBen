@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 //检测报告
 @Entity
 public class CheckReport {
-
 	           private Integer crid;// 检测报告id
 	           private String sg;//重大事故排查
 	           private String hx;//核心部件检测
