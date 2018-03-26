@@ -25,8 +25,9 @@ public class CarSeriesSerciceImpl implements CarSeriesSercice{
 	private CarSeriesDao csd;
 	@Override
 	public List<CarSeries> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql=" select * from CarSeries";
+		System.out.println(sql);
+		return csd.select(sql); 
 	}
 
 	/* (non-Javadoc)
@@ -34,8 +35,8 @@ public class CarSeriesSerciceImpl implements CarSeriesSercice{
 	 */
 	@Override
 	public List<CarSeries> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from carseries s,carbrand b where  s.cbid=b.cbid and b.cbid="+id;
+		return csd.select(sql);
 	}
 
 	/* (non-Javadoc)

@@ -25,8 +25,10 @@ public class CarBrandServiceImpl implements CarBrandService{
 	private CarBrandDao cbd;
 	@Override
 	public List<CarBrand> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql=" select * from carbrand";
+		System.out.println(sql);
+		return cbd.select(sql); 
+		
 	}
 
 	/* (non-Javadoc)

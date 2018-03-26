@@ -9,5 +9,7 @@ public interface CarDetailService {
 	List<SecondCar> find(Integer id);
 	//修改之前的查询
 	SecondCar update_selectSecondCar(Integer cid);
+
+	List<SecondCar> selectHQL();
 	String add(SecondCar sc);
 }
