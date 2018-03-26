@@ -1,12 +1,10 @@
 package org.BBSHC.service.impl;
 
-import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.EmpDao;
 import org.BBSHC.pojo.Emp;
-import org.BBSHC.pojo.User;
 import org.BBSHC.service.EmpService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,4 +27,11 @@ public class EmpServiceImpl implements EmpService{
 		return null;
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public void insertEmp(Emp emp) {
+		ed.saveOrupdate(emp);	
+	}
+>>>>>>> branch 'master' of https://github.com/tzl4267/BenBen.git
 }

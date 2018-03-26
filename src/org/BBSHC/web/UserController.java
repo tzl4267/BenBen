@@ -22,6 +22,10 @@ import org.BBSHC.service.CarDetailService;
 import org.BBSHC.service.CollectRecordService;
 import org.BBSHC.service.PictureService;
 import org.BBSHC.service.SellRecordService;
+
+import org.BBSHC.service.CarBrandService;
+
+
 import org.BBSHC.service.UserService;
 import org.BBSHC.service.VocationService;
 import org.springframework.stereotype.Controller;
@@ -115,4 +119,15 @@ public class UserController {
 	        }
 
 	 }
+	@RequestMapping("/login")
+	public String login(String uname,String upass){
+		String a="";
+		User user = us.selectone(uname,upass);
+		if (user !=null&&uname !=null&&upass !=null) {
+			a="aa";
+		}else {
+			a="cc";
+		}
+		return "a";
+	}
 }

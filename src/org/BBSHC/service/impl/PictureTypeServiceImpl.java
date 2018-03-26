@@ -83,4 +83,10 @@ public class PictureTypeServiceImpl implements PictureTypeService{
 		return null;
 	}
 
+	@Override
+	public List<PictureType> queryPictureType() {
+		String hql = "from PictureType";
+		return ptd.selectHQL(hql);		
+	}
+
 }

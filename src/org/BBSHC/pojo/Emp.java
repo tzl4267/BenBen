@@ -29,6 +29,7 @@ public class Emp {
 	    private String ph;//联系方式
 	    private Character esta;//员工状态 0:工作中 1:待分配
 	    private Dept dept;//部门
+	    private String pass;//密码
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getEid() {
@@ -81,6 +82,7 @@ public class Emp {
 		public void setDept(Dept dept) {
 			this.dept = dept;
 		}
+
 		public Emp(Integer eid,String epass, String ename, String age, Character sex, String eurl, String ph, Character esta, Dept dept) {
 			super();
 			this.eid = eid;
@@ -92,6 +94,12 @@ public class Emp {
 			this.ph = ph;
 			this.esta = esta;
 			this.dept = dept;
+		}		
+		public String getPass() {
+			return pass;
+		}
+		public void setPass(String pass) {
+			this.pass = pass;
 		}
 		public Emp() {
 			super();

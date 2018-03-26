@@ -3,6 +3,8 @@
  */
 package org.BBSHC.pojo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -36,21 +38,16 @@ public class SecondCar {
 	     private Outstanding os;// 亮点配置
 	     private String jj;//降价信息
 	     private Emp emp;//销售员
+
 	     private String purl;//图片路径
- 	     
-	     public String getPurl() {
-			return purl;
-		}
-		public void setPurl(String purl) {
-			this.purl = purl;
-		}
-		private ProcedureInfo pi;//手续信息id 
+		 private ProcedureInfo pi;//手续信息id 
 	     private String sc;//车辆售卖原因
 	     private Character zd;//是否置顶
 	     private Character czt;//信息状态 0:已下架 1:在售中
 	     private Character bq;//急售
 	     private String ck;//车况
 	     private Date sjsj;//上架时间
+	     private String kcd;//看车地点
 	     @Id
          @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getCid() {
@@ -77,7 +74,16 @@ public class SecondCar {
 		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		public Date getSpsj() {
-			return spsj;
+			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM");
+			String sf = ft.format(spsj);
+			Date spj = spsj;
+			try {
+				spj = ft.parse(sf);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return spj;
 		}
 		public void setSpsj(Date spsj) {
 			this.spsj = spsj;
@@ -206,6 +212,21 @@ public class SecondCar {
 		}
 		public void setSjsj(Date sjsj) {
 			this.sjsj = sjsj;
+		}
+		
+		public String getPurl() {
+			return purl;
+		}
+		public void setPurl(String purl) {
+			this.purl = purl;
+		}
+		
+		
+		public String getKcd() {
+			return kcd;
+		}
+		public void setKcd(String kcd) {
+			this.kcd = kcd;
 		}
 		public SecondCar() {
 			super();

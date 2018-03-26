@@ -6,13 +6,13 @@ package org.BBSHC.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.From;
 
-import org.BBSHC.dao.ARDao;
 import org.BBSHC.dao.SellIntentionDao;
 import org.BBSHC.pojo.SellIntention;
 import org.BBSHC.service.SellIntentionService;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //卖车意向信息表service接口实现
 import org.springframework.transaction.annotation.Transactional;
 @Service
@@ -85,4 +85,10 @@ public class SellIntentionServiceImpl implements SellIntentionService{
 		return null;
 	}
 
+	@Override
+	public List<SellIntention> querySellIntention() {
+		String hql = "from SellIntention";
+		return sd.selectHQL(hql);		
+	}
+		
 }
