@@ -18,7 +18,14 @@ public class CarDetailServiceImpl implements CarDetailService {
 
 	@Override
 	public List<SecondCar> querySecondCar() {
-		String hql = "select from SecondCar";
-		return cdd.querySecondCar(hql);
+		String hql = "from SecondCar";
+		System.out.println(hql);
+		return cdd.selectHQL(hql);
+	}
+	@Override
+	public List<SecondCar> selectHQL() {
+		String hql = "from SecondCar ";
+		System.out.println(hql);
+		return cdd.selectHQL(hql);
 	}
 }

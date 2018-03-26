@@ -36,8 +36,9 @@ public class SecondCar {
 	     private Outstanding os;// 亮点配置
 	     private String jj;//降价信息
 	     private Emp emp;//销售员
-	     
-	     private ProcedureInfo pi;//手续信息id 
+	     private String purl;//图片路径
+
+		private ProcedureInfo pi;//手续信息id 
 	     private String sc;//车辆售卖原因
 	     private Character zd;//是否置顶
 	     private Character czt;//信息状态 0:已下架 1:在售中
@@ -204,6 +205,11 @@ public class SecondCar {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-	     
+	     public String getPurl() {
+			return purl;
+		}
+		public void setPurl(String purl) {
+			this.purl = purl;
+		}
 	     
 }
