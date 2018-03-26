@@ -3,6 +3,8 @@
  */
 package org.BBSHC.pojo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -70,7 +72,16 @@ public class SecondCar {
 		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 		public Date getSpsj() {
-			return spsj;
+			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM");
+			String sf = ft.format(spsj);
+			Date spj = spsj;
+			try {
+				spj = ft.parse(sf);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return spj;
 		}
 		public void setSpsj(Date spsj) {
 			this.spsj = spsj;

@@ -85,4 +85,9 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 		return null;
 	}
 
+	@Override
+	public void insertBargainRecord(BargainRecord bd) {
+	brd.saveOrupdate(bd);	
+	}
+
 }
