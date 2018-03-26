@@ -36,6 +36,13 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 	 * @see org.BBSHC.service.ServiceBase#find(java.lang.String)
 	 */
 	//根据销售员id查询该员工的约看记录
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public List<AppointRecord> find(Integer id) {
 		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where sc.czt='1' and sc.seid= '"+id+"') and ar.asta='0';";

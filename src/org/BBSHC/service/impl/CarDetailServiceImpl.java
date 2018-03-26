@@ -21,4 +21,13 @@ public class CarDetailServiceImpl implements CarDetailService {
 		String hql = "select from SecondCar";
 		return cdd.querySecondCar(hql);
 	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#add(org.BBSHC.pojo.SecondCar)
+	 */
+	@Override
+	public String add(SecondCar sc) {
+		cdd.saveOrupdate(sc);
+		return "ok";
+	}
 }

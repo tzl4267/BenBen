@@ -11,7 +11,6 @@ import org.BBSHC.dao.SIDao;
 import org.BBSHC.pojo.SellIntention;
 import org.BBSHC.service.SIService;
 import org.BBSHC.service.ServiceBase;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,6 +84,13 @@ public class SIServicesImpl implements ServiceBase<SellIntention>,SIService{
 	public List<SellIntention> find(Integer id) {
 	String sql = "select * from SellIntention sr where sr.zt='0' and (sr.seid='"+id+"' or sr.jeid='"+id+"')";
 	List<SellIntention> srlist = sid.select(sql);
+		return srlist;
+	}
+	//根据员工id查找该员工接手的车辆,未处理
+	@Override
+	public List<SellIntention> findHQL(Integer id) {
+		String hql = "select sr from SellIntention sr where sr.zt='0' and (sr.seid='"+id+"' or sr.jeid='"+id+"')";
+		List<SellIntention> srlist = sid.selectHQL(hql);
 		return srlist;
 	}
 
