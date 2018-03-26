@@ -33,8 +33,9 @@ public class PictureServiceImpl implements PictureService{
 	 */
 	@Override
 	public List<Picture> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from picture where sc.cid='"+id+"';";
+		List<Picture> plist = pd.select(sql);
+		return plist;
 	}
 
 	/* (non-Javadoc)
@@ -69,8 +70,8 @@ public class PictureServiceImpl implements PictureService{
 	 */
 	@Override
 	public String add(Picture t) {
-		// TODO Auto-generated method stub
-		return null;
+		pd.saveOrupdate(t);
+		return "ok";
 	}
 
 	/* (non-Javadoc)
@@ -78,7 +79,7 @@ public class PictureServiceImpl implements PictureService{
 	 */
 	@Override
 	public String modify(Picture t) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

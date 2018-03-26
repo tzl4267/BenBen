@@ -38,7 +38,7 @@ public class SecondCar {
 	     private Outstanding os;// 亮点配置
 	     private String jj;//降价信息
 	     private Emp emp;//销售员
-	     
+	     private String purl;//正面照片
 	     private ProcedureInfo pi;//手续信息id 
 	     private String sc;//车辆售卖原因
 	     private Character zd;//是否置顶
@@ -46,6 +46,7 @@ public class SecondCar {
 	     private Character bq;//急售
 	     private String ck;//车况
 	     private Date sjsj;//上架时间
+	     private String kcd;//看车地点
 	     @Id
          @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getCid() {
@@ -210,6 +211,21 @@ public class SecondCar {
 		}
 		public void setSjsj(Date sjsj) {
 			this.sjsj = sjsj;
+		}
+		
+		public String getPurl() {
+			return purl;
+		}
+		public void setPurl(String purl) {
+			this.purl = purl;
+		}
+		
+		
+		public String getKcd() {
+			return kcd;
+		}
+		public void setKcd(String kcd) {
+			this.kcd = kcd;
 		}
 		public SecondCar() {
 			super();
