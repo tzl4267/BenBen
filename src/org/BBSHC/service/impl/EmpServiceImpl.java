@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.EmpDao;
 import org.BBSHC.pojo.Emp;
+import org.BBSHC.pojo.User;
 import org.BBSHC.service.EmpService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,13 +16,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpServiceImpl implements EmpService{
 	@Resource
 	private EmpDao ed;
-
+	
 	@Override
-	public List<Emp> queryel() {
-		String sql="select * from emp";
-		List<Emp> el = ed.select(sql);
-		return el;
+	public Emp update_selectEmp(Integer eid) {
+		Emp emp = ed.getOne(Emp.class, eid);
+		return emp;
 	}
 
+	@Override
+	public String modify(Emp emp, Integer eid) {
+		ed.saveOrupdate(emp);
+		return null;
+	}
 
 }

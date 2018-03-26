@@ -2,9 +2,10 @@ package org.BBSHC.service;
 
 import java.util.List;
 
-import org.apache.catalina.User;
+import org.BBSHC.pojo.User;
+
 
 public interface UserService {
-	List<User> queryull();
-
+	User update_select(Integer uid);
+	String modify(User user,Integer uid);
 }

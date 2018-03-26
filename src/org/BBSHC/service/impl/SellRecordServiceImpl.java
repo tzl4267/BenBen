@@ -12,9 +12,10 @@ import org.BBSHC.pojo.SellRecord;
 import org.BBSHC.service.SellRecordService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //卖车记录service接口实现
 @Service
-@Controller
+@Transactional
 public class SellRecordServiceImpl implements SellRecordService{
 
 	/* (non-Javadoc)
@@ -35,8 +36,9 @@ public class SellRecordServiceImpl implements SellRecordService{
 	 */
 	@Override
 	public List<SellRecord> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="select sr from SellRecord sr where sr.user.uid="+id;
+		List<SellRecord> sr = srd.selectHQL(hql);
+		return sr;
 	}
 
 	/* (non-Javadoc)
@@ -83,5 +85,6 @@ public class SellRecordServiceImpl implements SellRecordService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

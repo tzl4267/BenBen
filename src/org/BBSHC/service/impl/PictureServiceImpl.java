@@ -33,7 +33,7 @@ public class PictureServiceImpl implements PictureService{
 	 */
 	@Override
 	public List<Picture> find(Integer id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

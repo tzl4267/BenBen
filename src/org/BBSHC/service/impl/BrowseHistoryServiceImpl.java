@@ -25,8 +25,9 @@ public class BrowseHistoryServiceImpl implements ServiceBase<BrowseHistory>,Brow
 	@Resource
 	private BrowseHistoryDao bhd;
 	@Override
+	//浏览记录
 	public List<BrowseHistory> find() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -35,8 +36,9 @@ public class BrowseHistoryServiceImpl implements ServiceBase<BrowseHistory>,Brow
 	 */
 	@Override
 	public List<BrowseHistory> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="select bh from BrowseHistory bh where bh.user.uid="+id;
+		List<BrowseHistory> bl = bhd.selectHQL(hql);
+		return bl;
 	}
 
 	/* (non-Javadoc)

@@ -14,8 +14,9 @@ import org.BBSHC.service.SellIntentionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 //卖车意向信息表service接口实现
+import org.springframework.transaction.annotation.Transactional;
 @Service
-@Controller
+@Transactional
 public class SellIntentionServiceImpl implements SellIntentionService{
 
 	/* (non-Javadoc)

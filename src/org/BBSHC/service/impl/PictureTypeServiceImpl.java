@@ -12,9 +12,10 @@ import org.BBSHC.pojo.PictureType;
 import org.BBSHC.service.PictureTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //图片类型表service接口实现
 @Service
-@Controller
+@Transactional
 public class PictureTypeServiceImpl implements PictureTypeService{
 	//图片类型表dao接口
 	@Resource

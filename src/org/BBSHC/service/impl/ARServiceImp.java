@@ -13,10 +13,11 @@ import org.BBSHC.service.ARService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //买车约看记录service接口实现
 @Service
-@Controller
+@Transactional
 public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 
 	/* (non-Javadoc)
@@ -98,6 +99,13 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where czt='0' and crid in(select crid from checkreport  cr where cr.jeid ='"+id+"' and cr.hg='1'));";
 		List<AppointRecord> alist = ard.select(sql);
 		return alist;
+	}
+
+	@Override
+	public List<AppointRecord> find1(Integer id) {
+		String hql="select ar from AppointRecord ar where ar.user.uid="+id;
+		List<AppointRecord> ar = ard.selectHQL(hql);
+		return ar;
 	}
 
 }
