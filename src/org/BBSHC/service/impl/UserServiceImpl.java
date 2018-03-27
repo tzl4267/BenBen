@@ -15,19 +15,31 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService{
 	@Resource
 	private UserDao ud;
-	
 	@Override
-	public List<User> queryull() {
-		String sql="select * from user";
-		List ul = ud.select(sql);
-		return ul;
+	public User update_select(Integer uid) {
+		User user2 = ud.getOne(User.class, uid);
+		return user2;
 	}
+	@Override
+	public String modify(User user,Integer uid) {
+		ud.saveOrupdate(user);
+		return null;
+	}
+
+	
+
+
 
 	@Override
 	public User selectone(String uname,String upass) {
 		String sql="select uname,upass from user";
 		User user=ud.selectone(sql);
 		return user;
+	}
+	@Override
+	public List<User> queryull() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

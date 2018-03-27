@@ -14,11 +14,8 @@ import org.springframework.stereotype.Repository;
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 	@Resource
 	private SessionFactory sf;
-	@Override
-	public List<User> queryull(String sql) {
-		
-		return null;
-	}
+
+	
 	@Override
 	public User selectone(String sql) {
 		SessionFactory sf=getSessionFactory();
@@ -28,4 +25,10 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 		return user;
 	}
 
+
+	@Override
+	public List<User> queryull(String sql) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

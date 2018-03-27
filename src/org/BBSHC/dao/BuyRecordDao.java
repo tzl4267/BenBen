@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.BBSHC.dao;
 
 import org.BBSHC.pojo.BuyRecord;
