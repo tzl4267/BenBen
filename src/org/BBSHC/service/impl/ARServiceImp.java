@@ -107,4 +107,11 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 		return alist;
 	}
 
+	@Override
+	public List<AppointRecord> find1(Integer id) {
+		String hql="select ar from AppointRecord ar where ar.user.uid="+id;
+		List<AppointRecord> ar = ard.selectHQL(hql);
+		return ar;
+	}
+
 }
