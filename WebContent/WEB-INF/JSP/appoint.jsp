@@ -182,7 +182,7 @@ $(function(){
       
       <!--描述: 检测报告模态框body开始  -->
       <div class="modal-body">
-       <form class="form-horizontal" role="form" id = "checkRecordform">
+       <form class="form-horizontal" role="form" id = "checkRecordform" action="" >
  	<div class="form-group"> 
     <label for="sg" class="col-sm-3 control-label">重大事故排除</label>
     <div class="col-sm-9">
@@ -229,7 +229,7 @@ $(function(){
       
       <!--描述: 检测报告模态框footer开始  -->
       <div class="modal-footer">
-      <button type = "button" class = "btn btn-info" onclick = "insertCR();"><i class = "glyphicon glyphicon-ok"></i>&nbsp;确认</button>
+      <button type = "submit" class = "btn btn-info"><i class = "glyphicon glyphicon-ok"></i>&nbsp;确认</button>
       <button type = "button" class = "btn btn-warning"><i class = "glyphicon glyphicon-leaf"></i>&nbsp;重置</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class = "glyphicon glyphicon-remove"></i>&nbsp;放弃</button>       
       </div><!--描述: 检测报告模态框footer结束  -->
