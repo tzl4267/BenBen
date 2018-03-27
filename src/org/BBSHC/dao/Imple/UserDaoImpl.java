@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.UserDao;
 import org.BBSHC.pojo.User;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -13,7 +15,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 	@Resource
 	private SessionFactory sf;
 
-	}
+	
 	@Override
 	public User selectone(String sql) {
 		SessionFactory sf=getSessionFactory();
@@ -23,3 +25,10 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 		return user;
 	}
 
+
+	@Override
+	public List<User> queryull(String sql) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

@@ -33,14 +33,9 @@ public class PictureServiceImpl implements PictureService{
 	 */
 	@Override
 	public List<Picture> find(Integer id) {
-<<<<<<< HEAD
-		
-		return null;
-=======
 		String sql = "select * from picture where sc.cid='"+id+"';";
 		List<Picture> plist = pd.select(sql);
 		return plist;
->>>>>>> branch 'master' of https://github.com/tzl4267/BenBen.git
 	}
 
 	/* (non-Javadoc)

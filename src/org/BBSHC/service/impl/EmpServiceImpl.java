@@ -1,6 +1,8 @@
 package org.BBSHC.service.impl;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.EmpDao;
@@ -27,11 +29,20 @@ public class EmpServiceImpl implements EmpService{
 		return null;
 	}
 
-<<<<<<< HEAD
-=======
 	@Override
 	public void insertEmp(Emp emp) {
 		ed.saveOrupdate(emp);	
 	}
->>>>>>> branch 'master' of https://github.com/tzl4267/BenBen.git
+
+	@Override
+	public List<Emp> queryel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Emp update_select(String eid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
