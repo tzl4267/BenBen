@@ -92,14 +92,15 @@ public class SellIntention {
 		public void setYq(Character yq) {
 			this.yq = yq;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd")
 		@DateTimeFormat(pattern="yyyy-MM-dd")
+		@JsonFormat(pattern="yyyy-MM-dd")
 		public Date getKcsj() {
 			return kcsj;
 		}
 		public void setKcsj(Date kcsj) {
 			this.kcsj = kcsj;
 		}
+		
 		public String getKcd() {
 			return kcd;
 		}

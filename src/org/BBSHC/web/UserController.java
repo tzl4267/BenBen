@@ -1,16 +1,15 @@
 package org.BBSHC.web;
 
-import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.AppointRecord;
 import org.BBSHC.pojo.BrowseHistory;
 import org.BBSHC.pojo.BuyRecord;
 import org.BBSHC.pojo.CollectRecord;
-import org.BBSHC.pojo.Picture;
 import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.pojo.SellRecord;
 import org.BBSHC.pojo.User;
@@ -23,7 +22,6 @@ import org.BBSHC.service.CollectRecordService;
 import org.BBSHC.service.PictureService;
 import org.BBSHC.service.SellRecordService;
 
-import org.BBSHC.service.CarBrandService;
 
 
 import org.BBSHC.service.UserService;
@@ -31,9 +29,6 @@ import org.BBSHC.service.VocationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/abc")
@@ -72,11 +67,11 @@ public class UserController {
 		 //约看记录
 		List<AppointRecord> ar = ars.find1(uid);
 		//待卖车辆
-		List<SecondCar> cd = cds.find(uid);
+		List<SecondCar> cd = cds.find(uid,cid);
 		//待买车辆修改之前的查询
 		SecondCar sec = cds.update_selectSecondCar(cid);
-		 map.put("sec", sec);
-		 map.put("cd", cd);
+		map.put("sec", sec);
+		map.put("cd", cd);
 		 map.put("ar", ar);
 		 map.put("cr", cr);
 		 map.put("sr", sr);
@@ -92,42 +87,24 @@ public class UserController {
 		us.modify(user, uid);
 		return "redirect:update_select?uid="+uid;
 	}
+	//修改用户待卖车
+	@RequestMapping("/update_secondcar")
+	public String update_secondcar(SecondCar sc,Integer cid,Integer uid){
+		cds.update_SecondCar(sc, cid);
+		return "redirect:update_select?cid="+cid+"&uid="+uid;
+	}
 	
-	//上传
-	@RequestMapping(value="/upload1",method=RequestMethod.POST)
-	 public String upload(HttpServletRequest request,
-	            @RequestParam("description") String description,
-	            @RequestParam("file") MultipartFile file) throws Exception {
-	        System.out.println(description);
-	        //如果文件不为空，写入上传路径
-	        if(!file.isEmpty()) {
-	            //上传文件路径
-	            String path = request.getServletContext().getRealPath("/image/");
-	            //上传文件名
-	            String filename = file.getOriginalFilename();
-	            File filepath = new File(path,filename);
-	            //判断路径是否存在，如果不存在就创建一个
-	            if (!filepath.getParentFile().exists()) { 
-	                filepath.getParentFile().mkdirs();
-	            }
-	            //将上传文件保存到一个目标文件当中
-	            file.transferTo(new File(path + File.separator + filename));
-	            
-	            return "success";
-	        } else {
-	            return "error";
-	        }
-
-	 }
 	@RequestMapping("/login")
-	public String login(String uname,String upass){
-		String a="";
+	public String login(String uname,String upass,HttpServletRequest rq,ModelMap mm){
 		User user = us.selectone(uname,upass);
+		HttpSession session = rq.getSession();
+		String msg = "";
 		if (user !=null&&uname !=null&&upass !=null) {
-			a="aa";
+			session.setAttribute("user", user);
 		}else {
-			a="cc";
+			msg="账号或密码错误！";
+			mm.put("msg", msg);
 		}
-		return "a";
+		return "home_page";
 	}
 }

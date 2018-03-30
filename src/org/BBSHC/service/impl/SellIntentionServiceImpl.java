@@ -72,8 +72,8 @@ public class SellIntentionServiceImpl implements SellIntentionService{
 	 */
 	@Override
 	public String add(SellIntention t) {
-		// TODO Auto-generated method stub
-		return null;
+		sd.saveOrupdate(t);
+		return "ok";
 	}
 
 	/* (non-Javadoc)

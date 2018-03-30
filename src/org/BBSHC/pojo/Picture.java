@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 //汽车图片
 @Entity
@@ -17,6 +18,8 @@ public class Picture {
 	         private SecondCar sc;//二手车id
 	         private String purl;//路径
 	         private TypeInfo ti;;
+	         private TypeInfo tinfo;//备注
+	         private String pinfo;//图片信息
 	         @Id
 		 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
 			public Integer getPid() {
@@ -47,13 +50,32 @@ public class Picture {
 			public TypeInfo getTi() {
 				return ti;
 			}
+			//一个图片对应一个备注
+			@OneToOne
+			@JoinColumn(name="tid")
+			public TypeInfo getTinfo() {
+				return tinfo;
+			}
 			public void setTi(TypeInfo ti) {
 				this.ti = ti;
 			}				
 			
+			public void setTinfo(TypeInfo tinfo) {
+				this.tinfo = tinfo;
+			}
+			
+			public String getPinfo() {
+				return pinfo;
+			}
+			public void setPinfo(String pinfo) {
+				this.pinfo = pinfo;
+			}
 			public Picture() {
 				super();
 				// TODO Auto-generated constructor stub
 			}
 			
+	
 }
+	
+

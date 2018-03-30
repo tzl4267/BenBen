@@ -69,8 +69,8 @@ public class OutstandingServiceImpl implements OutstandingService{
 	 */
 	@Override
 	public String add(Outstanding t) {
-		// TODO Auto-generated method stub
-		return null;
+		od.saveOrupdate(t);
+		return "ok";
 	}
 
 	/* (non-Javadoc)
@@ -80,6 +80,16 @@ public class OutstandingServiceImpl implements OutstandingService{
 	public String modify(Outstanding t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.OutstandingService#getOneBySid(java.lang.Integer)
+	 */
+	@Override
+	public Outstanding getOneBySid(Integer sid) {
+		String sql = "select * from Outstanding where sid="+sid;
+		Outstanding os = od.getOne(sql);
+		return os;
 	}
 
 }

@@ -1,6 +1,8 @@
 package org.BBSHC.web;
 
 import java.io.File;
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,36 +31,21 @@ public class EmpController {
 		return "selectEmp";
 	}
 	@RequestMapping("/update_Emp")
-	public String update_Emp(ModelMap map,Emp emp){
+	public String update_Emp(Emp emp,HttpServletRequest request,MultipartFile mFile)throws IOException{
+		if (!mFile.isEmpty()) {
+			String fileName = mFile.getOriginalFilename();
+			int starIndex = fileName.lastIndexOf(".");
+			String fileSuffix = fileName.substring(starIndex);
+			String filePath = request.getServletContext().getRealPath("images");
+			File file = new File(filePath,fileName);
+			/*String eurl = filePath+"img/" + System.currentTimeMillis() + fileSuffix;*/
+			String eurl = "images/" + fileName;
+			emp.setEurl(eurl);
+			/*FileUtils.copyInputStreamToFile(mFile.getInputStream(), new File(eurl));*/
 		es.modify(emp, emp.getEid());
-		Emp emps = es.update_selectEmp(emp.getEid());
-		map.put("emp", emps);
+		/*Emp emps = es.update_selectEmp(emp.getEid());
+		map.put("emp", emps);*/
+		}	
 		return "selectEmp";
 	}
-	@RequestMapping(value="/upload",method=RequestMethod.POST)
-	 public String upload(HttpServletRequest request,
-	            @RequestParam("description") String description,
-	            @RequestParam("file") MultipartFile file) throws Exception {
-	        System.out.println(description);
-	        //如果文件不为空，写入上传路径
-	        if(!file.isEmpty()) {
-	            //上传文件路径
-	            String path = request.getServletContext().getRealPath("/images/");
-	            //上传文件名
-	            String filename = file.getOriginalFilename();
-	            File filepath = new File(path,filename);
-	            //判断路径是否存在，如果不存在就创建一个
-	            if (!filepath.getParentFile().exists()) { 
-	                filepath.getParentFile().mkdirs();
-	            }
-	            //将上传文件保存到一个目标文件当中
-	            file.transferTo(new File(path + File.separator + filename));
-	            
-	            return "success";
-	        } else {
-	            return "error";
-	        }
-
-	 }
-
 }

@@ -13,8 +13,7 @@ import javax.persistence.ManyToOne;
 //员工表
 @Entity
 public class Emp {
-
-	    private Integer eid;//员工id	   
+	    private Integer eid;//员工id
 		private String ename;//姓名
 	    private String age;//年龄
 	    private Character sex;//性别
@@ -76,7 +75,7 @@ public class Emp {
 			this.dept = dept;
 		}
 
-		public Emp(Integer eid,String epass, String ename, String age, Character sex, String eurl, String ph, Character esta, Dept dept) {
+		public Emp(Integer eid, String ename, String age, Character sex, String eurl, String ph, Character esta, Dept dept) {
 			super();
 			this.eid = eid;
 			this.ename = ename;

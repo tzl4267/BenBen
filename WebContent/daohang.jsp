@@ -93,10 +93,6 @@
             {
                 alert("验证码输入有误！");
                 createCode();
-            }
-            else 
-            {
-                alert("验证码正确！");
             }        
         }    
 		</script>
@@ -105,36 +101,33 @@
  	<div class="navbar navbar-inverse">
            <ul class="nav navbar-nav">
 			  <li><img src="img/daohang/1.jpg"></li>
-			  <li><a href="#">地点</a></li> 
-				<li><a href="#">卖车</a></li>
-              <li><a href="#">买车</a></li>
-    		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
-    		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
+			  <li><a href="#" style="font-size: large;">地点</a></li>            
+			  <li><a href="#" style="font-size: large;">卖车</a></li>
+              <li><a href="#" style="font-size: large;">买车</a></li>
+    		  <li onclick="denglubtn();"><a href="#" style="font-size: large;">
+    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    		      登陆</a></li>
+    		  <li onclick="zhucebtn();"><a href="#" style="font-size: large;">注册
+    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
+    		  </a></li>
     		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
            </ul>
            </div>
-
-<!-- 登陆modal -->
-
-	<div class="modal fade" id="denglu" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">登陆</h4>
-				</div>
-				<div class="modal-body">
-					<form action="abc/login" class="form-horizontal"><ul>
-			  <li><a href="${user.uid}">卖车</a></li>
-              <li><a href="#">买车</a></li>
-    		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
-    		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
-    		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
-           </ul></form>
-           </div></div></div></div>
 
 <!-- 登陆modal -->
 
@@ -162,12 +155,6 @@
 									class="form-control" name="upass"/>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<input type="submit"
-									class="form-control" value="登陆"/>
-							</div>
-						</div>
 					</form>
 				</div>
 
@@ -180,17 +167,15 @@
     				
     			<table border="0" cellspacing="5" cellpadding="5" height="60" align="center">
     				
-       		  	
-        		
-        		<tr>
-            	<td><input type="text" id="inputCode" class="input"  value="请输入验证码" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
-        		<input id="Button1"  onclick="validateCode();" type="button" value="确定" /></td>
-        		</tr>
-        		
-        		<tr>
+       		  	<tr>
             	<td>
             	<div class="code" id="checkCode"></div>
             	<a  href="#" onclick="createCode()" style="size: auto;">看不清换一张</a></td>
+        		</tr>
+        		
+        		<tr>
+            	<td><input type="text" id="inputCode" class="input"  value="请输入验证码" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
+        		
         		</tr>
         		
         		
@@ -198,6 +183,12 @@
     			
     			</div>
     			</form>
+    			<form action="abc/login">
+    			<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="Button1"  onclick="validateCode();">登陆</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="aabtn()">忘记密码</button>
+				</div>
+				</form>
    				 <!--验证码结束-->
 			</div>
 		</div>

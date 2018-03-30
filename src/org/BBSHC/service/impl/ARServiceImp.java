@@ -102,7 +102,7 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 	//根据检测员id查询约看记录
 	@Override
 	public List<AppointRecord> jfind(Integer id) {
-		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where czt='0' and crid in(select crid from checkreport  cr where cr.jeid ='"+id+"' and cr.hg='1'));";
+		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where czt='1' and crid in(select crid from checkreport  cr where cr.jeid ='"+id+"' and cr.hg='1'));";
 		List<AppointRecord> alist = ard.select(sql);
 		return alist;
 	}

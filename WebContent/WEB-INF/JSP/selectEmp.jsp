@@ -23,7 +23,7 @@
 	}
    </script>
    
-<form action="upload" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/abc/update_Emp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="eid" value="${emp.eid}">
 	 <div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">年龄</label>
@@ -96,7 +96,7 @@
 					<h4 class="modal-title" id="myModalLabel">修改员工信息</h4>
 				</div>
 				<div class="modal-body">
-					<form action="${pageContext.request.contextPath}/abc/update_Emp" method="post" class="form-horizontal" role="form"
+					<form action="${pageContext.request.contextPath}/abc/update_Emp" enctype="multipart/form-data" method="post" class="form-horizontal" role="form"
 						name="updateForm" id="updateForm">
 		<input type="hidden" name="eid" value="${emp.eid}">
 	 <div class="form-group">
@@ -123,7 +123,7 @@
     <label for="lastname" class="col-sm-2 control-label">头像:</label>
     <div class="col-sm-10">
     <img src="${pageContext.request.contextPath}/${emp.eurl}" width="50" height="50">
-      <input type="file" name="eurl" class="form-control" >
+      <input type="file" name="mFile" class="form-control" >
     </div>
   </div> 
   
