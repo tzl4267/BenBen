@@ -25,9 +25,21 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User selectone(String uname,String upass) {
-		String sql="select uname,upass from user";
+		String sql="select * from user where uname='"+uname+"' and upass='"+upass+"'";
 		User user=ud.selectone(sql);
 		return user;
+	}
+
+	@Override
+	public User update_select(Integer uid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String modify(User user, Integer uid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
