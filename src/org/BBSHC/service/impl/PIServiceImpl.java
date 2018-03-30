@@ -84,4 +84,14 @@ public class PIServiceImpl implements ServiceBase<ProcedureInfo>,PIService{
 		return "ok";
 	}
 
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.PIService#getOneBySid(java.lang.Integer)
+	 */
+	@Override
+	public ProcedureInfo getOneBySid(Integer sid) {
+		String sql = "select * from procedureinfo where sid="+sid;
+		ProcedureInfo pi = pid.getOne(sql);
+		return pi;
+	}
+
 }

@@ -27,17 +27,19 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	private BargainRecordDao brd;
 	@Override
 	public List<BargainRecord> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="from BargainRecord";
+		return brd.selectHQL(hql);
+		
 	}
 
 	/* (non-Javadoc)
 	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer)
 	 */
 	@Override
-	public List<BargainRecord> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<BargainRecord> find(Integer eid) {
+		String hql="from BargainRecord br where br.brsta=0 and br.sc.emp.eid="+eid;
+		System.out.println(hql);
+		return brd.selectHQL(hql);
 	}
 
 	/* (non-Javadoc)
@@ -82,12 +84,17 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	@Override
 	public String modify(BargainRecord t) {
 		// TODO Auto-generated method stub
-		return null;
+				return null;
 	}
 
 	@Override
 	public void insertBargainRecord(BargainRecord bd) {
 	brd.saveOrupdate(bd);	
+	}
+
+	@Override
+	public void updateBargainRecord(BargainRecord br) {
+		brd.saveOrupdate(br);		
 	}
 
 }

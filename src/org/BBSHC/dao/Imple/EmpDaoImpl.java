@@ -1,6 +1,5 @@
 package org.BBSHC.dao.Imple;
 
-import java.util.List;
 
 import org.BBSHC.dao.EmpDao;
 import org.BBSHC.pojo.Emp;
