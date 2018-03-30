@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class SecondCar {
 
 	     private Integer cid;//信息id
-	     private User user;// 车主id
+	     private User user;//车主id
 	     private String cp;//车牌号
 	     private Date spsj;//上牌时间
 	     private Double lc;//行驶里程
@@ -70,8 +70,8 @@ public class SecondCar {
 		public void setCp(String cp) {
 			this.cp = cp;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSpsj() {
 			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM");
 			String sf = ft.format(spsj);
@@ -204,8 +204,8 @@ public class SecondCar {
 		public void setCk(String ck) {
 			this.ck = ck;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSjsj() {
 			return sjsj;
 		}

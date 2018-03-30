@@ -51,4 +51,12 @@ public class CarDetailServiceImpl implements CarDetailService {
 		SecondCar sec = cdd.getOne(SecondCar.class,cid);
 		return sec;
 	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#getone(java.lang.String)
+	 */
+	@Override
+	public SecondCar getone(String sql) {
+		SecondCar scar = cdd.getone(sql);
+		return scar;
+	}
 }

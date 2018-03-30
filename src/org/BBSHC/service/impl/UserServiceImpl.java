@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User selectone(String uname,String upass) {
-		String sql="select uname,upass from user";
+		String sql="select * from user where uname='"+uname+"' and upass='"+upass+"'";
 		User user=ud.selectone(sql);
 		return user;
 	}

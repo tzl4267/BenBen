@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.AppointRecord;
 import org.BBSHC.pojo.BrowseHistory;
@@ -120,14 +121,16 @@ public class UserController {
 
 	 }
 	@RequestMapping("/login")
-	public String login(String uname,String upass){
-		String a="";
+	public String login(String uname,String upass,HttpServletRequest rq,ModelMap mm){
 		User user = us.selectone(uname,upass);
+		HttpSession session = rq.getSession();
+		String msg = "";
 		if (user !=null&&uname !=null&&upass !=null) {
-			a="aa";
+			session.setAttribute("user", user);
 		}else {
-			a="cc";
+			msg="账号或密码错误！";
+			mm.put("msg", msg);
 		}
-		return "a";
+		return "home_page";
 	}
 }

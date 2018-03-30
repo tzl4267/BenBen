@@ -106,7 +106,7 @@
            <ul class="nav navbar-nav">
 			  <li><img src="img/daohang/1.jpg"></li>
 			  <li><a href="#">地点</a></li>            
-			  <li><a href="#">卖车</a></li>
+			  <li><a href="${user.uid}">卖车</a></li>
               <li><a href="#">买车</a></li>
     		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
     		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
@@ -127,7 +127,7 @@
 					<h4 class="modal-title">登陆</h4>
 				</div>
 				<div class="modal-body">
-					<form action="abc/login" class="form-horizontal">
+					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon">用户名</span>

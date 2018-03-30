@@ -12,4 +12,5 @@ public interface CarDetailService {
 
 	List<SecondCar> selectHQL();
 	String add(SecondCar sc);
+	SecondCar getone(String sql);
 }

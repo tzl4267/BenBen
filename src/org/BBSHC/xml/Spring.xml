@@ -36,10 +36,7 @@
 		<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
-		<!-- 有待观察 -->
-		<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-    <property name="defaultErrorView" value="error"></property>
-    </bean>
+		
 		<!-- 开启事务管理 -->
 		<tx:annotation-driven transaction-manager="transactionManager"/>
 		

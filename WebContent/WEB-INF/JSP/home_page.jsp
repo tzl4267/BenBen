@@ -19,6 +19,7 @@
 
 </head>
 <body>
+<jsp:include page="daohang.jsp"></jsp:include>
       <div style="width: 1200px;margin: 0px auto;">
 		<div style="width: 1200px;height: 165px;background-color: #F8F8F8;margin:0px auto" >
 		<table >
