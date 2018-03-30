@@ -14,14 +14,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Emp {
 
-	    private Integer eid;//员工id
-	    private String epass;
-	    public String getEpass() {
-			return epass;
-		}
-		public void setEpass(String epass) {
-			this.epass = epass;
-		}
+	    private Integer eid;//员工id	   
 		private String ename;//姓名
 	    private String age;//年龄
 	    private Character sex;//性别
@@ -86,7 +79,6 @@ public class Emp {
 		public Emp(Integer eid,String epass, String ename, String age, Character sex, String eurl, String ph, Character esta, Dept dept) {
 			super();
 			this.eid = eid;
-			this.epass = epass;
 			this.ename = ename;
 			this.age = age;
 			this.sex = sex;

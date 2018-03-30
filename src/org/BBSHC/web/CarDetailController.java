@@ -1,32 +1,31 @@
 package org.BBSHC.web;
 
-
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.BBSHC.pojo.BargainRecord;
+import org.BBSHC.pojo.CollectRecord;
 import org.BBSHC.pojo.Emp;
 import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.service.BargainRecordService;
 import org.BBSHC.service.CarDetailService;
+import org.BBSHC.service.CollectRecordService;
+import org.BBSHC.service.DeptService;
 import org.BBSHC.service.EmpService;
 import org.BBSHC.service.PictureService;
-import org.BBSHC.service.PictureTypeService;
 import org.BBSHC.service.SellIntentionService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -41,16 +40,18 @@ public class CarDetailController {
 	@Resource
 	private PictureService ps;
 	@Resource
-	private PictureTypeService pts;
-	@Resource
 	private EmpService es;
+	@Resource
+	private CollectRecordService crs;
+	@Resource
+	private DeptService ds;
 	
 	@RequestMapping(value="/abcd")
 	public String querySecondCar(ModelMap map){		
 		map.put("sList", cds.querySecondCar());
 		map.put("seList", sls.querySellIntention());
-		map.put("ptList", pts.queryPictureType());
 		map.put("pList", ps.queryPicture());
+		map.put("dList", ds.querydl());
 		Calendar calen = Calendar.getInstance();
 		calen.setTime(new Date());
 		calen.add(Calendar.YEAR, -1);
@@ -73,9 +74,26 @@ public class CarDetailController {
 		return "ok";		
 	}
 	
+	@RequestMapping(value="/insertCollectRecord")
+	public String insertCollectRecord(CollectRecord cr){
+		crs.insertCollectRecord(cr);
+		return "ok";		
+	}
+	
 	@RequestMapping(value="/insertEmp")
-	public String insertEmp(Emp emp){
-		es.insertEmp(emp);
+	public String insertEmp(Emp emp,HttpServletRequest request,MultipartFile mFile) throws IOException{
+		if (!mFile.isEmpty()) {
+			String fileName = mFile.getOriginalFilename();
+			int starIndex = fileName.lastIndexOf(".");
+			String fileSuffix = fileName.substring(starIndex);
+			String filePath = request.getServletContext().getRealPath("img");
+			File file = new File(filePath,fileName);
+			/*String eurl = filePath+"img/" + System.currentTimeMillis() + fileSuffix;*/
+			String eurl = "img/" + fileName;
+			emp.setEurl(eurl);
+			/*FileUtils.copyInputStreamToFile(mFile.getInputStream(), new File(eurl));*/
+			es.insertEmp(emp);
+		}	
 		return "ok";
 	}
 

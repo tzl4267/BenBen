@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -59,8 +58,8 @@ public class AppointRecord {
 	public void setAsta(Character asta) {
 		this.asta = asta;
 	}
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date getArdate() {
 		return ardate;
 	}

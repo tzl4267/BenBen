@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.CarDetailDao;
 import org.BBSHC.pojo.SecondCar;
-import org.BBSHC.pojo.User;
 import org.BBSHC.service.CarDetailService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -14,8 +14,6 @@ import javax.persistence.OneToOne;
 //收藏记录
 @Entity
 public class CollectRecord {
-
-
 	private Integer crid;//收藏记录
     private SecondCar sc;// 二手车id
     private User user;// 用户id

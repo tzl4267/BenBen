@@ -82,11 +82,5 @@ public class PictureTypeServiceImpl implements PictureTypeService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<PictureType> queryPictureType() {
-		String hql = "from PictureType";
-		return ptd.selectHQL(hql);		
-	}
-
+	
 }

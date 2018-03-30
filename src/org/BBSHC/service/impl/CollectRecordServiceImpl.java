@@ -83,4 +83,9 @@ public class CollectRecordServiceImpl implements CollectRecordService{
 		return null;
 	}
 
+	@Override
+	public void insertCollectRecord(CollectRecord cr) {
+		crd.saveOrupdate(cr);		
+	}
+
 }

@@ -70,8 +70,8 @@ public class ProcedureInfo {
 		public void setbyd(Character byd) {
 			this.byd = byd;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSyx() {
 			return syx;
 		}

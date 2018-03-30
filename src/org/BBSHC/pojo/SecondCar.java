@@ -70,8 +70,8 @@ public class SecondCar {
 		public void setCp(String cp) {
 			this.cp = cp;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSpsj() {
 			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM");
 			String sf = ft.format(spsj);

@@ -46,10 +46,10 @@ public class PictureController {
 			Picture p,MultipartFile[] mfile,
 			ModelMap mm ) throws Exception {
 		String msg = null;
-		System.out.println(p.getPt());
+		System.out.println(p.getTi());
 		p.setSc(sc);
 		int i=0;
-		PictureType pt = new PictureType();
+		
 		for (MultipartFile file : mfile) {
 			i++;
 			//如果文件不为空，写入上传路径
@@ -63,14 +63,11 @@ public class PictureController {
 					String suffix = filename.substring(start);
 					String purl = path+"img/" + System.currentTimeMillis() + suffix;
 					if(i<=4){
-						pt.setPtname("车辆外观");
-						p.setPt(pt);
+						
 					}else if(i>4 && i<=7){
-						pt.setPtname("车辆内饰");
-						p.setPt(pt);
+						
 					}else{
-						pt.setPtname("发动机底盘 ");
-						p.setPt(pt);
+						
 					}
 					p.setPurl(purl);
 					ps.add(p);

@@ -12,13 +12,11 @@ import javax.persistence.ManyToOne;
 
 //汽车图片
 @Entity
-public class Picture {
-
-	
+public class Picture {	
 	         private Integer pid;//图片id
 	         private SecondCar sc;//二手车id
 	         private String purl;//路径
-	         private PictureType pt;//备注
+	         private TypeInfo ti;;
 	         @Id
 		 	  @GeneratedValue(strategy=GenerationType.IDENTITY)
 			public Integer getPid() {
@@ -42,27 +40,20 @@ public class Picture {
 			public void setPurl(String purl) {
 				this.purl = purl;
 			}
+			
 			//多张图片对应一个备注
 			@ManyToOne
-			@JoinColumn(name="ptid")
-			public PictureType getPt() {
-				return pt;
+			@JoinColumn(name="tid")
+			public TypeInfo getTi() {
+				return ti;
 			}
-			public void setPt(PictureType pt) {
-				this.pt = pt;
-			}
+			public void setTi(TypeInfo ti) {
+				this.ti = ti;
+			}				
+			
 			public Picture() {
 				super();
 				// TODO Auto-generated constructor stub
 			}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
 }
