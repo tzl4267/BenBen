@@ -33,6 +33,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	// 实体类
 	private Class<T> cls;
 
+	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
 		Type type = getClass().getGenericSuperclass();
 		cls = (Class<T>) ((ParameterizedType) type).getActualTypeArguments()[0];

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package org.BBSHC.service;
 
 import org.BBSHC.pojo.BuyRecord;

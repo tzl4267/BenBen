@@ -57,4 +57,12 @@ public class CarDetailServiceImpl implements CarDetailService {
 		cdd.saveOrupdate(sc);
 		return "ok";
 	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#getone(java.lang.String)
+	 */
+	@Override
+	public SecondCar getone(String sql) {
+		SecondCar scar = cdd.getone(sql);
+		return scar;
+	}
 }

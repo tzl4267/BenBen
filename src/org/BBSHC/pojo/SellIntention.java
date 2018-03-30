@@ -72,8 +72,8 @@ public class SellIntention {
 		public void setGh(Character gh) {
 			this.gh = gh;
 		}
-		@DateTimeFormat(pattern="yyyy")
-		@JsonFormat(pattern="yyyy")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSp() {
 			return sp;
 		}
