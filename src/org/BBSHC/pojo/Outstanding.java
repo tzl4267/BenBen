@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 //亮点配置
 @Entity
@@ -22,6 +24,7 @@ public class Outstanding {
 	    private Character jr;//无钥匙进入
 	    private Character gps;//GPS导航
 	    private Character ld;//倒车雷达
+	    private SellIntention se;//
 	    @Id
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getOid() {
@@ -78,18 +81,13 @@ public class Outstanding {
 		public void setLd(Character ld) {
 			this.ld = ld;
 		}
-		public Outstanding(Integer oid, Character yx, Character qd, Character ty, Character xh, Character wd,
-				Character jr, Character gps, Character ld) {
-			super();
-			this.oid = oid;
-			this.yx = yx;
-			this.qd = qd;
-			this.ty = ty;
-			this.xh = xh;
-			this.wd = wd;
-			this.jr = jr;
-			this.gps = gps;
-			this.ld = ld;
+		@OneToOne
+		@JoinColumn(name="sid")
+		public SellIntention getSe() {
+			return se;
+		}
+		public void setSe(SellIntention se) {
+			this.se = se;
 		}
 		public Outstanding() {
 			super();

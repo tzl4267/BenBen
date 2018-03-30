@@ -33,8 +33,9 @@ public class CollectRecordServiceImpl implements CollectRecordService{
 	 */
 	@Override
 	public List<CollectRecord> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="select cr from CollectRecord cr where cr.user.uid="+id;
+		List<CollectRecord> cr = crd.selectHQL(hql);
+		return cr;
 	}
 
 	/* (non-Javadoc)

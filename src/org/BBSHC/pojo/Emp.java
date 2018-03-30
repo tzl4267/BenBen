@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 public class Emp {
 
 	    private Integer eid;//员工id
-	    private String ename;//姓名
+		private String ename;//姓名
 	    private String age;//年龄
 	    private Character sex;//性别
 	    private String eurl;//图片路径
@@ -75,7 +75,18 @@ public class Emp {
 		public void setDept(Dept dept) {
 			this.dept = dept;
 		}
-		
+
+		public Emp(Integer eid, String ename, String age, Character sex, String eurl, String ph, Character esta, Dept dept) {
+			super();
+			this.eid = eid;
+			this.ename = ename;
+			this.age = age;
+			this.sex = sex;
+			this.eurl = eurl;
+			this.ph = ph;
+			this.esta = esta;
+			this.dept = dept;
+		}		
 		public String getPass() {
 			return pass;
 		}

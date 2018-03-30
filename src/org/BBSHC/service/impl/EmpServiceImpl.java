@@ -1,5 +1,6 @@
 package org.BBSHC.service.impl;
 
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,22 +16,32 @@ import org.springframework.transaction.annotation.Transactional;
 public class EmpServiceImpl implements EmpService{
 	@Resource
 	private EmpDao ed;
+	
+	@Override
+	public Emp update_selectEmp(Integer eid) {
+		Emp emp = ed.getOne(Emp.class, eid);
+		return emp;
+	}
+
+	@Override
+	public String modify(Emp emp, Integer eid) {
+		ed.saveOrupdate(emp);
+		return "ok";
+	}
+
+	@Override
+	public void insertEmp(Emp emp) {
+		ed.saveOrupdate(emp);	
+	}
 
 	@Override
 	public List<Emp> queryel() {
-		String sql="select * from emp";
-		List<Emp> el = ed.select(sql);
-		return el;
+		return null;
 	}
 
 	@Override
 	public Emp update_select(String eid) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void insertEmp(Emp emp) {
-		ed.saveOrupdate(emp);	
 	}
 }

@@ -41,11 +41,14 @@ $(function(){
 </script>
 
 </head>
+<<<<<<< HEAD
 <body style="position:relative;"><span style="position:absolute;width:60px;background-color:#F8F8F8;top:129px;left:1376px;z-index:1000;" id="czw"><select style="width:85px;height:27px"  ><option>&nbsp;座位&nbsp;&nbsp;&nbsp;</option></select></span>
 	<span style="position:absolute;width:200px;height:200px;display:none; z-index:99; top:129px;left:1310px;" id="outs" >
 	<span style="position:absolute;width:60px;background-color:#F8F8F8;top:3px;left:6px;">亮点配置</span>
 	<span style="position:absolute;border:black 1px solid;width:100%;height:200px;background-color:white;top:30px;left:-20px;"></span>
 	</span>
+<body>
+<jsp:include page="daohang.jsp"></jsp:include>
       <div style="width: 1200px;margin: 0px auto;">
       <form action="">
 		<div style="width: 1200px;height: 165px;background-color: #F8F8F8;margin:0px auto" >

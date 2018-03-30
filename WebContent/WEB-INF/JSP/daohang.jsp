@@ -105,8 +105,8 @@
  	<div class="navbar navbar-inverse">
            <ul class="nav navbar-nav">
 			  <li><img src="img/daohang/1.jpg"></li>
-			  <li><a href="#">地点</a></li>            
-			  <li><a href="#">卖车</a></li>
+			  <li><a href="#">地点</a></li> 
+				<li><a href="#">卖车</a></li>
               <li><a href="#">买车</a></li>
     		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
     		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
@@ -127,7 +127,29 @@
 					<h4 class="modal-title">登陆</h4>
 				</div>
 				<div class="modal-body">
-					<form action="abc/login" class="form-horizontal">
+					<form action="abc/login" class="form-horizontal"><ul>
+			  <li><a href="${user.uid}">卖车</a></li>
+              <li><a href="#">买车</a></li>
+    		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
+    		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
+    		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
+           </ul></form>
+           </div></div></div></div>
+
+<!-- 登陆modal -->
+
+	<div class="modal fade" id="denglu" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">登陆</h4>
+				</div>
+				<div class="modal-body">
+					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon">用户名</span>
