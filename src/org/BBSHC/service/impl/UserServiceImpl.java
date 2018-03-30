@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String modify(User user,Integer uid) {
 		ud.saveOrupdate(user);
-		return null;
+		return "ok";
 	}
 
 	
@@ -38,8 +38,9 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public List<User> queryull() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql=" from User";
+		List<User> ull = ud.selectHQL(hql);
+		return ull;
 	}
 
 }

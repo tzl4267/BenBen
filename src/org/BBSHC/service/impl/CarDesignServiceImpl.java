@@ -25,8 +25,9 @@ public class CarDesignServiceImpl implements CarDesignService{
 	private CarDesignDao cdd;
 	@Override
 	public List<CarDesign> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql= "select * from cardesign";
+		List<CarDesign> cd = cdd.select(sql);
+		return cd;
 	}
 
 	/* (non-Javadoc)

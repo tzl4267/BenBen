@@ -24,8 +24,9 @@ public class CityServiceImpl implements CityService{
 	 */
 	@Override
 	public List<City> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from city";
+		List<City> ct = cd.select(sql);
+		return ct;
 	}
 
 	/* (non-Javadoc)
