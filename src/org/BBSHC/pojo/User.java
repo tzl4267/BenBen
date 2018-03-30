@@ -49,16 +49,16 @@ public class User {
 		public void setUpass(String upass) {
 			this.upass = upass;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getuLogin() {
 			return uLogin;
 		}
 		public void setuLogin(Date uLogin) {
 			this.uLogin = uLogin;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getuLast() {
 			return uLast;
 		}

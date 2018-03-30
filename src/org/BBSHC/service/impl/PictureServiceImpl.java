@@ -83,4 +83,11 @@ public class PictureServiceImpl implements PictureService{
 		return null;
 	}
 
+	@Override
+	public List<Picture> queryPicture() {
+		String hql = "from Picture";
+		return pd.selectHQL(hql);
+		
+	}
+
 }

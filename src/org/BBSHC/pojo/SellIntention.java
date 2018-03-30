@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //卖车意向信息表
 @Entity
 public class SellIntention {
@@ -68,6 +72,8 @@ public class SellIntention {
 		public void setGh(Character gh) {
 			this.gh = gh;
 		}
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSp() {
 			return sp;
 		}
@@ -86,12 +92,15 @@ public class SellIntention {
 		public void setYq(Character yq) {
 			this.yq = yq;
 		}
+		@DateTimeFormat(pattern="yyyy-MM-dd")
+		@JsonFormat(pattern="yyyy-MM-dd")
 		public Date getKcsj() {
 			return kcsj;
 		}
 		public void setKcsj(Date kcsj) {
 			this.kcsj = kcsj;
 		}
+		
 		public String getKcd() {
 			return kcd;
 		}

@@ -36,8 +36,9 @@ public class SellRecordServiceImpl implements SellRecordService{
 	 */
 	@Override
 	public List<SellRecord> find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql="select sr from SellRecord sr where sr.user.uid="+id;
+		List<SellRecord> sr = srd.selectHQL(hql);
+		return sr;
 	}
 
 	/* (non-Javadoc)
@@ -84,5 +85,6 @@ public class SellRecordServiceImpl implements SellRecordService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

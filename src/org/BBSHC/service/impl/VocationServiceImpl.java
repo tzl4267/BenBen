@@ -25,8 +25,9 @@ public class VocationServiceImpl implements VocationService{
 	 */
 	@Override
 	public List<Vocation> find() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="select * from vocation";
+		List<Vocation> vl = vd.select(sql);
+		return vl;
 	}
 
 	/* (non-Javadoc)

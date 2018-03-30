@@ -6,6 +6,7 @@ import org.BBSHC.pojo.User;
 
 
 public interface UserDao extends BaseDao<User>{
+
 	List<User> queryull(String sql);
 	User selectone(String sql);
 	

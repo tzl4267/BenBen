@@ -3,6 +3,8 @@
  */
 package org.BBSHC.pojo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -22,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class SecondCar {
 
 	     private Integer cid;//信息id
-	     private User user;// 车主id
+	     private User user;//车主id
 	     private String cp;//车牌号
 	     private Date spsj;//上牌时间
 	     private Double lc;//行驶里程
@@ -68,10 +70,19 @@ public class SecondCar {
 		public void setCp(String cp) {
 			this.cp = cp;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSpsj() {
-			return spsj;
+			SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM");
+			String sf = ft.format(spsj);
+			Date spj = spsj;
+			try {
+				spj = ft.parse(sf);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return spj;
 		}
 		public void setSpsj(Date spsj) {
 			this.spsj = spsj;
@@ -193,8 +204,8 @@ public class SecondCar {
 		public void setCk(String ck) {
 			this.ck = ck;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSjsj() {
 			return sjsj;
 		}
@@ -220,6 +231,5 @@ public class SecondCar {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-	     
 	     
 }

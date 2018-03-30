@@ -15,13 +15,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService{
 	@Resource
 	private UserDao ud;
-	
 	@Override
-	public List<User> queryull() {
-		String sql="select * from user";
-		List ul = ud.select(sql);
-		return ul;
+	public User update_select(Integer uid) {
+		User user2 = ud.getOne(User.class, uid);
+		return user2;
 	}
+	@Override
+	public String modify(User user,Integer uid) {
+		ud.saveOrupdate(user);
+		return "ok";
+	}
+
 
 	@Override
 	public User selectone(String uname,String upass) {
@@ -29,17 +33,11 @@ public class UserServiceImpl implements UserService{
 		User user=ud.selectone(sql);
 		return user;
 	}
-
 	@Override
-	public User update_select(Integer uid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String modify(User user, Integer uid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> queryull() {
+		String hql=" from User";
+		List<User> ull = ud.selectHQL(hql);
+		return ull;
 	}
 
 }

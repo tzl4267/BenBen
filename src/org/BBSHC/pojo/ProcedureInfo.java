@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,6 +29,7 @@ public class ProcedureInfo {
 	      private Date syx;//商业险到期时间
 	      private Character gzs;//有无车辆购置完税税证明 0:没有 1:有
 	      private Character gz;//有无改装 0:没有 1:有
+	      private SellIntention si;//卖车意向信息
 	      @Id
 		  @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getSxid() {
@@ -35,16 +38,16 @@ public class ProcedureInfo {
 		public void setSxid(Integer sxid) {
 			this.sxid = sxid;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getNj() {
 			return nj;
 		}
 		public void setNj(Date nj) {
 			this.nj = nj;
 		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getJqx() {
 			return jqx;
 		}
@@ -64,14 +67,9 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
-		public Character getbyd() {
-			return byd;
-		}
-		public void setbyd(Character byd) {
-			this.byd = byd;
-		}
-		@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+		
+		@JsonFormat(pattern="yyyy-MM-dd")
+		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSyx() {
 			return syx;
 		}
@@ -90,18 +88,20 @@ public class ProcedureInfo {
 		public void setGz(Character gz) {
 			this.gz = gz;
 		}
-		public ProcedureInfo(Integer sxid, Date nj, Date jqx, Character gh, Character bx, Character byd, Date syx,
-				Character gzs, Character gz) {
-			super();
-			this.sxid = sxid;
-			this.nj = nj;
-			this.jqx = jqx;
-			this.gh = gh;
-			this.bx = bx;
+		
+		public Character getByd() {
+			return byd;
+		}
+		public void setByd(Character byd) {
 			this.byd = byd;
-			this.syx = syx;
-			this.gzs = gzs;
-			this.gz = gz;
+		}
+		@OneToOne
+		@JoinColumn(name="sid")
+		public SellIntention getSi() {
+			return si;
+		}
+		public void setSi(SellIntention se) {
+			this.si = se;
 		}
 		public ProcedureInfo() {
 			super();

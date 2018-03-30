@@ -44,8 +44,8 @@ public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>
 	 */
 	@Override
 	public CheckReport getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		CheckReport cr = crd.getOne(id);
+		return cr;
 	}
 
 	/* (non-Javadoc)
@@ -82,6 +82,16 @@ public class CheckRServiceImpl implements CheckRService,ServiceBase<CheckReport>
 	public String modify(CheckReport t) {
 		crd.saveOrupdate(t);
 		return "ok";
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CheckRService#getOneBySid(java.lang.Integer)
+	 */
+	@Override
+	public CheckReport getOneBySid(Integer id) {
+		String sql = "select * from checkreport where sid="+id;
+		CheckReport cr = crd.getOne(sql);
+		return cr;
 	}
 
 }
