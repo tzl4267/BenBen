@@ -35,8 +35,8 @@ public class SIServicesImpl implements ServiceBase<SellIntention>,SIService{
 	 */
 	@Override
 	public SellIntention getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		SellIntention si = sid.getOne(id);
+		return si;
 	}
 
 	/* (non-Javadoc)
@@ -82,7 +82,7 @@ public class SIServicesImpl implements ServiceBase<SellIntention>,SIService{
 	//根据员工id查找该员工接手的车辆,未处理
 	@Override
 	public List<SellIntention> find(Integer id) {
-	String sql = "select * from SellIntention sr where sr.zt='0' and (sr.seid='"+id+"' or sr.jeid='"+id+"')";
+	String sql = "select * from SellIntention sr where sr.zt in('0','1','2','3') and (sr.seid='"+id+"' or sr.jeid='"+id+"')";
 	List<SellIntention> srlist = sid.select(sql);
 		return srlist;
 	}

@@ -8,4 +8,5 @@ public interface CarDetailDao extends BaseDao<SecondCar>{
 
 	List<SecondCar> querySecondCar(String hql);
 	List<SecondCar>selectHQL(String hql);
+	SecondCar getone(String sql);
 }

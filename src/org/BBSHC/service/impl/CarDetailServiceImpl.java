@@ -39,9 +39,9 @@ public class CarDetailServiceImpl implements CarDetailService {
 	}
 	//待卖车辆
 	@Override
-	public List<SecondCar> find(Integer id) {
-		String sql = "select * from secondcar sc,user u where sc.uid=u.uid and czt=1";
-		List<SecondCar> sc = cdd.select(sql);
+	public List<SecondCar> find(Integer uid,Integer cid) {
+		String hql="select sc from SecondCar sc where sc.czt=1 and sc.cid= '"+cid+"' and sc.user.uid='"+uid+"'";
+		List<SecondCar> sc = cdd.selectHQL(hql);
 		return sc;
 	}
 	//待买车修改之前的查询
@@ -49,5 +49,19 @@ public class CarDetailServiceImpl implements CarDetailService {
 	public SecondCar update_selectSecondCar(Integer cid) {
 		SecondCar sec = cdd.getOne(SecondCar.class,cid);
 		return sec;
+	}
+	//修改待买车
+	@Override
+	public String update_SecondCar(SecondCar sc, Integer cid) {
+		cdd.saveOrupdate(sc);
+		return "ok";
+	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#getone(java.lang.String)
+	 */
+	@Override
+	public SecondCar getone(String sql) {
+		SecondCar scar = cdd.getone(sql);
+		return scar;
 	}
 }

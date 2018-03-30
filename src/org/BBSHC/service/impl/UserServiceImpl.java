@@ -23,23 +23,21 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String modify(User user,Integer uid) {
 		ud.saveOrupdate(user);
-		return null;
+		return "ok";
 	}
-
-	
-
 
 
 	@Override
 	public User selectone(String uname,String upass) {
-		String sql="select uname,upass from user";
+		String sql="select * from user where uname='"+uname+"' and upass='"+upass+"'";
 		User user=ud.selectone(sql);
 		return user;
 	}
 	@Override
 	public List<User> queryull() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql=" from User";
+		List<User> ull = ud.selectHQL(hql);
+		return ull;
 	}
 
 }

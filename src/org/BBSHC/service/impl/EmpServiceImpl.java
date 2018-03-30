@@ -26,7 +26,7 @@ public class EmpServiceImpl implements EmpService{
 	@Override
 	public String modify(Emp emp, Integer eid) {
 		ed.saveOrupdate(emp);
-		return null;
+		return "ok";
 	}
 
 	@Override
@@ -36,7 +36,6 @@ public class EmpServiceImpl implements EmpService{
 
 	@Override
 	public List<Emp> queryel() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
