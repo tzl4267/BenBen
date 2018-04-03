@@ -67,7 +67,7 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
-		public Character getbyd() {
+ 		public Character getbyd() {
 			return byd;
 		}
 		public void setbyd(Character byd) {
@@ -94,12 +94,6 @@ public class ProcedureInfo {
 			this.gz = gz;
 		}
 		
-		public Character getByd() {
-			return byd;
-		}
-		public void setByd(Character byd) {
-			this.byd = byd;
-		}
 		@OneToOne
 		@JoinColumn(name="sid")
 		public SellIntention getSi() {

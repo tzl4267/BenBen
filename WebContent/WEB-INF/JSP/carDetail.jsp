@@ -37,6 +37,7 @@
    
 </script>
 <body>
+<jsp:include page="daohang.jsp"></jsp:include>
 <!-- 将查询到的SecondCar表即二手车表所有信息存到request域 中 即:sList-->
 <!-- sList循环开始 -->
 <c:forEach items="${sList}" var="s">

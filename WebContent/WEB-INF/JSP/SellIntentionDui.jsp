@@ -50,7 +50,7 @@
 	   top: 150px;
 	 }
    </style>
-<body>
+<body><jsp:include page="daohang.jsp"></jsp:include>
 		<center>
 		<img id="img" src="${pageContext.request.contextPath}/image/dui.png">
 		</center>
