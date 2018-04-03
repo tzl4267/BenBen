@@ -67,12 +67,7 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
-		public Character getbyd() {
-			return byd;
-		}
-		public void setbyd(Character byd) {
-			this.byd = byd;
-		}
+		
 		@JsonFormat(pattern="yyyy-MM-dd")
 		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSyx() {

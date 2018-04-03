@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 //二手车信息表
 @Entity
 public class SecondCar {
-
 	     private Integer cid;//信息id
 	     private User user;//车主id
 	     private String cp;//车牌号

@@ -114,29 +114,7 @@
            </ul>
            </div>
 
-<!-- 登陆modal -->
 
-	<div class="modal fade" id="denglu" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">登陆</h4>
-				</div>
-				<div class="modal-body">
-					<form action="abc/login" class="form-horizontal"><ul>
-			  <li><a href="${user.uid}">卖车</a></li>
-              <li><a href="#">买车</a></li>
-    		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
-    		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
-    		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
-           </ul></form>
-           </div></div></div></div>
-
-<!-- 登陆modal -->
 
 	<div class="modal fade" id="denglu" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">

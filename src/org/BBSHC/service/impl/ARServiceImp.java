@@ -114,4 +114,9 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 		return ar;
 	}
 
+	@Override
+	public void insertAppointRecord(AppointRecord ar) {
+		ard.saveOrupdate(ar);	
+	}
+
 }

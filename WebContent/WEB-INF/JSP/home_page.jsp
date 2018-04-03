@@ -41,7 +41,6 @@ $(function(){
 </script>
 
 </head>
-<<<<<<< HEAD
 <body style="position:relative;"><span style="position:absolute;width:60px;background-color:#F8F8F8;top:129px;left:1376px;z-index:1000;" id="czw"><select style="width:85px;height:27px"  ><option>&nbsp;座位&nbsp;&nbsp;&nbsp;</option></select></span>
 	<span style="position:absolute;width:200px;height:200px;display:none; z-index:99; top:129px;left:1310px;" id="outs" >
 	<span style="position:absolute;width:60px;background-color:#F8F8F8;top:3px;left:6px;">亮点配置</span>

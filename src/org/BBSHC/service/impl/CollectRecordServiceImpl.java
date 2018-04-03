@@ -43,8 +43,7 @@ public class CollectRecordServiceImpl implements CollectRecordService{
 	 */
 	@Override
 	public CollectRecord getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return crd.getOne(id);		
 	}
 
 	/* (non-Javadoc)
@@ -88,4 +87,14 @@ public class CollectRecordServiceImpl implements CollectRecordService{
 		crd.saveOrupdate(cr);		
 	}
 
+	@Override
+	public List<CollectRecord> getCollectRecord(Integer cid, Integer uid) {
+		String sql = "select * from collectrecord where cid='"+cid+"'and uid ='"+uid+"'";
+		return crd.select(sql);		
+	}
+
+	@Override
+	public void deleteCollectRecord(CollectRecord cr) {
+		crd.delete(cr);		
+	}
 }
