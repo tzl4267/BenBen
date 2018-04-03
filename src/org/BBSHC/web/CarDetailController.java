@@ -146,13 +146,14 @@ public class CarDetailController {
 	   			SecondCar scar = cds.getone(sql);
 	   			mm.put("cid", scar.getCid());
 	   		}
-	          mm.put("msg", msg);
+	         
 	           }else{
 	        	    msg="文件格式不正确，只能上传图片！";	        	  
 	           }	           
 	       } else {
 	          msg="图片上传失败！";
 	       }
+	       mm.put("msg", msg);
 	       return "redirect:app/search_SI?id="+eid;
 	   }
 

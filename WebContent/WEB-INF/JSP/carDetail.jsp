@@ -53,6 +53,7 @@
 	   }
 </script>
 <body>
+<jsp:include page="daohang.jsp"></jsp:include>
 
 <div class="container"><!--container容器开始 -->
 <!--汽车详细信息展示开始  -->

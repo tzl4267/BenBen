@@ -7,13 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.AppointRecord;
 import org.BBSHC.pojo.CheckReport;
 import org.BBSHC.pojo.Emp;
 import org.BBSHC.pojo.ProcedureInfo;
+import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.pojo.SellIntention;
 import org.BBSHC.service.ARService;
+import org.BBSHC.service.CarDetailService;
 import org.BBSHC.service.CheckRService;
 import org.BBSHC.service.EmpService;
 import org.BBSHC.service.PIService;
@@ -46,6 +50,10 @@ public class AppointController {
 	//员工
 	@Resource
 	private EmpService es;
+	//员工
+	@Resource
+	private CarDetailService cds;
+	
 	
 	//卖车意向信息查询指定员工的工单
 	@RequestMapping("/search_SI")
@@ -160,6 +168,16 @@ public class AppointController {
 		 String msg = pis.modify(pi);
 		mm.put("msg", msg);
 		return "";
+	}
+	//查询未卖汽车信息
+	@RequestMapping("/searchSecondCar")
+	public String searchSecondCar(HttpServletRequest rq,ModelMap mm){
+		HttpSession session = rq.getSession();
+		Emp emp = (Emp) session.getAttribute("emp");
+		String sql = "select * from secondcar where czt=1 and seid="+emp.getEid();
+		List<SecondCar> clist = cds.find(sql);
+		mm.put("clist", clist);
+		return "unsold";
 	}
 	
 	

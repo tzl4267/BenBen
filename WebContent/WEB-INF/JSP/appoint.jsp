@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.0.0.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" language = "JavaScript">
 
 $(function(){
@@ -92,7 +89,6 @@ function insertSC(){
 
 </head>
 <body>
-<button  type="button" >上传</button>
 	<!--描述：container开始  --><div class = "container" id="all">
 			<!--描述：面板row开始  -->
 			<div class = "row">
@@ -102,7 +98,7 @@ function insertSC(){
              <form class="form" role="form">
              	
     <div class="control-label col-lg-8 col-sm-8"></div>
-    <div class="col-lg-2 col-sm-2"><input type="text" style="position: relative;top:0px;height: 35px;"  id="select_classname" placeholder="城市汉字或拼音"></div>
+    <div class="col-lg-2 col-sm-2"><input type="text" style="position: relative;top:0px;height: 35px;"  id="select_classname" placeholder=""></div>
       <div class="col-lg-2 col-sm-2"><button type="button" class="btn btn-info"  onclick="query();"><i class="glyphicon glyphicon-search"></i>&nbsp; 记录查询</button></div>
                           
              </form>

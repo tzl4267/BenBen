@@ -7,6 +7,7 @@ import org.BBSHC.pojo.SecondCar;
 public interface CarDetailService {
 	List<SecondCar> querySecondCar();
 	List<SecondCar> find(Integer uid,Integer cid);
+	List<SecondCar> find(String sql);
 	//修改之前的查询
 	SecondCar update_selectSecondCar(Integer id);
 	//修改待买车
