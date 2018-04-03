@@ -42,6 +42,7 @@ public class Picture {
 			public void setPurl(String purl) {
 				this.purl = purl;
 			}						
+			
 			//一个图片对应一个备注
 			@OneToOne
 			@JoinColumn(name="tid")
