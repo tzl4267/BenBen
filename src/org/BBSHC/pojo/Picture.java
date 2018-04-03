@@ -49,6 +49,7 @@ public class Picture {
 			public TypeInfo getTinfo() {
 				return tinfo;
 			}
+			
 			public void setTinfo(TypeInfo tinfo) {
 				this.tinfo = tinfo;
 			}

@@ -67,7 +67,7 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
- 		public Character getbyd() {
+		public Character getbyd() {
 			return byd;
 		}
 		public void setbyd(Character byd) {
