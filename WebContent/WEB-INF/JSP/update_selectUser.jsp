@@ -21,7 +21,9 @@
 	 
 	}
  //点击修改待买车辆价格按钮
-	function updatebtn1() {
+	function updatebtn1(a,b) {
+	 $("#jg").val(a);
+	 $("#cid").val(b);
 	 $("#updateModal1").modal("show");
 	 
 	}
@@ -29,7 +31,7 @@
 <body>
 
 
-	<form action="${pageContext.request.contextPath}/abc/update_select">
+	<form action="${pageContext.request.contextPath}/abc/update_select?user.uid=${user2.uid}&cid=${sec.cid}">
 	<input type="hidden" name="uid" value="${user2.uid}">
 	 <div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">姓名</label>
@@ -107,7 +109,7 @@
 							<label for="uname" class="col-sm-2 control-label">用户姓名</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" name="uname"
-								 value="${user2.uname}">
+								 value="${user2.uname}" pattern="^[\u4e00-\u9fa5]*">
 							</div>
 						</div>
 
@@ -126,7 +128,7 @@
 						<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">密码:</label>
     <div class="col-sm-10">
-      <input type="text" name="upass" class="form-control" value="${user2.upass}">
+      <input type="text" name="upass" class="form-control" value="${user2.upass}" pattern="^[a-zA-Z]\w{5,17}$">
     </div>
   </div> 
   
@@ -162,7 +164,7 @@
 	<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">联系方式:</label>
     <div class="col-sm-10">
-      <input type="text" name="up" class="form-control" value="${user2.up}">
+      <input type="text" name="up" class="form-control" value="${user2.up}"  pattern="^1\d{10}$">
     </div>
   </div> 
   <div class="modal-footer">
@@ -373,7 +375,7 @@
   <caption>待买车辆</caption>
   <thead>
     <tr>
-  	 <th>二手车id</th>
+  	 <th> </th>
       <th>图片</th>
       <th>名称</th>
       <th>价格</th>
@@ -383,11 +385,11 @@
   <tbody>
    <c:forEach items="${cd}" var="cd">
     <tr>
-    <td><input type="text" value="${cd.cid}"></td>
+    <td><input type="hidden" value="${cd.cid}" class="form-control"></td>
       <td><img  src="${pageContext.request.contextPath}/${cd.purl}" width="80" height="50"></td>
       <td>${cd.cd.cdname}</td>
       <td>${cd.jg}</td>
-      <td><button onclick="updatebtn1();">修改待买车辆价格</button></td>
+      <td><button class="btn btn-primary" onclick="updatebtn1(${cd.jg},${cd.cid});">修改待买车辆价格</button></td>
     </tr>
        </c:forEach>
   </tbody>
@@ -415,15 +417,14 @@
 					<h4 class="modal-title" id="myModalLabel">修改待买车辆信息</h4>
 				</div>
 				<div class="modal-body">
-					<form action="${pageContext.request.contextPath}/abc/update_secondcar" method="post" class="form-horizontal" role="form"
+					<form action="${pageContext.request.contextPath}/abc/update_secondcar?uid=${user2.uid}" method="post" class="form-horizontal" role="form"
 						name="updateForm" id="updateForm">
-						<div><input type="hidden" name="cid" value="${sec.cid}"></div>
+						<div><input type="hidden" name="cid" id="cid"></div>
 						
 						<div class="form-group">
 							<label for="jg" class="col-sm-2 control-label">您要修改的价格是:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="jg"
-								 value="${sec.jg}">
+								<input type="text" class="form-control" name="jg" id="jg" pattern="^\d+$">
 							</div>
 						</div>	
  				 <div class="modal-footer">

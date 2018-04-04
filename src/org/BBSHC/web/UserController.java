@@ -29,6 +29,9 @@ import org.BBSHC.service.VocationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sun.org.apache.xpath.internal.operations.And;
 
 @Controller
 @RequestMapping("/abc")
@@ -57,6 +60,7 @@ public class UserController {
 		HttpSession session = rq.getSession();
 		User user = (User) session.getAttribute("user");
 		Integer uid = user.getUid();
+		User user2 = us.update_select(uid);
 		List<Vocation> vl = vs.find();
 		//历史浏览记录
 		 List<BrowseHistory> bh = bhs.find(uid);
@@ -69,10 +73,13 @@ public class UserController {
 		 //约看记录
 		List<AppointRecord> ar = ars.find1(uid);
 		//待卖车辆
-		List<SecondCar> cd = cds.find(uid,cid);
+		List<SecondCar> cd = cds.find(uid);
 		//待买车辆修改之前的查询
-		SecondCar sec = cds.update_selectSecondCar(cid);
-		map.put("sec", sec);
+		if(cid!=null&&!cid.equals("")){
+			SecondCar sec = cds.update_selectSecondCar(cid);
+			map.put("sec", sec);
+		}
+		
 		map.put("cd", cd);
 		 map.put("ar", ar);
 		 map.put("cr", cr);
@@ -87,13 +94,13 @@ public class UserController {
 	@RequestMapping("/updatea")
 	public String updatea(User user,Integer uid){
 		us.modify(user, uid);
-		return "redirect:update_select?uid="+uid;
+		return "redirect:update_select?uid="+user.getUid();
 	}
 	//修改用户待卖车
 	@RequestMapping("/update_secondcar")
-	public String update_secondcar(SecondCar sc,Integer cid,Integer uid){
-		cds.update_SecondCar(sc, cid);
-		return "redirect:update_select?cid="+cid+"&uid="+uid;
+	public String update_secondcar(SecondCar sc,Integer uid){
+		cds.update_SecondCar(sc);
+		return "redirect:/abc/update_select?cid="+sc.getCid()+"&uid="+uid;
 	}
 	
 	@RequestMapping("/login")

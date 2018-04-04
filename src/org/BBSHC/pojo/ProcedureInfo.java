@@ -30,7 +30,14 @@ public class ProcedureInfo {
 	      private Character gzs;//有无车辆购置完税税证明 0:没有 1:有
 	      private Character gz;//有无改装 0:没有 1:有
 	      private SellIntention si;//卖车意向信息
-	      @Id
+	      
+	      public Character getByd() {
+			return byd;
+		}
+		public void setByd(Character byd) {
+			this.byd = byd;
+		}
+		@Id
 		  @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getSxid() {
 			return sxid;
@@ -67,7 +74,12 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
-		
+		public Character getbyd() {
+			return byd;
+		}
+		public void setbyd(Character byd) {
+			this.byd = byd;
+		}
 		@JsonFormat(pattern="yyyy-MM-dd")
 		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSyx() {
@@ -88,7 +100,6 @@ public class ProcedureInfo {
 		public void setGz(Character gz) {
 			this.gz = gz;
 		}
-		
 		@OneToOne
 		@JoinColumn(name="sid")
 		public SellIntention getSi() {
