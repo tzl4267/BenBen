@@ -27,8 +27,8 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	private BargainRecordDao brd;
 	@Override
 	public List<BargainRecord> find() {
-		String hql="from BargainRecord";
-		return brd.selectHQL(hql);
+		// TODO Auto-generated method stub
+				return null;
 		
 	}
 
@@ -47,8 +47,8 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	 */
 	@Override
 	public BargainRecord getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return brd.getOne(BargainRecord.class, id);
 	}
 
 	/* (non-Javadoc)
@@ -89,12 +89,19 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 
 	@Override
 	public void insertBargainRecord(BargainRecord bd) {
-	brd.saveOrupdate(bd);	
+		BargainRecord bbb = brd.getOne(bd.getBid());
+		bbb.setRf(bd.getRf());
+		bbb.setBrsta('1');
+	    brd.saveOrupdate(bbb);	
 	}
 
 	@Override
 	public void updateBargainRecord(BargainRecord br) {
-		brd.saveOrupdate(br);		
+		// TODO Auto-generated method stub
+		
 	}
+
+	
+
 
 }

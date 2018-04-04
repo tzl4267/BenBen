@@ -17,7 +17,6 @@ public class Picture {
 	         private Integer pid;//图片id
 	         private SecondCar sc;//二手车id
 	         private String purl;//路径
-	         private TypeInfo ti;;
 	         private TypeInfo tinfo;//备注
 	         private String pinfo;//图片信息
 	         @Id
@@ -44,21 +43,13 @@ public class Picture {
 				this.purl = purl;
 			}
 			
-			//多张图片对应一个备注
-			@ManyToOne
-			@JoinColumn(name="tid")
-			public TypeInfo getTi() {
-				return ti;
-			}
+		
 			//一个图片对应一个备注
 			@OneToOne
 			@JoinColumn(name="tid")
 			public TypeInfo getTinfo() {
 				return tinfo;
-			}
-			public void setTi(TypeInfo ti) {
-				this.ti = ti;
-			}				
+			}			
 			
 			public void setTinfo(TypeInfo tinfo) {
 				this.tinfo = tinfo;

@@ -1,5 +1,6 @@
 package org.BBSHC.web;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -85,10 +86,10 @@ public class CarBrandController {
 
 	 @RequestMapping(value="/list6")
 	  public String find8(BargainRecord br){
-		BargainRecord b = brs.getOne(br.getBid());
-		b.setRf(br.getRf());
-		brs.updateBargainRecord(br);
-		  return "ok";
+	
+		brs.insertBargainRecord(br);
+	
+		  return "redirect:list5";
 	  }
 	 
 	 

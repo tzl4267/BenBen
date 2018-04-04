@@ -93,13 +93,7 @@ public class ProcedureInfo {
 		public void setGz(Character gz) {
 			this.gz = gz;
 		}
-		
-		public Character getByd() {
-			return byd;
-		}
-		public void setByd(Character byd) {
-			this.byd = byd;
-		}
+
 		@OneToOne
 		@JoinColumn(name="sid")
 		public SellIntention getSi() {
