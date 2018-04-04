@@ -15,9 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript">
 
-$(function(){
-	
-		
+$(function(){			
 		$("span:contains('亮点配置')").mouseover(function(e){
 			$("#outs").css("display","block");
 			$("#czw").css("display","block");
@@ -54,10 +52,7 @@ $(function(){
 				var cbid=$(this).next().text();
 			$("#cbid").val(cbid);
 				$("#syform").submit();
-			});
-			
-			
-	
+			});				
 });
 </script>
 </head>
@@ -276,7 +271,7 @@ $(function(){
 		<f:forEach items="${sc}" var="secondcar">
 			<div class="col-lg-3 col-sm-3">
 			<span></span>
-			<a href="${pageContext.request.contextPath}/abcd?uid=${secondcar.user.uid}&cid=${secondcar.cid} " style="text-decoration: none;color: black"><div style="float: left; ">
+			<a href="${pageContext.request.contextPath}/carDetail/querySecondCar?uid=${secondcar.user.uid}&cid=${secondcar.cid} " style="text-decoration: none;color: black"><div style="float: left; ">
 			<div style="color: red;position: relative;top:22px;left:93%;" id="sb"></div>
 			<script type="text/javascript">
 					var d = "${secondcar.sjsj}";
