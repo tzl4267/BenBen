@@ -14,6 +14,7 @@
    <script type ="text/javascript" src = "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
    <script type = "text/javascript" src= "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <body>
+<jsp:include page="daohang.jsp"></jsp:include>
 <div class="container">		
 		<div class="col-lg-12 col-sm-12">
 			<div class="panel panel-default ">

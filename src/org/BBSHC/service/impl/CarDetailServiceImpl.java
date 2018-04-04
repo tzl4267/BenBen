@@ -64,4 +64,13 @@ public class CarDetailServiceImpl implements CarDetailService {
 		SecondCar scar = cdd.getone(sql);
 		return scar;
 	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#find(java.lang.String)
+	 */
+	//首页条件查询
+	@Override
+	public List<SecondCar> find(String sql) {
+		List<SecondCar> clist = cdd.select(sql);
+		return clist;
+	}
 }

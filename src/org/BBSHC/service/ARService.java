@@ -11,4 +11,5 @@ import org.BBSHC.pojo.AppointRecord;
 public interface ARService extends ServiceBase<AppointRecord>{
 List<AppointRecord> jfind(Integer id);
 List<AppointRecord> find1(Integer id);
+void insertAppointRecord(AppointRecord ar);
 }
