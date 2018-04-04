@@ -23,7 +23,7 @@
 	}
    </script>
    
-<form action="${pageContext.request.contextPath}/abc/update_Emp" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/abc/update_selectEmp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="eid" value="${emp.eid}">
 	 <div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">年龄</label>
@@ -49,7 +49,7 @@
     <label for="lastname" class="col-sm-2 control-label">头像:</label>
     <div class="col-sm-10">
      <img  src="${pageContext.request.contextPath}/${emp.eurl}" width="50" height="50">
-      <input type="text" name="eurl" class="form-control"  readonly="readonly">
+      <input type="hidden" name="eurl" class="form-control"  readonly="readonly">
     </div>
   </div> 
   
@@ -75,9 +75,9 @@
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">密码:</label>
+    <label for="pass" class="col-sm-2 control-label">密码:</label>
     <div class="col-sm-10">
-      <input type="text" name="epass" class="form-control" value="${emp.epass}" readonly="readonly">
+      <input type="text" name="pass" class="form-control" value="${emp.pass}" readonly="readonly">
     </div>
   </div> 
    <button type="button" class="btn btn-primary btn-lg btn-block" onclick="updatebtn();">修改</button>
@@ -99,18 +99,20 @@
 					<form action="${pageContext.request.contextPath}/abc/update_Emp" enctype="multipart/form-data" method="post" class="form-horizontal" role="form"
 						name="updateForm" id="updateForm">
 		<input type="hidden" name="eid" value="${emp.eid}">
+			<div class="form-group">
+    <label for="lastname" class="col-sm-2 control-label">姓名:</label>
+    <div class="col-sm-10">
+     <input type="text" name="ename" class="form-control" value="${emp.ename}" pattern="^[\u4e00-\u9fa5]*">
+	 </div>
+	 </div>
+		
 	 <div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">年龄</label>
     <div class="col-sm-10">
-      <input type="text" name="age" class="form-control" value="${emp.age}" >
+      <input type="text" name="age" class="form-control" value="${emp.age}" pattern="^([2-5]\d)|60$" >
     </div>
   </div>
-  	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">姓名:</label>
-    <div class="col-sm-10">
-     <input type="text" name="ename" class="form-control" value="${emp.ename}">
-	 </div>
-	 </div>
+  
 	 
 	<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">状态:</label>
@@ -124,13 +126,14 @@
     <div class="col-sm-10">
     <img src="${pageContext.request.contextPath}/${emp.eurl}" width="50" height="50">
       <input type="file" name="mFile" class="form-control" >
+      <input type="hidden" name="eurl" value="${emp.eurl}">
     </div>
   </div> 
   
 	<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">联系方式:</label>
     <div class="col-sm-10">
-      <input type="text" name="ph" class="form-control" value="${emp.ph}" >
+      <input type="text" name="ph" class="form-control" value="${emp.ph}" pattern="^1\d{10}$">
     </div>
   </div> 
   
@@ -144,15 +147,15 @@
 	<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">部门:</label>
     <div class="col-sm-10">
-     <input type="text"  class="form-control" value="${emp.dept.dname}" readonly="readonly">
+    <input type="text" name="dname" class="form-control" value="${emp.dept.dname}" readonly="readonly">
      <input type="hidden" name="dept.did" value="${emp.dept.did}" class="form-control"  readonly="readonly">
     </div>
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">密码:</label>
+    <label for="pass" class="col-sm-2 control-label">密码:</label>
     <div class="col-sm-10">
-      <input type="text" name="epass" class="form-control" value="${emp.epass}">
+      <input type="text" name="pass" class="form-control" value="${emp.pass}" pattern="^[a-zA-Z]\w{5,17}$">
     </div>
   </div> 
   <div class="modal-footer">

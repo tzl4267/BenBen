@@ -104,26 +104,8 @@
 			  <li><a href="#" style="font-size: large;">地点</a></li>            
 			  <li><a href="#" style="font-size: large;">卖车</a></li>
               <li><a href="#" style="font-size: large;">买车</a></li>
-    		  <li onclick="denglubtn();"><a href="#" style="font-size: large;">
-    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    		      登陆</a></li>
+    		  <li onclick="denglubtn();"><a href="#" style="font-size: large;"> 登陆</a></li>
     		  <li onclick="zhucebtn();"><a href="#" style="font-size: large;">注册
-    		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;
     		  </a></li>
     		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
            </ul>
@@ -157,9 +139,6 @@
 						</div>
 					</form>
 				</div>
-
-
-
 
 				<!--验证码-->
 				<form id="form1" runat="server" onsubmit="validateCode()">

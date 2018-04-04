@@ -93,7 +93,6 @@ public class ProcedureInfo {
 		public void setGz(Character gz) {
 			this.gz = gz;
 		}
-
 		@OneToOne
 		@JoinColumn(name="sid")
 		public SellIntention getSi() {

@@ -13,11 +13,14 @@
    <link rel="stylesheet"  href="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.css">
    <script type ="text/javascript" src = "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
    <script type = "text/javascript" src= "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+   <script type="text/javascript" src="js/area.js" ></script>
+  
 <body>
+<jsp:include page="daohang.jsp"></jsp:include>
 <div class="container">		
 		<div class="col-lg-12 col-sm-12">
 			<div class="panel panel-default ">
-  <div class="panel-heading"><img src="${pageContext.request.contextPath}/img/renren.png"></div>
+  <div class="panel-heading"><img src="${pageContext.request.contextPath}/img/benben.png"></div>
  <form action="${pageContext.request.contextPath}/abc/SellIntentionadd1">
   <table class="table">
     <tr style="text-align: right;">  	
@@ -96,18 +99,18 @@
     <label for="sp" class="col-sm-2 control-label sr-only">初次上牌年份</label>
     <div class="col-sm-10">
      <select name="sp" class="form-control">
-      <option value="2007">2007年</option>
-     <option value="2008">2008年</option>
-     <option value="2009">2009年</option>
-     <option value="2010">2010年</option>
-      <option value="2011">2011年</option>
-     <option value="2012">2012年</option>
-     <option value="2013">2013年</option>
-     <option value="2014">2014年</option>
-     <option value="2015">2015年</option>
-     <option value="2016">2016年</option>
-     <option value="2017">2017年</option>
-     <option value="2018">2018年</option>
+      <option value="2007-01-01 00:00:00">2007年</option>
+     <option value="2008-01-01 00:00:00">2008年</option>
+     <option value="2009-01-01 00:00:00">2009年</option>
+     <option value="2010-01-01 00:00:00">2010年</option>
+      <option value="2011-01-01 00:00:00">2011年</option>
+     <option value="2012-01-01 00:00:00">2012年</option>
+     <option value="2013-01-01 00:00:00">2013年</option>
+     <option value="2014-01-01 00:00:00">2014年</option>
+     <option value="2015-01-01 00:00:00">2015年</option>
+     <option value="2016-01-01 00:00:00">2016年</option>
+     <option value="2017-01-01 00:00:00">2017年</option>
+     <option value="2018-01-01 00:00:00">2018年</option>
      </select>
     </div>
   </div></td>	
@@ -118,10 +121,11 @@
      <td><div class="form-group">
     <label for="kcd" class="col-sm-2 control-label sr-only">看车地点</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="kcd"  required="required">
+      <input type="text" class="form-control" name="kcd"  required="required" pattern="^[\u4e00-\u9fa5]*">
     </div>
   </div> </td>	
     </tr>
+    
     
     <tr style="text-align: right;">  	
     <td>预期售出时间</td>	
@@ -133,6 +137,20 @@
      <option value="1">不是很急，但要在一周以内</option>
      <option value="2">想卖一个好价,一个月内</option>
      <option value="3">不着急,价格合适在卖</option>
+     </select>
+    </div>
+  </div> </td>	
+    </tr>
+    <tr style="text-align: right;">  	
+    <td>车况</td>	
+     <td> <div class="form-group">
+    <label for="ck" class="col-sm-2 control-label sr-only">车况</label>
+    <div class="col-sm-10">
+     <select name="ck" class="form-control">
+     <option value="0">车况好,没有任何事故</option>
+     <option value="1">有过少量剐蹭或钣金</option>
+     <option value="2">有伤及过车辆主体框架的碰撞事故</option>
+     <option value="3">有水泡或火烧历史</option>
      </select>
     </div>
   </div> </td>	

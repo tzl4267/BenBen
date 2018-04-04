@@ -2,10 +2,12 @@ package org.BBSHC.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.BBSHC.pojo.Dept;
 import org.BBSHC.pojo.Emp;
 import org.BBSHC.service.DeptService;
 import org.BBSHC.service.EmpService;
@@ -31,7 +33,7 @@ public class EmpController {
 		return "selectEmp";
 	}
 	@RequestMapping("/update_Emp")
-	public String update_Emp(Emp emp,HttpServletRequest request,MultipartFile mFile)throws IOException{
+	public String update_Emp(Emp emp,HttpServletRequest request,MultipartFile mFile,ModelMap map)throws IOException{
 		if (!mFile.isEmpty()) {
 			String fileName = mFile.getOriginalFilename();
 			int starIndex = fileName.lastIndexOf(".");
@@ -42,10 +44,10 @@ public class EmpController {
 			String eurl = "images/" + fileName;
 			emp.setEurl(eurl);
 			/*FileUtils.copyInputStreamToFile(mFile.getInputStream(), new File(eurl));*/
-		es.modify(emp, emp.getEid());
-		/*Emp emps = es.update_selectEmp(emp.getEid());
-		map.put("emp", emps);*/
 		}	
+		es.modify(emp, emp.getEid());
+		Emp emps = es.update_selectEmp(emp.getEid());
+		map.put("emp", emps);
 		return "selectEmp";
 	}
 }

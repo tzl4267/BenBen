@@ -4,66 +4,75 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.List;
 import java.io.File;
-import java.io.IOException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.BBSHC.pojo.AppointRecord;
 import org.BBSHC.pojo.BargainRecord;
 import org.BBSHC.pojo.CollectRecord;
-import org.BBSHC.pojo.Emp;
 import org.BBSHC.pojo.Outstanding;
 import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.pojo.SellIntention;
+import org.BBSHC.pojo.User;
+import org.BBSHC.service.ARService;
 import org.BBSHC.service.BargainRecordService;
 import org.BBSHC.service.CarDetailService;
 import org.BBSHC.service.CollectRecordService;
 import org.BBSHC.service.DeptService;
-import org.BBSHC.service.EmpService;
 import org.BBSHC.service.OutstandingService;
 import org.BBSHC.service.PictureService;
-import org.BBSHC.service.PictureTypeService;
 import org.BBSHC.service.SIService;
-import org.BBSHC.service.SellIntentionService;
+import org.BBSHC.service.UserService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
 @Controller
+@RequestMapping(value="carDetail")
 public class CarDetailController {
 	@Resource
 	private CarDetailService cds;
-	@Resource
-	private SellIntentionService sls;
 	@Resource
 	private BargainRecordService brs;
 	@Resource
 	private PictureService ps;
 	@Resource
-	private EmpService es;
-	@Resource
 	private CollectRecordService crs;
 	@Resource
 	private DeptService ds;
+	@Resource
 	private OutstandingService oss;
 	//卖车意向信息表service接口
 		@Resource
 		private SIService sis;
+	@Resource
+	private ARService ars;
+	@Resource
+	private UserService us;
 	
-	@RequestMapping(value="/abcd")
-	public String querySecondCar(ModelMap map){		
-		map.put("sList", cds.querySecondCar());
-		map.put("seList", sls.querySellIntention());
-		map.put("pList", ps.queryPicture());
-		map.put("dList", ds.querydl());
+	@RequestMapping(value="/querySecondCar")
+	public String querySecondCar(ModelMap map,Integer cid,HttpServletRequest rq,@RequestParam(value="msg",required=false) String msg){	
+		String sql="select * from secondcar where cid="+cid;		
+		map.put("s", cds.getone(sql));
+		map.put("pList", ps.queryPicture());		
+		HttpSession session = rq.getSession();
+		User user = (User) session.getAttribute("user");
+		if(user!=null){
+			List<CollectRecord> clist = crs.getCollectRecord(cid, user.getUid());
+			if(clist.size()>0){
+				map.put("c",clist.get(0));
+			}			
+		}
+		if(msg!=null){
+			map.put("msg", msg);
+		}
 		Calendar calen = Calendar.getInstance();
 		calen.setTime(new Date());
 		calen.add(Calendar.YEAR, -1);
@@ -78,36 +87,34 @@ public class CarDetailController {
 		}		
 		 return "carDetail";
 		}
-
 	
-	@RequestMapping(value="/insertbrs")
+	@RequestMapping(value="/insertBargainRecord")
 	public String insertBargainRecord(BargainRecord bd){
 		brs.insertBargainRecord(bd);
-		return "ok";		
+		return "redirect:querySecondCar?cid="+bd.getSc().getCid();		
 	}
 	
 	@RequestMapping(value="/insertCollectRecord")
 	public String insertCollectRecord(CollectRecord cr){
 		crs.insertCollectRecord(cr);
-		return "ok";		
+		return "redirect:querySecondCar?cid="+cr.getSc().getCid();		
 	}
 	
-	@RequestMapping(value="/insertEmp")
-	public String insertEmp(Emp emp,HttpServletRequest request,MultipartFile mFile) throws IOException{
-		if (!mFile.isEmpty()) {
-			String fileName = mFile.getOriginalFilename();
-			int starIndex = fileName.lastIndexOf(".");
-			String fileSuffix = fileName.substring(starIndex);
-			String filePath = request.getServletContext().getRealPath("img");
-			File file = new File(filePath,fileName);
-			/*String eurl = filePath+"img/" + System.currentTimeMillis() + fileSuffix;*/
-			String eurl = "img/" + fileName;
-			emp.setEurl(eurl);
-			/*FileUtils.copyInputStreamToFile(mFile.getInputStream(), new File(eurl));*/
-			es.insertEmp(emp);
-		}	
-		return "ok";
+	@RequestMapping(value="/deleteCollectRecord")
+	public String deleteCollectRecord(CollectRecord cr){
+		CollectRecord collectrecord = crs.getOne(cr.getCrid());
+		Integer cid = collectrecord.getSc().getCid();
+		crs.deleteCollectRecord(cr);
+		return "redirect:querySecondCar?cid="+cid;		
 	}
+	
+	@RequestMapping(value="/insertAppointRecord")
+	public String insertAppointRecord(AppointRecord ar){
+		Date ardate = new Date();
+		ar.setArdate(ardate);
+		ars.insertAppointRecord(ar);
+		return "redirect:querySecondCar?cid="+ar.getSc().getCid();		
+	}	
 
 	//添加二手车信息
 		@RequestMapping("/createPicture")
@@ -115,8 +122,7 @@ public class CarDetailController {
 	             MultipartFile mfile,  Outstanding os,
 	           ModelMap mm ) throws Exception {
 			 String msg = null;
-			Integer eid = sc.getEmp().getEid();
-			// Emp emp = es.update_selectEmp(eid);
+			Integer eid = sc.getEmp().getEid();			
 	       //如果文件不为空，写入上传路径
 	       if(!mfile.isEmpty()) {
 	           //上传文件路径
@@ -128,8 +134,7 @@ public class CarDetailController {
 	   		String suffix = filename.substring(start);
 	   		String purl = path+"\\" + System.currentTimeMillis() + suffix;
 	   		sc.setPurl(purl);
-	   		FileUtils.copyInputStreamToFile(mfile.getInputStream(), new File(purl));
-	   		//sc.setEmp(emp);
+	   		FileUtils.copyInputStreamToFile(mfile.getInputStream(), new File(purl));	   		
 	   		oss.add(os);
 	   			Integer sid = os.getSe().getSid();
 	   			Outstanding ose = oss.getOneBySid(sid);
@@ -144,15 +149,14 @@ public class CarDetailController {
 	   			SecondCar scar = cds.getone(sql);
 	   			mm.put("cid", scar.getCid());
 	   		}
-	          mm.put("msg", msg);
+	         
 	           }else{
-	        	    msg="文件格式不正确，只能上传图片！";
-	        	  
-	           }
-	           
+	        	    msg="文件格式不正确，只能上传图片！";	        	  
+	           }	           
 	       } else {
 	          msg="图片上传失败！";
 	       }
+	       mm.put("msg", msg);
 	       return "redirect:app/search_SI?id="+eid;
 	   }
 
@@ -162,5 +166,18 @@ public class CarDetailController {
 			SecondCar scar = cds.getone(sql);
 			mm.put("cid", scar.getCid());
 			return "appoint";
+		}
+		
+		@RequestMapping("/login")
+		public String login(User u,HttpServletRequest rq,Integer cid){
+			User user = us.selectone(u.getUname(),u.getUpass());
+			HttpSession session = rq.getSession();
+			String msg = "";
+			if (user !=null) {
+				session.setAttribute("user", user);
+			}else {
+				msg="账号或密码错误！";				
+			}
+			return "redirect:querySecondCar?msg="+msg+"&cid="+cid;
 		}
 }
