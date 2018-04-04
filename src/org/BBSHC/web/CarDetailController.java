@@ -22,6 +22,7 @@ import org.BBSHC.service.ARService;
 import org.BBSHC.service.BargainRecordService;
 import org.BBSHC.service.CarDetailService;
 import org.BBSHC.service.CollectRecordService;
+import org.BBSHC.service.DeptService;
 import org.BBSHC.service.OutstandingService;
 import org.BBSHC.service.PictureService;
 import org.BBSHC.service.SIService;
@@ -43,12 +44,14 @@ public class CarDetailController {
 	@Resource
 	private PictureService ps;
 	@Resource
-	private CollectRecordService crs;	
+	private CollectRecordService crs;
+	@Resource
+	private DeptService ds;
 	@Resource
 	private OutstandingService oss;
 	//卖车意向信息表service接口
-	@Resource
-	private SIService sis;
+		@Resource
+		private SIService sis;
 	@Resource
 	private ARService ars;
 	@Resource

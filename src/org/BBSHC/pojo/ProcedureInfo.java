@@ -74,7 +74,12 @@ public class ProcedureInfo {
 		public void setBx(Character bx) {
 			this.bx = bx;
 		}
-		
+		public Character getbyd() {
+			return byd;
+		}
+		public void setbyd(Character byd) {
+			this.byd = byd;
+		}
 		@JsonFormat(pattern="yyyy-MM-dd")
 		@DateTimeFormat(pattern="yyyy-MM-dd")
 		public Date getSyx() {
@@ -95,7 +100,6 @@ public class ProcedureInfo {
 		public void setGz(Character gz) {
 			this.gz = gz;
 		}
-		
 		@OneToOne
 		@JoinColumn(name="sid")
 		public SellIntention getSi() {

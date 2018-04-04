@@ -1,5 +1,6 @@
 package org.BBSHC.web;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -96,10 +97,10 @@ public class CarBrandController {
 
 	 @RequestMapping(value="/list6")
 	  public String find8(BargainRecord br){
-		BargainRecord b = brs.getOne(br.getBid());
-		b.setRf(br.getRf());
-		brs.updateBargainRecord(br);
-		  return "ok";
+	
+		brs.insertBargainRecord(br);
+	
+		  return "redirect:list5";
 	  }
 	 @RequestMapping(value="/list7")
 	 public String searchByTJ(SY sy,CarDesign cd,Outstanding ot,ModelMap mm){

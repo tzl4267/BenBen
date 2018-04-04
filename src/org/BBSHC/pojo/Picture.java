@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 public class Picture {	
 	         private Integer pid;//图片id
 	         private SecondCar sc;//二手车id
-	         private String purl;//路径	         
+	         private String purl;//路径
 	         private TypeInfo tinfo;//备注
 	         private String pinfo;//图片信息
 	         @Id
@@ -41,14 +41,13 @@ public class Picture {
 			}
 			public void setPurl(String purl) {
 				this.purl = purl;
-			}						
-			
+			}
 			//一个图片对应一个备注
 			@OneToOne
 			@JoinColumn(name="tid")
 			public TypeInfo getTinfo() {
 				return tinfo;
-			}						
+			}			
 			
 			public void setTinfo(TypeInfo tinfo) {
 				this.tinfo = tinfo;

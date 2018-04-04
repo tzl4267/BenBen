@@ -57,7 +57,6 @@ $(function(){
 </script>
 </head>
 <body style="position:relative;">
-
 <jsp:include page="daohang.jsp"></jsp:include>
       <div style="width: 1200px;margin: 0px auto;">
       <form action="${pageContext.request.contextPath}/home/list7" method="post" id="syform">
