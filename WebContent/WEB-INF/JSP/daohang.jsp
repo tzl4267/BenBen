@@ -46,6 +46,16 @@
     {
        text-decoration:underline;
         }
+        .rela{
+        position: relative;
+        left:1200px;
+        top:8px;
+        }
+        .navbar-inverse {
+    background: #253438;
+    border-color: #0490ad;
+    height:65px;
+}
 	</style>
 </head>
 <body onload="createCode()">
@@ -96,25 +106,23 @@
             }
             else 
             {
-                alert("验证码正确！");
+                //alert("验证码正确！");
             }        
         }    
 		</script>
 		
 
  	<div class="navbar navbar-inverse">
-           <ul class="nav navbar-nav">
-			  <li><img src="${pageContext.request.contextPath}/img/daohang/1.jpg"></li>
-			  <li><a href="#">地点</a></li> 
-				<li><a href="${pageContext.request.contextPath}/abc/SellIntentionadd">卖车</a></li>
-              <li><a href="${pageContext.request.contextPath}/home/list">买车</a></li>
-    		  <li onclick="denglubtn();"><a>登陆</a></li>
-    		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
-    		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
-           </ul>
+ 	<div class="navbar-header">
+  <img src="${pageContext.request.contextPath}/img/daohang/1.jpg" style="position: relative;left:-250px;">
+  <a href="#" class="navbar-brand" style="position: relative;left:300px;top:8px;"><font size="5">地点</font></a>
+  <a href="${pageContext.request.contextPath}/abc/SellIntentionadd" class="navbar-brand middle" style="position: relative;left:480px;top:8px;"><font size="5">卖车</font></a>
+  <a href="${pageContext.request.contextPath}/home/list" class="navbar-brand middle" style="position: relative;left:550px;top:8px;"><font size="5">买车</font></a>
+  <a href="#" onclick="denglubtn();" class="navbar-brand rela"><font>登陆</font></a>
+  <a href="#" onclick="zhucebtn();" class="navbar-brand rela"><font>注册</font></a>
+  <font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA" class="rela">热线电话：110</font>
+  </div>
            </div>
-
-
 
 <!-- 登陆modal -->
 
@@ -143,9 +151,23 @@
 							</div>
 						</div>
 						<div class="form-group">
+						<table border="0" cellspacing="5" cellpadding="5" height="60" align="center">
+        		<tr>
+            	<td>
+            	<div class="code" id="checkCode" onb="validateCode();"></div>
+            	<input type="text" id="inputCode" class="input"  onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
+            	<a  href="#" onclick="createCode()" style="size: auto;position:relative; top:25px;">看不清换一张</a>
+        		</td>
+        		</tr>
+        		<tr>
+            	<td>
+            	</td>
+        		</tr>
+    			</table></div>
+						<div class="form-group">
 							<div class="input-group">
 								<input type="submit"
-									class="form-control" value="登陆"/>
+									class="form-control" value="登陆" onclick="validateCode();"/>
 							</div>
 						</div>
 					</form>
@@ -158,23 +180,7 @@
 				<form id="form1" runat="server" onsubmit="validateCode()">
     			<div>
     				
-    			<table border="0" cellspacing="5" cellpadding="5" height="60" align="center">
-    				
-       		  	
-        		
-        		<tr>
-            	<td><input type="text" id="inputCode" class="input"  value="请输入验证码" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
-        		<input id="Button1"  onclick="validateCode();" type="button" value="确定" /></td>
-        		</tr>
-        		
-        		<tr>
-            	<td>
-            	<div class="code" id="checkCode"></div>
-            	<a  href="#" onclick="createCode()" style="size: auto;">看不清换一张</a></td>
-        		</tr>
-        		
-        		
-    			</table>
+    			
     			
     			</div>
     			</form>

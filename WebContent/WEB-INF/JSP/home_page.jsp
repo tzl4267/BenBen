@@ -70,9 +70,9 @@ $(function(){
 		<table >
 			<tr>
 				<td >品&nbsp;牌:<input type="hidden" id="cbid" name="cbid" value="${sy.cbid}"></td>
-				<td><a class="cbid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide"></span></td>
+				<td><a href="#" class="cbid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide"></span></td>
 				<f:forEach items="${cb}" var="carbrand">
-				<td><a class="cbid" style="text-decoration: none;color: black">&nbsp;<font color="${carbrand.cbid==sy.cbid?'red':''}">${carbrand.cbname}</font>&nbsp;</a><span class="hide">${carbrand.cbid}</span></td>
+				<td><a href="#" class="cbid" style="text-decoration: none;color: black">&nbsp;<font color="${carbrand.cbid==sy.cbid?'red':''}">${carbrand.cbname}</font>&nbsp;</a><span class="hide">${carbrand.cbid}</span></td>
 				</f:forEach>
 			</tr>
 		</table>
@@ -83,9 +83,9 @@ $(function(){
 		<table >
 			<tr>
 				<td>车&nbsp;系:<input type="hidden" id="csid" name="csid" value="${sy.csid}"/></td>
-				<td><a class="csid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide"></span></td>
+				<td><a href="#" class="csid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide"></span></td>
 				<f:forEach items="${cs}" var="carseries">
-				<td><a class="csid" style="text-decoration: none;color: black" >&nbsp;<font color="${carseries.csid==sy.csid?'red':''}">${carseries.csname}</font>&nbsp;</a><span class="hide">${carseries.csid}</span></td>
+				<td><a href="#" class="csid" style="text-decoration: none;color: black" >&nbsp;<font color="${carseries.csid==sy.csid?'red':''}">${carseries.csname}</font>&nbsp;</a><span class="hide">${carseries.csid}</span></td>
 				</f:forEach>
 			</tr>
 		</table>
@@ -97,15 +97,15 @@ $(function(){
 		<table  >
 			<tr>
 				<td>价&nbsp;格:<input type="hidden" id="jg" name="jg" value="${sy.jg}"/></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${0==sy.jg?'red':''}">不限</font>&nbsp;</a><span class="hide">0</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${1==sy.jg?'red':''}">三万以下</font>&nbsp;</a><span class="hide">1</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${2==sy.jg?'red':''}">3-5万</font>&nbsp;</a><span class="hide">2</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${3==sy.jg?'red':''}">5-10万</font>&nbsp;</a><span class="hide">3</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${4==sy.jg?'red':''}">10-15万</font>&nbsp;</a><span class="hide">4</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${5==sy.jg?'red':''}">15-20万</font>&nbsp;</a><span class="hide">5</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${6==sy.jg?'red':''}">20-30万</font>&nbsp;</a><span class="hide">6</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${7==sy.jg?'red':''}">30-60万</font>&nbsp;</a><span class="hide">7</span></td>
-				<td><a class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${8==sy.jg?'red':''}">60万以上</font>&nbsp;</a><span class="hide">8</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font ">不限</font>&nbsp;</a><span class="hide">0</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${1==sy.jg?'red':''}">三万以下</font>&nbsp;</a><span class="hide">1</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${2==sy.jg?'red':''}">3-5万</font>&nbsp;</a><span class="hide">2</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${3==sy.jg?'red':''}">5-10万</font>&nbsp;</a><span class="hide">3</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${4==sy.jg?'red':''}">10-15万</font>&nbsp;</a><span class="hide">4</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${5==sy.jg?'red':''}">15-20万</font>&nbsp;</a><span class="hide">5</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${6==sy.jg?'red':''}">20-30万</font>&nbsp;</a><span class="hide">6</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${7==sy.jg?'red':''}">30-60万</font>&nbsp;</a><span class="hide">7</span></td>
+				<td><a href="#" class="jg" style="text-decoration: none;color: black">&nbsp;<font color="${8==sy.jg?'red':''}">60万以上</font>&nbsp;</a><span class="hide">8</span></td>
 				
 			</tr>
 		</table>

@@ -53,8 +53,10 @@ public class UserController {
 	private CarDetailService cds;
 	//用户表 按id查询  返回单个对象
 	@RequestMapping("/update_select")
-	public String update_select(Integer cid,Integer uid,ModelMap map){
-		User user2 = us.update_select(uid);
+	public String update_select(Integer cid,ModelMap map,HttpServletRequest rq){
+		HttpSession session = rq.getSession();
+		User user = (User) session.getAttribute("user");
+		Integer uid = user.getUid();
 		List<Vocation> vl = vs.find();
 		//历史浏览记录
 		 List<BrowseHistory> bh = bhs.find(uid);
@@ -78,7 +80,7 @@ public class UserController {
 		 map.put("brd",brd);
 		map.put("bh", bh);
 		map.put("vl", vl);
-		map.put("user2", user2);
+		map.put("user2", user);
 		return "update_selectUser";
 	}
 	//用户表的修改方法

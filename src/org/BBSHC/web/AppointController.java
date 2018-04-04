@@ -57,9 +57,10 @@ public class AppointController {
 	
 	//卖车意向信息查询指定员工的工单
 	@RequestMapping("/search_SI")
-	public String searchSellIntention(Integer id,ModelMap mm,@RequestParam(value="msg",required =false) String msg){
-		List<SellIntention> slist = sis.find(id);
-		Emp emp = es.update_selectEmp(id);
+	public String searchSellIntention(HttpServletRequest rq,ModelMap mm,@RequestParam(value="msg",required =false) String msg){
+		HttpSession session = rq.getSession();
+		Emp emp = (Emp) session.getAttribute("emp");
+		List<SellIntention> slist = sis.find(emp.getEid());
 		mm.put("sell", "ok");
 		mm.put("slist", slist);
 		mm.put("emp", emp);
@@ -88,12 +89,13 @@ public class AppointController {
 	}
 	//修改卖车意向信息（信息处理状态）
 	@RequestMapping("/edit_SI")
-	public String editSellIntention(Integer id,Integer eid,ModelMap mm,Character zt){
+	public String editSellIntention(Integer id,ModelMap mm,Character zt,HttpServletRequest rq){
+		HttpSession session = rq.getSession();
+		Emp emp = (Emp) session.getAttribute("emp");
 		SellIntention si = sis.getOne(id);
 		si.setZt(zt);
 		String msg = sis.modify(si);
-		List<SellIntention> slist = sis.find(eid);
-		Emp emp = es.update_selectEmp(eid);
+		List<SellIntention> slist = sis.find(emp.getEid());
 		mm.put("sell", "ok");
 		mm.put("slist", slist);
 		mm.put("emp", emp);
