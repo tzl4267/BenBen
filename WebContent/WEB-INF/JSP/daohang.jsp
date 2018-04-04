@@ -104,11 +104,11 @@
 
  	<div class="navbar navbar-inverse">
            <ul class="nav navbar-nav">
-			  <li><img src="img/daohang/1.jpg"></li>
+			  <li><img src="${pageContext.request.contextPath}/img/daohang/1.jpg"></li>
 			  <li><a href="#">地点</a></li> 
-				<li><a href="#">卖车</a></li>
-              <li><a href="#">买车</a></li>
-    		  <li onclick="denglubtn();"><a href="#">登陆</a></li>
+				<li><a href="${pageContext.request.contextPath}/abc/SellIntentionadd">卖车</a></li>
+              <li><a href="${pageContext.request.contextPath}/home/list">买车</a></li>
+    		  <li onclick="denglubtn();"><a>登陆</a></li>
     		  <li onclick="zhucebtn();"><a href="#">注册</a></li>
     		  <li><font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA">热线电话：110</font></li>
            </ul>
