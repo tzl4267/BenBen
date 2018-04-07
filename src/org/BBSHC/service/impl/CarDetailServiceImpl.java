@@ -39,8 +39,8 @@ public class CarDetailServiceImpl implements CarDetailService {
 	}
 	//待卖车辆
 	@Override
-	public List<SecondCar> find(Integer uid,Integer cid) {
-		String hql="select sc from SecondCar sc where sc.czt=1 and sc.cid= '"+cid+"' and sc.user.uid='"+uid+"'";
+	public List<SecondCar> find(Integer uid) {
+		String hql="select sc from SecondCar sc where sc.czt=1  and sc.user.uid='"+uid+"'";
 		List<SecondCar> sc = cdd.selectHQL(hql);
 		return sc;
 	}
@@ -52,8 +52,10 @@ public class CarDetailServiceImpl implements CarDetailService {
 	}
 	//修改待买车
 	@Override
-	public String update_SecondCar(SecondCar sc, Integer cid) {
-		cdd.saveOrupdate(sc);
+	public String update_SecondCar(SecondCar sc) {
+		SecondCar one = cdd.getOne(sc.getCid());
+		one.setJg(sc.getJg());
+		cdd.saveOrupdate(one);
 		return "ok";
 	}
 	/* (non-Javadoc)
@@ -72,5 +74,10 @@ public class CarDetailServiceImpl implements CarDetailService {
 	public List<SecondCar> find(String sql) {
 		List<SecondCar> clist = cdd.select(sql);
 		return clist;
+	}
+	@Override
+	public List<SecondCar> find(Integer uid, Integer cid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

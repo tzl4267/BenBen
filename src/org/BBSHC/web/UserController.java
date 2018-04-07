@@ -92,7 +92,7 @@ public class UserController {
 	//修改用户待卖车
 	@RequestMapping("/update_secondcar")
 	public String update_secondcar(SecondCar sc,Integer cid,Integer uid){
-		cds.update_SecondCar(sc, cid);
+		cds.update_SecondCar(sc);
 		return "redirect:update_select?cid="+cid+"&uid="+uid;
 	}
 	
