@@ -98,14 +98,17 @@
             if (inputCode.length <= 0) 
             {
                 alert("请输入验证码！");
+                return false;
             }
             else if (inputCode.toUpperCase() != code.toUpperCase()) 
             {
                 alert("验证码输入有误！");
                 createCode();
+                return false;
             }
             else 
             {
+            	return true;
                 //alert("验证码正确！");
             }        
         }    
@@ -136,7 +139,7 @@
 					<h4 class="modal-title">登陆</h4>
 				</div>
 				<div class="modal-body">
-					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal">
+					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal" method="post" onsubmit="return validateCode();">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon">用户名</span>
@@ -153,7 +156,7 @@
 						<table border="0" cellspacing="5" cellpadding="5" height="60" align="center">
         		<tr>
             	<td>
-            	<div class="code" id="checkCode" onb="validateCode();"></div>
+            	<div class="code" id="checkCode" ></div>
             	<input type="text" id="inputCode" class="input"  onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
             	<a  href="#" onclick="createCode()" style="size: auto;position:relative; top:25px;">看不清换一张</a>
         		</td>
@@ -171,18 +174,6 @@
 						</div>
 					</form>
 				</div>
-
-
-
-
-				<!--验证码-->
-				<form id="form1" runat="server" onsubmit="validateCode()">
-    			<div>
-    				
-    			
-    			
-    			</div>
-    			</form>
    				 <!--验证码结束-->
 			</div>
 		</div>

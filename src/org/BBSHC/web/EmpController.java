@@ -6,9 +6,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.Dept;
 import org.BBSHC.pojo.Emp;
+import org.BBSHC.pojo.User;
 import org.BBSHC.service.DeptService;
 import org.BBSHC.service.EmpService;
 import org.springframework.stereotype.Controller;
@@ -27,8 +29,9 @@ public class EmpController {
 	private DeptService ds;
 	//员工表按id查询
 	@RequestMapping("/update_selectEmp")
-	public String update_selectEmp(ModelMap map,Integer eid){
-		Emp emp = es.update_selectEmp(eid);
+	public String update_selectEmp(ModelMap map,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Emp emp =  (Emp) session.getAttribute("emp");
 		map.put("emp", emp);
 		return "selectEmp";
 	}
@@ -49,5 +52,9 @@ public class EmpController {
 		Emp emps = es.update_selectEmp(emp.getEid());
 		map.put("emp", emps);
 		return "selectEmp";
+	}
+	@RequestMapping("/backstageLogin")
+	public String login(){
+		return "backstage";
 	}
 }

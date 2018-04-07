@@ -102,13 +102,16 @@ public class AppointController {
 	}
 	//买车约看查询指定员工的工单
 	@RequestMapping("/search_ar")
-	public String searchAppointRecord(Integer id,ModelMap mm){
-		Emp emp = es.update_selectEmp(id);
+	public String searchAppointRecord(HttpServletRequest request,ModelMap mm){
+		HttpSession session = request.getSession();
+		Emp emp =  (Emp) session.getAttribute("emp");
+		Integer eid = emp.getEid();
+		Integer did = emp.getDept().getDid();
 		List<AppointRecord> alist = new ArrayList<>();
-		if(emp.getDept().getDid()==1){
-			alist = ars.find(id); 
-		}else if(emp.getDept().getDid()==2){
-			alist = ars.jfind(id); 
+		if(did==1){
+			alist = ars.find(eid); 
+		}else if(did==2){
+			alist = ars.jfind(eid); 
 		}
 		mm.put("buy", "ok");
 		mm.put("alist", alist);

@@ -60,7 +60,6 @@ public class UserController {
 		HttpSession session = rq.getSession();
 		User user = (User) session.getAttribute("user");
 		Integer uid = user.getUid();
-		User user2 = us.update_select(uid);
 		List<Vocation> vl = vs.find();
 		//历史浏览记录
 		 List<BrowseHistory> bh = bhs.find(uid);

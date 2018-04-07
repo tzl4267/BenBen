@@ -1,17 +1,19 @@
 package org.BBSHC.web;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.BargainRecord;
 import org.BBSHC.pojo.CarBrand;
 import org.BBSHC.pojo.CarDesign;
 import org.BBSHC.pojo.CarSeries;
+import org.BBSHC.pojo.Emp;
 import org.BBSHC.pojo.Outstanding;
 import org.BBSHC.pojo.SY;
 import org.BBSHC.pojo.SecondCar;
@@ -88,8 +90,10 @@ public class CarBrandController {
 		  return "home_page";
 	  }
 	 @RequestMapping("/list5")
-	  public String find5(ModelMap map,Integer eid){
-		  	List<BargainRecord> br = brs.find(eid);
+	  public String find5(ModelMap map,HttpServletRequest request){
+		 HttpSession session = request.getSession();
+		 Emp emp = (Emp) session.getAttribute("emp");
+		  	List<BargainRecord> br = brs.find(emp.getEid());
 		    map.put("br", br);
 		    System.out.println(br);
 		  return "BargainEmp";
