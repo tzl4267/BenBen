@@ -10,5 +10,6 @@ public interface EmpService {
 	List<Emp> queryel();
 	Emp update_select(String eid);
 	void insertEmp(Emp emp);
-	
+	Emp Login(String sql);
+	List<Emp> find(String sql);
 }

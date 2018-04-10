@@ -32,7 +32,7 @@ $(function(){
 	});	
 	$("button:contains('图片上传')").click(function(){
 		var sid=$(this).parent().next().text();
-		location="${pageContext.request.contextPath}/searchSC?sid="+sid;
+		location="${pageContext.request.contextPath}/carDetail/searchSC?sid="+sid;
 	});	
 	$("button:contains('检测报告')").click(function(){
 		var id=$(this).parent().next().text();
@@ -66,9 +66,13 @@ $(function(){
 	if("${msg}"){
 		alert("${msg}");
 	}
+	$("#a2").removeClass("active");
+	$("#a3").removeClass("active");
+	$("#a4").removeClass("active");
+	$("#a1").addClass("active");
 });
 function insertSC(){
-	location="${pageContext.request.contextPath}/createPicture?id="+eid;
+	location="${pageContext.request.contextPath}/carDetail/createPicture?id="+eid;
 }
 
 		</script>
@@ -89,7 +93,8 @@ function insertSC(){
 
 </head>
 <body>
-	<!--描述：container开始  --><div class = "container" id="all">
+<jsp:include page="HTDH.jsp"></jsp:include>
+	<!--描述：container开始  --><div class = "container" id="all" style="position: relative;top:60px;">
 			<!--描述：面板row开始  -->
 			<div class = "row">
 				<div class = "col-lg-12">
@@ -114,34 +119,43 @@ function insertSC(){
 			<div class = "row">
 				<div class = "col-lg-12">
 				<c:if test="${emp.dept.did=='1'}">
-					<table border="1" style="text-align: center;width:100%;">
 					<c:if test="${alist.size()>0}">
+					<table border="1" style="text-align: center;width:100%;">
 					<tr><td>车主</td><td>车主联系方式</td><td>约看人</td><td>约看人联系方式</td><td>看车时间</td><td>检测员联系方式</td><td>看车地点</td><td>处理状态</td></tr>		
 					<c:forEach items="${alist}" var="record">
 					<tr><td>${record.sc.user.uname}</td><td>${record.sc.user.up}</td><td>${record.user.uname}</td><td>${record.user.up}</td><td>${record.ardate}</td><td>${record.sc.cr.emp.ph}</td><td>${record.sc.kcd}</td><td><b style="color: red;">${record.asta=='48'?"等待处理":"已处理"}</b></td></tr>
-					</c:forEach></c:if>
+					</c:forEach>
+					</table>
+					<div class="page appoints" style="position: relative;left:85%;top:15px;"></div>
+					</c:if>
 					<c:if test="${slist.size()>0}">
+					<table border="1" style="text-align: center;width:100%;">
 					<tr><td>车主</td><td>联系方式</td><td>看车地点</td><td>看车时间</td><td>检测员</td><td>是否合格</td><td>信息上传</td></tr>
 					<c:forEach items="${slist}" var="record">
 					<tr><td>${record.user.uname}</td><td>${record.user.up}</td><td>${record.kcd}</td><td>${record.kcsj}</td><td>${record.je.ph}</td><td>${record.zt=='48'?"等待检测":(record.zt=='49'?'合格':(record.zt=='50'?'合格':(record.zt=='51'?'合格':'不合格')))}</td><td id="sc"><button type="button">${record.zt=='49'?"车辆信息":(record.zt=='50'?'检测信息上传中':(record.zt=='51'?'图片上传':'检测中...'))}</button></td><td class="hidden">${record.sid}</td></tr>
-					</c:forEach></c:if>
-					</table>
+					</c:forEach></table>
+					<div class="page sells" style="position: relative;left:85%;top:15px;"></div>
+					</c:if>
 					</c:if>
 					
 					
 					<c:if test="${emp.dept.did=='2'}">
-					<table border="1" style="text-align: center;width:100%;">
 					<c:if test="${alist.size()>0}">
+					<table border="1" style="text-align: center;width:100%;">
 					<tr><td>车主</td><td>车主联系方式</td><td>约看人</td><td>约看人联系方式</td><td>看车时间</td><td>销售员</td><td>看车地点</td><td>处理状态</td></tr>		
 					<c:forEach items="${alist}" var="record">
 					<tr><td>${record.sc.user.uname}</td><td>${record.sc.user.up}</td><td>${record.user.uname}</td><td>${record.user.up}</td><td>${record.ardate}</td><td>${record.sc.emp.ph}</td><td>${record.sc.kcd}</td><td><button type="button" class="btn btn-info" style="color:red;font-size:16px;font-weight: bold;">${record.asta=='48'?"未处理":"已处理"}</button></td></tr>
-					</c:forEach></c:if>
+					</c:forEach></table>
+					<div class="page appointc" style="position: relative;left:85%;top:15px;"></div>
+					</c:if>
 					<c:if test="${slist.size()>0}">
+					<table border="1" style="text-align: center;width:100%;">
 					<tr><td>车主</td><td>联系方式</td><td>看车地点</td><td>看车时间</td><td>销售员</td><td>是否合格</td><td>信息上传</td></tr>
 					<c:forEach items="${slist}" var="record">
 					<tr><td>${record.user.uname}</td><td>${record.user.up}</td><td>${record.kcd}</td><td>${record.kcsj}</td><td>${record.se.ph}</td><td>${record.zt=='48'?"等待检测":(record.zt=='49'?'合格':(record.zt=='50'?'合格':(record.zt=='51'?'合格':'不合格')))}</td><td id="sc"><button type="button">${record.zt=='49'?"上传结束":(record.zt=='50'?'检测报告':(record.zt=='51'?'上传结束':'合格确认'))}</button></td><td class="hidden">${record.sid}</td></tr>
-					</c:forEach></c:if>
-					</table>
+					</c:forEach></table>
+					<div class="page sellc" style="position: relative;left:85%;top:15px;"></div>
+					</c:if>
 					</c:if>
 				</div>
 			</div><!--描述：表格row结束  -->
@@ -168,7 +182,7 @@ function insertSC(){
   <table width="100%">
   <tr>
   <td >车主id</td><td><input type="text" name="user.uid" value="${si.user.uid }"><input type = "hidden" id ="se.sid" name="se.sid" value="${si.sid}"></td><td>标价</td><td><input type="text" name="jg"></td></tr>
-  <tr><td>汽车款式</td><td><input type="text" name="cdid" value="${si.cd.cdname }"></td><td>车牌号</td><td><input type="text" name="cp"></td></tr>
+  <tr><td>汽车款式</td><td><input type="text" name="cdid" value="${si.cd.cdname }"></td><td>车牌号</td><td><input type="text" name="cp"><input type="hidden" name="cy" value="${cy}"/></td></tr>
   <tr><td>颜色</td><td><select name="ys">
   <option value="0"></option><option value="1"></option><option value="2"></option>
   </select></td> <td>上牌城市</td><td><input type="text" name="spcs" value="${si.sNative=='49'?si.city.cname:''}"></td></tr>
@@ -452,8 +466,28 @@ function insertSC(){
     </div><!--描述: 图片上传模态框content结束  -->
   </div><!--描述: 图片上传模态框dialog结束  -->
 </div> <!--描述: 图片上传模态框结束  -->	
-		
-	
 
+			<script type="text/javascript">
+			var j = "${page.count}";
+			for(i=1;i<=j;i++){
+				if(i>3&&i<j-2){
+					$(".page").append("<span>· </span>");
+				}else{
+					$(".page").append("<button type='button' class='btn btn-default' onclick='newpage(this.value,20,this);'  value='"+i+"'>"+i+"</button>");
+				}
+			}
+			function newpage(nowpage,number,obj){
+				var cla=$(obj).parent().attr("class");
+				if(cla=='page appoints'){
+					location="${pageContext.request.contextPath}/app/search_ar?nowpage="+nowpage+"&number="+number;
+				}else if(cla=='page sells'){
+					location="${pageContext.request.contextPath}/app/search_SI?nowpage="+nowpage+"&number="+number;
+				}else if(cla=='page appointc'){
+					location="${pageContext.request.contextPath}/app/search_ar?nowpage="+nowpage+"&number="+number;
+				}else if(cla=='page sellc'){
+					location="${pageContext.request.contextPath}/app/search_ar?nowpage="+nowpage+"&number="+number;
+				}
+			}
+			</script>
 </body>
 </html>

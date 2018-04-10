@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.persistence.criteria.From;
 
 import org.BBSHC.dao.SellIntentionDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.SellIntention;
 import org.BBSHC.service.SellIntentionService;
 import org.springframework.stereotype.Service;
@@ -89,6 +90,24 @@ public class SellIntentionServiceImpl implements SellIntentionService{
 	public List<SellIntention> querySellIntention() {
 		String hql = "from SellIntention";
 		return sd.selectHQL(hql);		
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = sd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<SellIntention> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 }

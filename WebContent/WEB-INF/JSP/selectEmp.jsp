@@ -14,8 +14,14 @@
    <script type ="text/javascript" src = "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
    <script type = "text/javascript" src= "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <body>
-
+<jsp:include page="HTDH.jsp"></jsp:include>
  <script type="text/javascript">
+ $(function(){
+	 $("#a1").removeClass("active");
+		$("#a3").removeClass("active");
+		$("#a4").removeClass("active");
+		$("#a2").addClass("active");
+ });
  //点击修改用户按钮
 	function updatebtn() {
 	 $("#updateModal").modal("show");
@@ -23,7 +29,7 @@
 	}
    </script>
    
-<form action="${pageContext.request.contextPath}/abc/update_selectEmp" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/abc/update_selectEmp" method="post" enctype="multipart/form-data" style="position: relative;top:60px;">
 	<input type="hidden" name="eid" value="${emp.eid}">
 	 <div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">年龄</label>

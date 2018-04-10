@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.CarSeriesDao;
 import org.BBSHC.pojo.CarSeries;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.CarSeriesSercice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,6 +83,33 @@ public class CarSeriesSerciceImpl implements CarSeriesSercice{
 	public String modify(CarSeries t) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = csd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<CarSeries> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarSeriesSercice#selectone(java.lang.String)
+	 */
+	@Override
+	public CarSeries selectone(String sql) {
+		CarSeries carseries = csd.selectone(sql);
+		return carseries;
 	}
 
 }

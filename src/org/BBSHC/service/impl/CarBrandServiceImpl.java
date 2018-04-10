@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.CarBrandDao;
 import org.BBSHC.pojo.CarBrand;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.CarBrandService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,6 +82,24 @@ public class CarBrandServiceImpl implements CarBrandService{
 	 */
 	@Override
 	public String modify(CarBrand t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = cbd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<CarBrand> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

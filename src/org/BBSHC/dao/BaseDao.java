@@ -2,12 +2,16 @@ package org.BBSHC.dao;
 
 import java.util.List;
 
+import org.BBSHC.pojo.Page;
+
 //
 public interface BaseDao<T> {
 	//查询，返回集合
 	List<T> select(Class cl,String sql);
 	//查询，返回单个对象
 	T getOne(Class cl,Integer id);
+	//查询，返回集合
+	List<T> select(String sql,Page page);
 	//查询，返回集合
 	List<T> select(String sql);
 	//查询，返回单个对象
@@ -22,4 +26,7 @@ public interface BaseDao<T> {
 	List<T> selectHQL(String hql);
 	//查询，返回单个对象
 	T getOneHql(Class cl,Integer id);
+	
+	//返回数据总数
+	int selectCount(String sql);
 }

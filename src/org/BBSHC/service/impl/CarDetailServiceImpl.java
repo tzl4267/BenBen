@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.CarDetailDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.service.CarDetailService;
 import org.springframework.stereotype.Service;
@@ -79,5 +80,21 @@ public class CarDetailServiceImpl implements CarDetailService {
 	public List<SecondCar> find(Integer uid, Integer cid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = cdd.selectCount(sql);
+		return count;
+	}
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.CarDetailService#find(java.lang.String, org.BBSHC.service.Page)
+	 */
+	@Override
+	public List<SecondCar> find(String sql, Page page) {
+		List<SecondCar> clist = cdd.select(sql, page);
+		return clist;
 	}
 }

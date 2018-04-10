@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.PictureDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.Picture;
 import org.BBSHC.service.PictureService;
 import org.springframework.stereotype.Service;
@@ -88,6 +89,24 @@ public class PictureServiceImpl implements PictureService{
 		String hql = "from Picture";
 		return pd.selectHQL(hql);
 		
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = pd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<Picture> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

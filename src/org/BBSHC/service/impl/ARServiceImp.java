@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.ARDao;
 import org.BBSHC.pojo.AppointRecord;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.ARService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Service;
@@ -35,17 +36,10 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 	 * @see org.BBSHC.service.ServiceBase#find(java.lang.String)
 	 */
 	//根据销售员id查询该员工的约看记录
-	
-	
-	
-	
-	
-	
-	
 	@Override
-	public List<AppointRecord> find(Integer id) {
+	public List<AppointRecord> find(Integer id,Page page) {
 		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where sc.czt='1' and sc.seid= '"+id+"') and ar.asta='0';";
-		List<AppointRecord> alist = ard.select(sql);
+		List<AppointRecord> alist = ard.select(sql,page);
 				return alist;
 	}
 
@@ -101,9 +95,9 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 	 */
 	//根据检测员id查询约看记录
 	@Override
-	public List<AppointRecord> jfind(Integer id) {
+	public List<AppointRecord> jfind(Integer id,Page page) {
 		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where czt='1' and crid in(select crid from checkreport  cr where cr.jeid ='"+id+"' and cr.hg='1'));";
-		List<AppointRecord> alist = ard.select(sql);
+		List<AppointRecord> alist = ard.select(sql,page);
 		return alist;
 	}
 
@@ -117,6 +111,25 @@ public class ARServiceImp implements ServiceBase<AppointRecord>,ARService{
 	@Override
 	public void insertAppointRecord(AppointRecord ar) {
 		ard.saveOrupdate(ar);	
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = ard.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer)
+	 */
+	@Override
+	public List<AppointRecord> find(Integer id) {
+		String sql = "select * from appointrecord ar where ar.cid in (select cid from secondcar sc where czt='1' and crid in(select crid from checkreport  cr where cr.jeid ='"+id+"' and cr.hg='1'));";
+		List<AppointRecord> alist = ard.select(sql);
+		return alist;
 	}
 
 }

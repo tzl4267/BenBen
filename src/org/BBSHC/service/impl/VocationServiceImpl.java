@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.VocationDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.Vocation;
 import org.BBSHC.service.VocationService;
 import org.springframework.stereotype.Controller;
@@ -80,6 +81,24 @@ public class VocationServiceImpl implements VocationService{
 	 */
 	@Override
 	public String modify(Vocation t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = vd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<Vocation> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

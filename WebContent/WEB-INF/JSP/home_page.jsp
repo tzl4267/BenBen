@@ -15,9 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript">
 
-$(function(){
-	
-		
+$(function(){			
 		$("span:contains('亮点配置')").mouseover(function(e){
 			$("#outs").css("display","block");
 			$("#czw").css("display","block");
@@ -54,23 +52,42 @@ $(function(){
 				var cbid=$(this).next().text();
 			$("#cbid").val(cbid);
 				$("#syform").submit();
-			});
+			});	
 			
-			
-	
+			$("#a2").removeClass("active");
+ 			$("#a4").removeClass("active");
+ 			$("#a1").removeClass("active");
+ 			$("#a5").removeClass("active");
+ 			$("#a3").addClass("active");
+ 			
+ 			var offsetParent=$("span:contains('亮点配置')").offset();
+ 			$("span.outstanding").css("left",offsetParent);
+ 			$("span.outstanding").css("top",offsetParent.top-64);
+ 			var a = $("select[name='zw']").offset();
+ 			$("#czw").css("left",a.left);
+ 			$("#czw").css("top",a.top);
+ 			
 });
+function newpage(nowpage){
+	$("#pagevalue").val(nowpage);
+	$("#syform").submit();
+}
+$(window).resize(function() {  
+	var a = $("select[name='zw']").offset();
+		$("#czw").css("left",a.left);
+		$("#czw").css("top",a.top);
+	});  
 </script>
 </head>
-<body style="position:relative;">
-
+<body ><span style="position:absolute;width:60px;background-color:#F8F8F8;top:201px;left:1366px;z-index:1000;" id="czw"><select style="width:85px;height:27px"><option>&nbsp;座位&nbsp;&nbsp;&nbsp;</option></select></span>
 <jsp:include page="daohang.jsp"></jsp:include>
-      <div style="width: 1200px;margin: 0px auto;">
+      <div style="width: 1200px;margin: 0px auto;position:relative;top:60px;">
       <form action="${pageContext.request.contextPath}/home/list7" method="post" id="syform">
 		<div style="width: 1200px;height: 165px;background-color: #F8F8F8;margin:0px auto" >
 		<table >
 			<tr>
-				<td >品&nbsp;牌:<input type="hidden" id="cbid" name="cbid" value="${sy.cbid}"></td>
-				<td><a href="#" class="cbid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide"></span></td>
+				<td >品&nbsp;牌:<input type="hidden" id="cbid" name="cbid" value="${sy.cbid}"><input type="hidden" id="pagevalue" name="nowpage"/></td>
+				<td><a href="#" class="cbid" style="text-decoration: none;color: black">&nbsp;不限&nbsp;</a><span class="hide">0</span></td>
 				<f:forEach items="${cb}" var="carbrand">
 				<td><a href="#" class="cbid" style="text-decoration: none;color: black">&nbsp;<font color="${carbrand.cbid==sy.cbid?'red':''}">${carbrand.cbname}</font>&nbsp;</a><span class="hide">${carbrand.cbid}</span></td>
 				</f:forEach>
@@ -223,10 +240,10 @@ $(function(){
 				<td>
 					<span style="border:1px;">亮点配置&nbsp;
 					</span>
-					<span style="position:absolute;width:60px;background-color:#F8F8F8;top:201px;left:1366px;z-index:1000;" id="czw"><select style="width:85px;height:27px"><option>&nbsp;座位&nbsp;&nbsp;&nbsp;</option></select></span>
-	<span style="position:absolute;width:150px;height:150px;display:none; z-index:99; top:201px;left:1300px;" id="outs" >
-	<span style="position:absolute;width:60px;background-color:#F8F8F8;top:2px;left:5px;">亮点配置</span>
-	<span style="position:absolute;border:black 1px solid;width:220px;height:130px;background-color:white;top:30px;left:-30px;">
+					
+	<span style="position:absolute;width:150px;height:150px;display:none; z-index:99;" id="outs" class="outstanding">
+	<span style="position:absolute;width:60px;background-color:#F8F8F8;">亮点配置</span>
+	<span style="position:absolute;border:black 1px solid;width:220px;height:130px;background-color:white;top:25px;left:-20px;">
 	
 	<input type="checkbox" style="width:16px;height:16px;position:relative;left: 10px; top:10px;" value="1" name="yx" ${ot.yx==49?'checked':''}> <span style="position: relative;left:12px;top:7px;"><font size="3px;">倒车影像</font></span>
 	<input type="checkbox" style="width:16px;height:16px;position:relative;left: 20px; top:10px;" value="1" name="qd" ${ot.qd==49?'checked':''}> <span style="position: relative;left:22px;top:7px;"><font size="3px;">无钥匙启动</font></span>
@@ -276,7 +293,7 @@ $(function(){
 		<f:forEach items="${sc}" var="secondcar">
 			<div class="col-lg-3 col-sm-3">
 			<span></span>
-			<a href="${pageContext.request.contextPath}/abcd?uid=${secondcar.user.uid}&cid=${secondcar.cid} " style="text-decoration: none;color: black"><div style="float: left; ">
+			<a href="${pageContext.request.contextPath}/carDetail/querySecondCar?uid=${secondcar.user.uid}&cid=${secondcar.cid} " style="text-decoration: none;color: black"><div style="float: left; ">
 			<div style="color: red;position: relative;top:22px;left:93%;" id="sb"></div>
 			<script type="text/javascript">
 					var d = "${secondcar.sjsj}";
@@ -304,6 +321,17 @@ $(function(){
 					</div></div>
 			</div></a></div>
 		</f:forEach></div>
+		<div id="page">
+		<script type="text/javascript">
+			var j = "${page.count}";
+			for(i=1;i<=j;i++){
+				if(i>3&&i<j-2){
+					$("#page").append("<span>· </span>");
+				}else{
+					$("#page").append("<button type='button' class='btn btn-default' onclick='newpage(this.value);' value='"+i+"'>"+i+"</button>");
+				}
+			}</script>
+		</div>
 		</div>
 		
 </body>

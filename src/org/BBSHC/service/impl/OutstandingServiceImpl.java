@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.OutstandingDao;
 import org.BBSHC.pojo.Outstanding;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.OutstandingService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -90,6 +91,24 @@ public class OutstandingServiceImpl implements OutstandingService{
 		String sql = "select * from Outstanding where sid="+sid;
 		Outstanding os = od.getOne(sql);
 		return os;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = od.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<Outstanding> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

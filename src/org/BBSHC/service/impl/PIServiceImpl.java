@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.PIDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.ProcedureInfo;
 import org.BBSHC.service.PIService;
 import org.BBSHC.service.ServiceBase;
@@ -92,6 +93,24 @@ public class PIServiceImpl implements ServiceBase<ProcedureInfo>,PIService{
 		String sql = "select * from procedureinfo where sid="+sid;
 		ProcedureInfo pi = pid.getOne(sql);
 		return pi;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = pid.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<ProcedureInfo> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

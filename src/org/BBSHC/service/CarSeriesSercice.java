@@ -10,4 +10,5 @@ import org.BBSHC.pojo.CarSeries;
 public interface CarSeriesSercice extends ServiceBase<CarSeries>{
   List<CarSeries> find();
   List<CarSeries> find(Integer id);
+  CarSeries selectone(String sql);
 }

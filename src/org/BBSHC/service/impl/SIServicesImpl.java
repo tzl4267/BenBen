@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.SIDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.SellIntention;
 import org.BBSHC.service.SIService;
 import org.BBSHC.service.ServiceBase;
@@ -92,6 +93,24 @@ public class SIServicesImpl implements ServiceBase<SellIntention>,SIService{
 		String hql = "select sr from SellIntention sr where sr.zt='0' and (sr.seid='"+id+"' or sr.jeid='"+id+"')";
 		List<SellIntention> srlist = sid.selectHQL(hql);
 		return srlist;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = sid.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<SellIntention> find(Integer id, Page page) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -55,7 +55,7 @@
 <body>
 <jsp:include page="daohang.jsp"></jsp:include>
 
-<div class="container"><!--container容器开始 -->
+<div class="container" style="position: relative;top:60px;"><!--container容器开始 -->
 <!--汽车详细信息展示开始  -->
 <div class="row"><!-- row1开始  -->
 

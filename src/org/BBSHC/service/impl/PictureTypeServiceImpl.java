@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.PictureTypeDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.PictureType;
 import org.BBSHC.service.PictureTypeService;
 import org.springframework.stereotype.Controller;
@@ -79,6 +80,24 @@ public class PictureTypeServiceImpl implements PictureTypeService{
 	 */
 	@Override
 	public String modify(PictureType t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = ptd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<PictureType> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

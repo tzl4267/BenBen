@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.SellRecordDao;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.SellRecord;
 import org.BBSHC.service.SellRecordService;
 import org.springframework.stereotype.Controller;
@@ -82,6 +83,24 @@ public class SellRecordServiceImpl implements SellRecordService{
 	 */
 	@Override
 	public String modify(SellRecord t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = srd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<SellRecord> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

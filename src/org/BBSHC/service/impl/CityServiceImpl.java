@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.CityDao;
 import org.BBSHC.pojo.City;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.CityService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,6 +80,24 @@ public class CityServiceImpl implements CityService{
 	 */
 	@Override
 	public String modify(City t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = cd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<City> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

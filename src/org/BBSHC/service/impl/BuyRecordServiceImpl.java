@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.BuyRecordDao;
 import org.BBSHC.pojo.BuyRecord;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.BuyRecordService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,9 @@ public class BuyRecordServiceImpl implements ServiceBase<BuyRecord>,BuyRecordSer
 	}
 
 	@Override
-	public List<BuyRecord> find(Integer id) {
+	public List<BuyRecord> find(Integer id,Page page) {
 		String hql="select br from BuyRecord br where br.user.uid="+id;
-		List<BuyRecord> brl = brd.selectHQL(hql);
+		List<BuyRecord> brl = brd.select(hql,page);
 		return brl;
 	}
 
@@ -63,4 +64,18 @@ public class BuyRecordServiceImpl implements ServiceBase<BuyRecord>,BuyRecordSer
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = brd.selectCount(sql);
+		return count;
+	}
+	@Override
+	public List<BuyRecord> find(Integer id) {
+		String hql="select br from BuyRecord br where br.user.uid="+id;
+		List<BuyRecord> brl = brd.selectHQL(hql);
+		return brl;
+	}
 }

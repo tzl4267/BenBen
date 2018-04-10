@@ -6,12 +6,16 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.BBSHC.pojo.BargainRecord;
 import org.BBSHC.pojo.CarBrand;
 import org.BBSHC.pojo.CarDesign;
 import org.BBSHC.pojo.CarSeries;
+import org.BBSHC.pojo.Emp;
 import org.BBSHC.pojo.Outstanding;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.pojo.SY;
 import org.BBSHC.pojo.SecondCar;
 import org.BBSHC.service.BargainRecordService;
@@ -21,6 +25,7 @@ import org.BBSHC.service.CarSeriesSercice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/home")
@@ -43,11 +48,17 @@ public class CarBrandController {
 		 List<SecondCar> sc = cds.querySecondCar();
 		 List<CarSeries> cs = css.find();//车系
 		 List<CarBrand> cb = cbs.find();//汽车品牌
+		 Page page = new Page(24);
+		 page.setNowPage(1);
+		 String sql = "select * from secondcar";
+		 int count = cds.findCount(sql);
+		 page.setCount(count);
 		 Calendar calendar = Calendar.getInstance();
 		 calendar.setTime(new Date());
 		 calendar.add(Calendar.DATE, -3);
 		 Date dat = calendar.getTime();
 		 long dateCheck = dat.getTime();
+		 map.put("page", page);
 		 map.put("datecheck", dateCheck);
 		 map.put("cs", cs);
 		 map.put("cb", cb);
@@ -87,8 +98,10 @@ public class CarBrandController {
 		  return "home_page";
 	  }
 	 @RequestMapping("/list5")
-	  public String find5(ModelMap map,Integer eid){
-		  	List<BargainRecord> br = brs.find(eid);
+	  public String find5(ModelMap map,HttpServletRequest request){
+		 HttpSession session = request.getSession();
+		 Emp emp = (Emp) session.getAttribute("emp");
+		  	List<BargainRecord> br = brs.find(emp.getEid());
 		    map.put("br", br);
 		    System.out.println(br);
 		  return "BargainEmp";
@@ -96,19 +109,29 @@ public class CarBrandController {
 
 	 @RequestMapping(value="/list6")
 	  public String find8(BargainRecord br){
-		BargainRecord b = brs.getOne(br.getBid());
-		b.setRf(br.getRf());
-		brs.updateBargainRecord(br);
-		  return "ok";
+	
+		brs.insertBargainRecord(br);
+	
+		  return "redirect:list5";
 	  }
 	 @RequestMapping(value="/list7")
-	 public String searchByTJ(SY sy,CarDesign cd,Outstanding ot,ModelMap mm){
+	 public String searchByTJ(SY sy,CarDesign cd,Outstanding ot,ModelMap mm,@RequestParam(value="p",required=false)Page p){
+		 Page page = new Page(24);
+			if(p!=null){
+				int nowpage = p.getNowPage();
+				if(p!=null&&nowpage>1){
+					page.setNowPage(nowpage);
+				}else{
+					page.setNowPage(1);
+				}
+			}
 		 Calendar calendar = Calendar.getInstance();
 		 calendar.setTime(new Date());
 		 calendar.add(Calendar.DATE, -3);
 		 Date dat = calendar.getTime();
 		 long dateCheck = dat.getTime();
 		 mm.put("datecheck", dateCheck);
+		 Integer csid = sy.getCsid();
 		 String sql ="select * from secondcar where czt = '1' ";
 		 double lc1=0,lc2=100;
 		 if(sy!=null&&sy.getLc()!=null){
@@ -162,8 +185,17 @@ public class CarBrandController {
 		 String sql1 = " select csid from carseries where  1=1 ";
 		 if(sy!=null){
 			 if(sy.getCbgb()==null){
-				 if(sy.getCbid()!=null){
-					 sql1= sql1+" and cbid ="+sy.getCbid();
+				 Integer cbid = sy.getCbid();
+				 if(cbid!=null){
+					 sql1= sql1+" and cbid ="+cbid;
+					 if(cbid==0){sy.setCsid(null);
+					 }else if(csid!=null){
+						 String scsid = "select * from CarSeries where cbid="+cbid+" and csid="+csid;
+							CarSeries carseries = css.selectone(scsid);
+							if(carseries==null){
+								sy.setCsid(null);
+							}
+					 }
 					 }
 			 }else{
 				 sy.setCsid(null);
@@ -176,10 +208,10 @@ public class CarBrandController {
 		 }
 		 
 		 String sql2 = " select cdid from cardesign where 1=1 ";
-		 if(sy!=null&&sy.getCsid()!=null&&(sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null)){
-			 sql2 = sql2+" and (csid = "+sy.getCsid()+" or csid in ("+sql1+"))";
-		 }else if(sy!=null&&sy.getCsid()!=null){
-			 sql2=sql2+" and csid="+sy.getCsid();
+		 if(sy!=null&&csid!=null&&(sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null)){
+			 sql2 = sql2+" and (csid = "+csid+" or csid in ("+sql1+"))";
+		 }else if(sy!=null&&csid!=null){
+			 sql2=sql2+" and csid="+csid;
 		 }else if(sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null){
 			 sql2 = sql2 +" and csid in ("+sql1+")";
 		 }
@@ -213,12 +245,12 @@ public class CarBrandController {
 			 sql2 = sql2 + " and zw = "+cd.getZw();
 		 }
 		 
-		 if(cd!=null&&cd.getCdid()!=null&&(sy.getCsid()!=null||sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null)){
+		 if(cd!=null&&cd.getCdid()!=null&&(csid!=null||sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null)){
 			sql = sql + " and (cdid ='"+cd.getCdid()+"' or cdid in("+sql2+"))";
 			 
 		 }else if(cd!=null&&cd.getCdid()!=null){
 			 sql = sql + " and cdid = "+cd.getCdid();
-		 }else if(sy.getCsid()!=null||sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null){
+		 }else if(csid!=null||sy.getCtid()!=null||sy.getCbid()!=null||sy.getCbgb()!=null){
 			 sql = sql + " and cdid in ("+sql2+")";
 		 }
 		 String sql3 = "select oid from outstanding where 1=1 ";
@@ -250,7 +282,9 @@ public class CarBrandController {
 			sql = sql +" and oid in ("+ sql3+" )";
 		}
 		sql = sql +" order by sjsj desc";
-		List<SecondCar> clist = cds.find(sql);
+		int count = cds.findCount(sql);
+		page.setCount(count);
+		List<SecondCar> clist = cds.find(sql,page);
 		 if(sy!=null){
 			 if(sy.getCbid()!=null){
 				 List<CarSeries> cs = css.find(sy.getCbid());//品牌id查询车系
@@ -262,6 +296,7 @@ public class CarBrandController {
 			
 		 }
 		 List<CarBrand> cb = cbs.find();//汽车品牌
+		 mm.put("page", page);
 		 mm.put("cb", cb);
 		 mm.put("cd", cd);
 		 mm.put("ot", ot);

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.BrowseHistoryDao;
 import org.BBSHC.pojo.BrowseHistory;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.BrowseHistoryService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Service;
@@ -82,6 +83,24 @@ public class BrowseHistoryServiceImpl implements ServiceBase<BrowseHistory>,Brow
 	 */
 	@Override
 	public String modify(BrowseHistory t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = bhd.selectCount(sql);
+		return count;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer, org.BBSHC.pojo.Page)
+	 */
+	@Override
+	public List<BrowseHistory> find(Integer id, Page page) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.BBSHC.dao.BargainRecordDao;
 import org.BBSHC.pojo.BargainRecord;
+import org.BBSHC.pojo.Page;
 import org.BBSHC.service.BargainRecordService;
 import org.BBSHC.service.ServiceBase;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	private BargainRecordDao brd;
 	@Override
 	public List<BargainRecord> find() {
-		String hql="from BargainRecord";
-		return brd.selectHQL(hql);
+		// TODO Auto-generated method stub
+				return null;
 		
 	}
 
@@ -36,7 +37,7 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	 * @see org.BBSHC.service.ServiceBase#find(java.lang.Integer)
 	 */
 	@Override
-	public List<BargainRecord> find(Integer eid) {
+	public List<BargainRecord> find(Integer eid,Page page) {
 		String hql="from BargainRecord br where br.brsta=0 and br.sc.emp.eid="+eid;
 		System.out.println(hql);
 		return brd.selectHQL(hql);
@@ -47,8 +48,8 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	 */
 	@Override
 	public BargainRecord getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return brd.getOne(BargainRecord.class, id);
 	}
 
 	/* (non-Javadoc)
@@ -89,12 +90,33 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 
 	@Override
 	public void insertBargainRecord(BargainRecord bd) {
-	brd.saveOrupdate(bd);	
+		BargainRecord bbb = brd.getOne(bd.getBid());
+		bbb.setRf(bd.getRf());
+		bbb.setBrsta('1');
+	    brd.saveOrupdate(bbb);	
 	}
 
 	@Override
 	public void updateBargainRecord(BargainRecord br) {
-		brd.saveOrupdate(br);		
+		// TODO Auto-generated method stub
+		
 	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.ServiceBase#findCount(java.lang.String)
+	 */
+	@Override
+	public int findCount(String sql) {
+		int count = brd.selectCount(sql);
+		return count;
+	}
+
+	@Override
+	public List<BargainRecord> find(Integer eid) {
+		String hql="from BargainRecord br where br.brsta=0 and br.sc.emp.eid="+eid;
+		System.out.println(hql);
+		return brd.selectHQL(hql);
+	}
+
 
 }

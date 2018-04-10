@@ -18,12 +18,17 @@
 	$(function(){
 		$("button:contains('点击添加')").click(function(){
 			$("input[name='bid']").val($(this).next().text());
+			
 		});
+		$("#a2").removeClass("active");
+		$("#a3").removeClass("active");
+		$("#a1").removeClass("active");
+		$("#a4").addClass("active");
 	});
 </script>
 <body>
-
-  <table class="table table-striped" >
+<jsp:include page="HTDH.jsp"></jsp:include>
+  <table class="table table-striped" style="position: relative;top:60px;">
   
     <tr >
 		<th style="text-align: center;">员工名称</th>
@@ -47,8 +52,9 @@
 				</button><font class="hidden">${bargainrecord.bid}</font>
 		</td>
 	</tr>
-	  </f:forEach>
+	</f:forEach>  
   </table>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -78,5 +84,6 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
+
 </body>
 </html>

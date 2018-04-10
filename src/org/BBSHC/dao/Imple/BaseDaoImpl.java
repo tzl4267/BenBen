@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.BBSHC.dao.BaseDao;
+import org.BBSHC.pojo.Page;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -102,10 +103,16 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	 * @see org.BBSHC.dao.BaseDao#select(java.lang.String)
 	 */
 	@Override
-	public List<T> select(String sql) {
+	public List<T> select(String sql,Page page) {
 		Session session = sf.getCurrentSession();
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity(cls);
+		int nowpage = page.getNowPage();
+		int number = page.getNumber();
+		if(page!=null&&nowpage>1){
+			query.setFirstResult((nowpage-1)*number);
+		}
+		query.setMaxResults(nowpage*number);
 		List<T> tlist = query.list();
 		return tlist;
 	}
@@ -118,6 +125,29 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		Session session = sf.getCurrentSession();
 		T t = (T) session.get(cls, id);
 		return t;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.dao.BaseDao#selectCount(java.lang.String)
+	 */
+	@Override
+	public int selectCount(String sql) {
+		Session session = sf.getCurrentSession();
+		SQLQuery query = session.createSQLQuery(sql).addEntity(cls);
+		List count = query.list();
+		return count.size();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.dao.BaseDao#select(java.lang.String)
+	 */
+	@Override
+	public List<T> select(String sql) {
+		Session session = sf.getCurrentSession();
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity(cls);
+		List<T> tlist = query.list();
+		return tlist;
 	}
 
 }

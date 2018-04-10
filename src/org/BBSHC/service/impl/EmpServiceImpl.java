@@ -44,4 +44,22 @@ public class EmpServiceImpl implements EmpService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.EmpService#Login(java.lang.String)
+	 */
+	@Override
+	public Emp Login(String sql) {
+		Emp emp = ed.selectEmp(sql);
+		return emp;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.BBSHC.service.EmpService#find(java.lang.String)
+	 */
+	@Override
+	public List<Emp> find(String sql) {
+		List<Emp> elist = ed.select(sql);
+		return elist;
+	}
 }
