@@ -128,6 +128,14 @@ $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",funct
 		function kkbtn(){
 			$("#kk").modal("show");
 		}
+		function MCbtn(){
+			var user="${user}";
+	    	if(user&&user!=""){
+	    		location="${pageContext.request.contextPath}/abc/SellIntentionadd";
+	    	}else{
+	    		$("#loginModal").modal("show");
+	    	}
+		}
 		
 		var code;
         function createCode() {
@@ -167,8 +175,76 @@ $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",funct
             	return true;
                 //alert("验证码正确！");
             }        
+        	 event=event||window.event;
+        		 var inputCode = document.getElementById("inputCode").value;
+                 if (inputCode=='请输入验证码'||inputCode.length <= 0) 
+                 {alert("请输入验证码！");
+                     event.preventDefault();
+                     
+                 }else if (inputCode.toUpperCase() != code.toUpperCase()) 
+                 {
+                     alert("验证码输入有误！");
+                     event.preventDefault();
+                    
+                 }else 
+                 {
+                 	return true;
+                     //alert("验证码正确！");
+                 }       
+        	 
+            
         }    
 		</script>
+		
+		<!-- 登陆模态框开始 -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"aria-label="Close">						
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">登陆</h4>
+				</div>
+				<div class="modal-body">
+					<form action="${pageContext.request.contextPath}/abc/login1" class="form-horizontal">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">用户名:</span>
+								<input type="hidden" name="cid" value="${s.cid}"/>
+								<input type="text" class="form-control" name="uname"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+							<span class="input-group-addon">密码</span> 
+							<input type="password"class="form-control" name="upass"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="submit" class="form-control" value="登陆"/>									
+							</div>
+						</div>
+					</form>
+				</div>
+				</div>
+				</div>
+				</div>				
+	<!--登陆模态框结束  -->	
+		
+
+ 	<div class="navbar navbar-inverse">
+ 	<div class="navbar-header">
+  <img src="${pageContext.request.contextPath}/img/daohang/1.jpg" style="position: relative;left:-250px;">
+  <a href="#" class="navbar-brand" style="position: relative;left:300px;top:8px;"><font size="5">地点</font></a>
+  <a href="#" onclick="MCbtn();" class="navbar-brand middle" style="position: relative;left:480px;top:8px;"><font size="5">卖车</font></a>
+  <a href="${pageContext.request.contextPath}/home/list" class="navbar-brand middle" style="position: relative;left:550px;top:8px;"><font size="5">买车</font></a>
+  <a href="#" onclick="denglubtn();" class="navbar-brand rela"><font>登陆</font></a>
+  <a href="#" onclick="zhucebtn();" class="navbar-brand rela"><font>注册</font></a>
+  <font style="font-weight:bold;font-style:italic;" size="6" color="#46B8DA" class="rela">热线电话：110</font>
+  </div>
+           </div>
 <!-- 登陆modal -->
 
 	<div class="modal fade" id="denglu" tabindex="-1" role="dialog">
@@ -200,7 +276,11 @@ $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",funct
         		<tr>
             	<td>
             	<div class="code" id="checkCode" ></div>
+<<<<<<< HEAD
             	<input type="text" id="inputCode" class="input"  onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" style="color:green;font-size:18px;"/>
+=======
+            	<input type="text" id="inputCode" class="input"  onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
+>>>>>>> branch 'master' of https://github.com/tzl4267/BenBen.git
             	<a  href="#" onclick="createCode()" style="size: auto;position:relative; top:25px;">看不清换一张</a>
         		</td>
         		</tr>
@@ -212,7 +292,7 @@ $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js",funct
 						<div class="form-group btn">
 							<div class="input-group">
 								<input type="submit"
-									class="form-control" value="登陆" onclick="validateCode();"/>
+									class="form-control" value="登陆" onclick="validateCode();" />
 							</div>
 						</div>
 					</form>

@@ -30,7 +30,7 @@ public class SellIntention {
 	       private Character yq;//预期售出时间 （不是时间）
 	       private Date kcsj;//看车时间 
 	       private String kcd;//看车地点
-	       private Character zt;//处理状态 0：未处理 1：已处理
+	       private Character zt;//处理状态 0：未处理 1：已处理 
 	       private Emp se;//销售专员
 	       private Emp je ;//检测专员
            private User user;//车主id

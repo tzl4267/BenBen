@@ -31,6 +31,19 @@
   <div class="panel-heading"><img src="${pageContext.request.contextPath}/img/benben.png"></div>
  <form action="${pageContext.request.contextPath}/abc/SellIntentionadd1">
   <table class="table">
+  <tr style="text-align: right;">  	
+    <td></td>
+     <td>
+     	 <div class="form-group">
+    <label for="cd" class="col-sm-2 control-label sr-only">id</label>  
+     <div class="col-sm-10">
+   <input type="hidden" name="user.uid" value="${user.uid}">
+  </div>
+  </div>     	
+     </td>	
+    </tr>
+  
+  
     <tr style="text-align: right;">  	
     <td>汽车款式</td>
      <td>
@@ -38,7 +51,7 @@
     <label for="cd" class="col-sm-2 control-label sr-only">汽车款式</label>  
      <div class="col-sm-10">
     <select name="cd.cdid" class="form-control" required="required">
-    	<option value="0">选择你的车型</option>
+    	<option value="">选择你的车型</option>
      <c:forEach items="${cdd}" var="cd">
     <option value="${cd.cdid}">${cd.cdname}</option>
       </c:forEach>
@@ -147,21 +160,24 @@
      <option value="3">不着急,价格合适在卖</option>
      </select>
     </div>
-  </div> </td>	
+  </div> 
+ 
+  </td>	 
     </tr>
     <tr style="text-align: right;">  	
     <td>车况</td>	
-     <td> <div class="form-group">
+     <td align="center"> <div class="form-group">
     <label for="ck" class="col-sm-2 control-label sr-only">车况</label>
     <div class="col-sm-10">
-     <select name="ck" class="form-control">
+     <select name="ck" class="form-control" id="se">
      <option value="0">车况好,没有任何事故</option>
      <option value="1">有过少量剐蹭或钣金</option>
-     <option value="2">有伤及过车辆主体框架的碰撞事故</option>
-     <option value="3">有水泡或火烧历史</option>
+     <option value="2">车龄小,保养新</option>
      </select>
+     <font color="red"><img width="50" height="50" src="${pageContext.request.contextPath}/image/XL.jpg">温馨提示:本平台拒绝事故车,黄牛车,水淹车</font>
     </div>
-  </div> </td>	
+  </div>
+   </td>	
     </tr>
     
     <tr style="text-align: right;">  	

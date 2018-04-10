@@ -50,8 +50,8 @@ public class CarDetailController {
 	@Resource
 	private OutstandingService oss;
 	//卖车意向信息表service接口
-		@Resource
-		private SIService sis;
+	@Resource
+	private SIService sis;
 	@Resource
 	private ARService ars;
 	@Resource
@@ -176,8 +176,9 @@ public class CarDetailController {
 			if (user !=null) {
 				session.setAttribute("user", user);
 			}else {
-				msg="账号或密码错误！";				
+				msg="fail";	 			
 			}
 			return "redirect:querySecondCar?msg="+msg+"&cid="+cid;
 		}
-}
+} 
+ 

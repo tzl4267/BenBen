@@ -53,7 +53,7 @@
 <body>
 <jsp:include page="daohang.jsp"></jsp:include>
 		<center>
-		<img id="img" src="${pageContext.request.contextPath}/image/dui.png">
+		<img id="img" src="${pageContext.request.contextPath}/img/dui.png">
 		</center>
 	<div id="div1">
 	<h2>恭喜,您已预约成功！</h2>
@@ -86,5 +86,6 @@
 	</table>
 	</div>
 	<h5 id="hh">洗车建议：评估师会用专业的单反为您的爱车拍摄写真集，所以验车前建议您给爱车洗个澡，整理下后备箱。好卖相才有好的价格</h5>
+	
 </body>
 </html>
