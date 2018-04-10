@@ -87,7 +87,7 @@ public class UserController {
 		 map.put("brd",brd);
 		map.put("bh", bh);
 		map.put("vl", vl);
-		map.put("user2", user);
+		map.put("user2", user2);
 		return "update_selectUser";
 	}
 	//用户表的修改方法
@@ -114,6 +114,6 @@ public class UserController {
 			msg="账号或密码错误！";
 			mm.put("msg", msg);
 		}
-		return "home_page";
+		return "redirect:/home/list";
 	}
 }

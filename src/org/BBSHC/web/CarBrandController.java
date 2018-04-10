@@ -38,7 +38,9 @@ public class CarBrandController {
 	  
 	  @Resource
 	  private BargainRecordService brs;
+	  
 
+	
 	  @RequestMapping("/list")
 	  public String find(ModelMap map){
 		 List<SecondCar> sc = cds.querySecondCar();

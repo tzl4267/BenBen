@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public List<User> queryull() {
-		String hql=" from User";
+		String hql="from User";
 		List<User> ull = ud.selectHQL(hql);
 		return ull;
 	}

@@ -110,6 +110,7 @@
 							<div class="col-sm-10">
 								<input type="text" class="form-control" name="uname"
 								 value="${user2.uname}" pattern="^[\u4e00-\u9fa5]*">
+								  <font color="gray">只能输入汉字</font>
 							</div>
 						</div>
 
@@ -129,6 +130,7 @@
     <label for="lastname" class="col-sm-2 control-label">密码:</label>
     <div class="col-sm-10">
       <input type="text" name="upass" class="form-control" value="${user2.upass}" pattern="^[a-zA-Z]\w{5,17}$">
+      <font color="gray">以字母开头的6位数</font>
     </div>
   </div> 
   
@@ -165,6 +167,7 @@
     <label for="lastname" class="col-sm-2 control-label">联系方式:</label>
     <div class="col-sm-10">
       <input type="text" name="up" class="form-control" value="${user2.up}"  pattern="^1\d{10}$">
+      <font color="gray">以1开头的11位数字</font>
     </div>
   </div> 
   <div class="modal-footer">
