@@ -89,15 +89,15 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 
 	@Override
 	public void insertBargainRecord(BargainRecord bd) {
-		BargainRecord bbb = brd.getOne(bd.getBid());
-		bbb.setRf(bd.getRf());
-		bbb.setBrsta('1');
-	    brd.saveOrupdate(bbb);	
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void updateBargainRecord(BargainRecord br) {
-		// TODO Auto-generated method stub
+		BargainRecord bbb = brd.getOne(br.getBid());
+		bbb.setRf(br.getRf());
+		bbb.setBrsta('1');
+	    brd.saveOrupdate(bbb);	
 		
 	}
 
