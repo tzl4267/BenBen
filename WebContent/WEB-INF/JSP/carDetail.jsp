@@ -5,9 +5,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<link href="${pageContext.request.contextPath}/css/all.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/aq.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/gjjmanage/login1.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="${pageContext.request.contextPath}/js/chk2.js"></script>
 <style type="text/css">
     body{
      padding-top: 30px;
@@ -36,20 +40,15 @@
    <link rel="stylesheet"  href="${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.css">
    <script type ="text/javascript" src = "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table.min.js"></script>
    <script type = "text/javascript" src= "${pageContext.request.contextPath}/js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
-   <script type="text/javascript">
-   /* 显示砍价模态框 */
-    function showPriceModal(){
-	$("#priceModal").modal("show");		
-   }
-   
-    /* 显示预约看车模态框*/
-   function showAppointModal(){
-		$("#appointModal").modal("show");		
-	   }
-   
+   <script type="text/javascript">        
    /* 显示播放视屏模态框*/
    function showVideoModal(){
 		$("#videoModal").modal("show");		
+	   }
+   
+   /* 显示贷款模态框*/
+   function showLoanModal(){
+		$("#loanModal").modal("show");		
 	   }
 </script>
 <body>
@@ -112,12 +111,14 @@
                     </div>					
 				</div>
 				<c:forEach items="${pList}" var="p">
+				<c:if test="${p.sc.cid eq s.cid}">
 				<div class="item">
 					<img src="${pageContext.request.contextPath}/${p.purl}" class="img-rounded" width="500" height="99" >
 					<div class="carousel-caption">
                     <font size="3" color="white">${p.pinfo}</font>
                     </div>							
-				</div>
+				</div>	
+				</c:if>			
 				</c:forEach>			
 			</div>
 			<a class="left carousel-control" href="#ad-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -159,14 +160,48 @@
   
   <tr ><!-- tr7开始 -->
   <td colspan="2" style="text-align: center;">
-  <button class="btn btn-danger btn-sm" onclick="showAppointModal();">
+  <button class="btn btn-danger btn-sm" id = "btn2">
   <span class='glyphicon glyphicon-earphone'></span>预约看车</button>
+	   <script>	 
+    $("#btn2").click(function(){    	
+    	var user="${user}";
+    	if(user&&user!=""){ 
+    		$("#appointModal").modal("show");    	      			       	 		
+    	}else{
+    		$("#loginModal").modal("show");
+    	}  
+    });
+</script>	
   </td>
-  <td colspan="2" style="text-align: center;">
-  <button class="btn btn-danger btn-sm" onclick="showPriceModal();"> 
+  <td colspan="1" style="text-align: center;">
+  <button class="btn btn-danger btn-sm"id="btn1"> 
   <span class='glyphicon glyphicon-usd'></span>砍价</button>
+  <script>	 
+    $("#btn1").click(function(){    	
+    	var user="${user}";
+    	if(user&&user!=""){ 
+    		$("#priceModal").modal("show");    	      			       	 		
+    	}else{
+    		$("#loginModal").modal("show");
+    	}  
+    });
+</script>	
   </td>
-  <td colspan="2" style="text-align: center;">  				 		
+  <td colspan="1" style="text-align: center;">
+  <button class="btn btn-danger btn-sm" onclick="openQq(1463638699);"> 
+  <span class="glyphicon glyphicon-hand-down"></span>
+   降价提醒</button>
+  <script type="text/javascript">
+  function openQq(qq){
+  	location.href="tencent://message/?uin="+qq+"&Site=http://www.zjsoar.com&;Menu=yes";
+  };
+  </script>    	  	    
+  </td>
+   <td colspan="1" style="text-align: center;">
+  <button class="btn btn-danger btn-sm" onclick="showLoanModal();"> 
+  <span class='glyphicon glyphicon-usd'></span>贷款买车</button>
+  </td>
+  <td colspan="1" style="text-align: center;">  				 		
 	<font color="red"><span id = "span1" class="btn glyphicon ${c!=null ? 'glyphicon-heart':'glyphicon-heart-empty'}"></span>
 	<font color="black" style="position: relative;top:2px;left:-5px;">收藏</font></font>
 	<script>	 
@@ -174,10 +209,8 @@
     	$(this).toggleClass("glyphicon-heart-empty");
 		$(this).toggleClass("glyphicon-heart");
     	var user="${user}";
-    	console.log(user&&user!="");
     	if(user&&user!=""){
     		var c ="${c}";
-    		console.log(c&&c!="");
     		if(c&&c!=""){    			
     			location="${pageContext.request.contextPath}/carDetail/deleteCollectRecord?crid=${c.crid}";       			
         	}else{        		
@@ -246,7 +279,7 @@
   
   <!--判断只有使0过户才会显示出以下信息  -->
   <c:if test="${s.pi.gh eq '48'}">
-  <tr >
+  <tr>
   <td style="text-align: center;">
   <font color="orange" size="5"><span class="glyphicon glyphicon-thumbs-up"></span></font></td>
  <td style="text-align: center;">
@@ -481,7 +514,15 @@
   </tr>
   
   <tr style="text-align:center;" class="active">
-  <td>车身颜色:${s.ys}</td>
+  <td>车身颜色:<c:if test="${s.ys eq '1'}">白色</c:if>
+             <c:if test="${s.ys eq '2'}">红色</c:if>
+             <c:if test="${s.ys eq '3'}">黄色</c:if>
+             <c:if test="${s.ys eq '4'}">黑色</c:if>
+             <c:if test="${s.ys eq '5'}">银灰色</c:if>
+             <c:if test="${s.ys eq '6'}">蓝色</c:if>
+             <c:if test="${s.ys eq '7'}">橙色</c:if>
+  </td>
+  
   <td>年检到期时间:<fmt:formatDate value="${s.pi.nj}" pattern="yyyy-MM-dd"/></td>	             
   <td>交强险到期时间:<fmt:formatDate value="${s.pi.jqx}" pattern="yyyy-MM-dd"/></td>
   <td>商业险到期时间:<fmt:formatDate value="${s.pi.syx}" pattern="yyyy-MM-dd"/></td>	             
@@ -534,6 +575,154 @@
 </div><!--row11结束  -->
 <!-- 二手车检测报告信息结束 -->
 
+<!--  贷款模态框开始-->
+<div class="modal fade" id="loanModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"data-backdrop="false">		
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h5 class="modal-title" id="myModalLabel">
+					<span class="glyphicon glyphicon-calendar"></span>					
+					等额本金月还款计算器</h5>					
+				</div>
+				<div class="modal-body">
+					<TABLE cellSpacing=1 cellPadding=0 width=500 align=center bgColor=#000000 
+border=0>
+  <TBODY>
+    <TR bgColor=#333399>
+      <TD height=30 colSpan=3 bgcolor="#0053A6"><DIV align=center><FONT 
+      color=#ffffff>:::::::::::::<STRONG>等额本金月还款计算器</STRONG>:::::::::::::</FONT></DIV></TD>
+    </TR>
+    <TR>
+      <TD width=5 bgColor=#cccccc>&nbsp;</TD>
+      <TD vAlign=top bgColor=#f5f5f5><DIV align=center>
+        <table width="490" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="2"></td>
+          </tr>
+          <tr>
+            <td height="8"><TABLE cellSpacing=0 cellPadding=0 
+                  width=98% align=center border=0>
+              <TBODY>
+                <TR bgColor=#e7f3d6>
+                  <TD height="22" valign="bottom" bgcolor="#F5F5F5"><strong>请输入以下信息：</strong></TD>
+                </TR>
+              </TBODY>
+            </TABLE></td>
+          </tr>
+          <tr>
+            <td><form name="form1" method="post" action="http://www.zzgjj.gov.cn/jsq/return.asp" onSubmit="return formerr();">
+              <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=4 
+                  width=98% align=center borderColorLight=#666666 border=1>
+                <TBODY>
+                  <TR bgColor=#e7f3d6>
+                    <TD><div align="right">贷款总额：</div></TD>
+                    <TD width="351" bgcolor="#F5F5F5">
+                      <input name="num1" type="text" class="inputcss" id="num1" onKeyUp="value=value.replace(/[^\d  |^\.]/g,'')" value="0" size="10" maxlength="8"  onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d  |^\.]/g,''))">
+                       元                    </TD>
+                  </TR>
+                  <TR bgColor=#e7f3d6>
+                    <TD><div align="right">年 利 率：</div></TD>
+                    <TD bgcolor="#F5F5F5">
+                      <input name="num2" type="text" class="inputcss" id="num2" onKeyUp="value=value.replace(/[^\d  |^\.]/g,'')" value="0" size="10" maxlength="6"  onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d  |^\.]/g,''))" >
+                       %</TD>
+                  </TR>
+                  <TR bgColor=#e7f3d6>
+                    <TD><div align="right">贷款期限：</div></TD>
+                    <TD bgcolor="#F5F5F5"><input name="num3" type="text" class="inputcss" id="num3" onKeyUp="value=value.replace(/[^\d  |^\.]/g,'')" value="0" size="10" maxlength="2"  onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d  |^\.]/g,''))"> 
+                    年</TD>
+                  </TR>
+                  <TR bgColor=#e7f3d6>
+                    <TD width=107><div align="right">起贷日期：</div></TD>
+                    <TD bgcolor="#F5F5F5"><input name="num4" type="text" class="inputcss" id="num4"  value="2018-4-8" size="10" maxlength="12" ></TD>
+                  </TR>
+                  <TR bgColor=#e7f3d6>
+                    <TD height="30" colspan="2" bgcolor="#F5F5F5"><div align="center"><div align="center">
+              <input name="Submit" type="submit" class="buttomw" value="计算">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              <input name="Submit2" type="reset" class="buttomw" value="清除">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <input name="Submit3" type="button" class="buttomw" value="关闭" onclick="javascript:window.close()">
+                    </div>
+                    </div></TD>
+                    </TR>
+                </TBODY>
+              </TABLE>
+                        <TABLE cellSpacing=0 cellPadding=0 
+                  width=98% align=center border=0>
+                          <TBODY>
+                            <TR bgColor=#e7f3d6>
+                              <TD height="22" valign="bottom" bgcolor="#F5F5F5"><strong>计算结果：</strong></TD>
+                            </TR>
+                          </TBODY>
+                        </TABLE>
+                        <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=4 
+                  width=98% align=center borderColorLight=#666666 border=1>
+                          <TBODY>
+                            
+                            <TR bgColor=#e7f3d6>
+                              <TD width="107"><div align="right">还款期数：</div></TD>
+                              <TD width="351" bgcolor="#F5F5F5">0</TD>
+                            </TR>
+                          </TBODY>
+                        </TABLE>
+                        </form></td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><table width="98%" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#666666">
+              <tr>
+                <td height="22" bgcolor="#E7F3D6"><div align="center"><strong>期数</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>还款日期</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>期初余额</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>还款额</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>本金</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>利息</strong></div></td>
+                <td bgcolor="#E7F3D6"><div align="center"><strong>期末余额</strong></div></td>
+              </tr>
+			  
+            </table></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><TABLE cellSpacing=0 cellPadding=0 
+                  width=97% align=center border=0>
+              <TBODY>
+                <TR bgColor=#e7f3d6>
+                  <TD> 使用说明：<br>
+                    1、本计算结果以“等额本金”还款方式计算。<br>
+                    2、月还本金=贷款总额÷贷款期数<br>
+                    3、月还款额=月还本金+月还利息 <br>
+                    4、月还利息=上月末本金余额×月利率<br>
+                    5、本表计算结果有关数据仅供参考，不作为扣款依据。</TD>
+                </TR>
+              </TBODY>
+            </TABLE></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </DIV></TD>
+      <TD width=5 bgColor=#cccccc>&nbsp;</TD>
+    </TR>
+    <TR bgColor=#333399>
+      <TD height=5 colSpan=3 bgcolor="#0053A6">&nbsp;</TD>
+    </TR>
+  </TBODY>
+</TABLE></div>				
+			</div>			
+		</div>		
+	</div>
+<!--  贷款模态框结束-->
+
 <!-- 砍价模态框开始-->
   <div class="modal fade" id="priceModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"data-backdrop="false">		
@@ -544,7 +733,7 @@
 						aria-hidden="true">&times;</button>
 					<div class="panel panel-default">
      <div class="panel-heading" style="text-align:center;">
-     <img src="${pageContext.request.contextPath}/img/kanjia.png">
+     <img src="${pageContext.request.contextPath}/img/kanjia.png" class="img-circle" height="40">
      </div> 
    <table class="table">
     <tr style="text-align:center;"><td><font size="5">请输入您的期望价格</font></td></tr>
@@ -568,7 +757,7 @@
 							<label for="user.uid" class="col-sm-2 control-label sr-only">用户编号:</label>
 							<div class="col-sm-10">
 								<input type="hidden" class="form-control" 
-									name="user.uid" value="${s.user.uid}">
+									name="user.uid" value="${user.uid}">
 							</div>							
 						</div>
 						<!--理想价格需要不隐藏  -->
@@ -629,7 +818,7 @@
     <font size="2">(以实际看车地点为准)</font>
     </li>
   </ul>
-</div>					
+</div>					 
 				</div>
 				<div class="modal-body">
 					<form action="${pageContext.request.contextPath}/carDetail/insertAppointRecord" method="post" class="form-horizontal" role="form">						
@@ -643,7 +832,7 @@
 						<div class="form-group">
 							<label for="user.uid" class="col-sm-3 control-label">用户编号:</label>
 							<div class="col-sm-9">
-								<input type="text" class="form-control" name="user.uid" value="${s.user.uid}">									
+								<input type="text" class="form-control" name="user.uid" value="${user.uid}">									
 								</div>
 							</div>
 							
@@ -682,7 +871,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<img src="${pageContext.request.contextPath}/img/renren.png">
+					<img src="${pageContext.request.contextPath}/img/benben.png">
 				</div>
 				<div class="modal-body">
 					<video width="620" height="300" controls="controls"> 

@@ -94,20 +94,24 @@
         }
         function validateCode() 
         {
-            var inputCode = document.getElementById("inputCode").value;
-            if (inputCode.length <= 0) 
-            {
-                alert("请输入验证码！");
-            }
-            else if (inputCode.toUpperCase() != code.toUpperCase()) 
-            {
-                alert("验证码输入有误！");
-                createCode();
-            }
-            else 
-            {
-                //alert("验证码正确！");
-            }        
+        	 event=event||window.event;
+        		 var inputCode = document.getElementById("inputCode").value;
+                 if (inputCode=='请输入验证码'||inputCode.length <= 0) 
+                 {alert("请输入验证码！");
+                     event.preventDefault();
+                     
+                 }else if (inputCode.toUpperCase() != code.toUpperCase()) 
+                 {
+                     alert("验证码输入有误！");
+                     event.preventDefault();
+                    
+                 }else 
+                 {
+                 	return true;
+                     //alert("验证码正确！");
+                 }       
+        	 
+            
         }    
 		</script>
 		
@@ -136,7 +140,7 @@
 					<h4 class="modal-title">登陆</h4>
 				</div>
 				<div class="modal-body">
-					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal">
+					<form action="${pageContext.request.contextPath}/abc/login" class="form-horizontal"  id="login">
 						<div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon">用户名</span>
@@ -153,7 +157,7 @@
 						<table border="0" cellspacing="5" cellpadding="5" height="60" align="center">
         		<tr>
             	<td>
-            	<div class="code" id="checkCode" onb="validateCode();"></div>
+            	<div class="code" id="checkCode" ></div>
             	<input type="text" id="inputCode" class="input"  onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='请输入验证码';" onfocus="if(this.value=='请输入验证码')value='';" value="请输入验证码" />
             	<a  href="#" onclick="createCode()" style="size: auto;position:relative; top:25px;">看不清换一张</a>
         		</td>
@@ -166,23 +170,11 @@
 						<div class="form-group">
 							<div class="input-group">
 								<input type="submit"
-									class="form-control" value="登陆" onclick="validateCode();"/>
+									class="form-control" value="登陆" onclick="validateCode();" />
 							</div>
 						</div>
 					</form>
 				</div>
-
-
-
-
-				<!--验证码-->
-				<form id="form1" runat="server" onsubmit="validateCode()">
-    			<div>
-    				
-    			
-    			
-    			</div>
-    			</form>
    				 <!--验证码结束-->
 			</div>
 		</div>

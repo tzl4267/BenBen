@@ -88,11 +88,8 @@ public class BargainRecordServiceImpl implements ServiceBase<BargainRecord>,Barg
 	}
 
 	@Override
-	public void insertBargainRecord(BargainRecord bd) {
-		BargainRecord bbb = brd.getOne(bd.getBid());
-		bbb.setRf(bd.getRf());
-		bbb.setBrsta('1');
-	    brd.saveOrupdate(bbb);	
+	public void insertBargainRecord(BargainRecord bd) {	
+	    brd.saveOrupdate(bd);	
 	}
 
 	@Override

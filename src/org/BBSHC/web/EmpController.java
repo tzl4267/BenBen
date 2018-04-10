@@ -2,20 +2,16 @@ package org.BBSHC.web;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.BBSHC.pojo.Dept;
 import org.BBSHC.pojo.Emp;
 import org.BBSHC.service.DeptService;
 import org.BBSHC.service.EmpService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
