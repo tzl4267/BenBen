@@ -26,27 +26,28 @@
 <form action="${pageContext.request.contextPath}/abc/update_selectEmp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="eid" value="${emp.eid}">
 	 <div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">年龄</label>
+    <label for="age" class="col-sm-2 control-label">年龄</label>
     <div class="col-sm-10">
       <input type="text" name="age" class="form-control" value="${emp.age}" readonly="readonly">
     </div>
   </div>
   	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">姓名:</label>
+    <label for="ename" class="col-sm-2 control-label">姓名:</label>
     <div class="col-sm-10">
      <input type="text" name="ename" class="form-control" value="${emp.ename}" readonly="readonly">
 	 </div>
 	 </div>
 	 
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">状态:</label>
-    <div class="col-sm-10">
-      <input type="text" name="esta" class="form-control" value="${emp.esta}" readonly="readonly">
+    <label for="esta" class="col-sm-2 control-label">状态:</label>
+    <div class="col-sm-10"> 
+    <!-- js中0是48 1是49 -->
+      <input type="text" name="esta" class="form-control" value="${emp.esta eq '48' ? '待分配' : '工作中'}" readonly="readonly">
     </div>
   </div> 
   
 	 <div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">头像:</label>
+    <label for="eurl" class="col-sm-2 control-label">头像:</label>
     <div class="col-sm-10">
      <img  src="${pageContext.request.contextPath}/${emp.eurl}" width="50" height="50">
       <input type="hidden" name="eurl" class="form-control"  readonly="readonly">
@@ -54,21 +55,21 @@
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">联系方式:</label>
+    <label for="ph" class="col-sm-2 control-label">联系方式:</label>
     <div class="col-sm-10">
       <input type="text" name="ph" class="form-control" value="${emp.ph}" readonly="readonly">
     </div>
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">性别:</label>
+    <label for="sex" class="col-sm-2 control-label">性别:</label>
     <div class="col-sm-10">
       <input type="text" name="sex" class="form-control" value="${emp.sex}" readonly="readonly">
     </div>
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">部门:</label>
+    <label for="dname" class="col-sm-2 control-label">部门:</label>
     <div class="col-sm-10">
       <input type="text" name="dname" class="form-control" value="${emp.dept.dname}" readonly="readonly">
     </div>
@@ -100,16 +101,18 @@
 						name="updateForm" id="updateForm">
 		<input type="hidden" name="eid" value="${emp.eid}">
 			<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">姓名:</label>
+    <label for="ename" class="col-sm-2 control-label">姓名:</label>
     <div class="col-sm-10">
      <input type="text" name="ename" class="form-control" value="${emp.ename}" pattern="^[\u4e00-\u9fa5]*">
+     <font color="gray">姓名只能输入汉字</font>
 	 </div>
 	 </div>
 		
 	 <div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">年龄</label>
+    <label for="eage" class="col-sm-2 control-label">年龄</label>
     <div class="col-sm-10">
       <input type="text" name="age" class="form-control" value="${emp.age}" pattern="^([2-5]\d)|60$" >
+      <font color="gray">年龄只能在20-60岁</font>
     </div>
   </div>
   
@@ -117,12 +120,11 @@
 	<div class="form-group">
     <label for="lastname" class="col-sm-2 control-label">状态:</label>
     <div class="col-sm-10">
-      <input type="text" name="esta" class="form-control" value="${emp.esta}" readonly="readonly">
+      <input type="text" name="esta" class="form-control" value="${emp.esta eq '48' ? '待分配':'工作中' }" readonly="readonly">
     </div>
   </div> 
-  
 	 <div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">头像:</label>
+    <label for="eurl" class="col-sm-2 control-label">头像:</label>
     <div class="col-sm-10">
     <img src="${pageContext.request.contextPath}/${emp.eurl}" width="50" height="50">
       <input type="file" name="mFile" class="form-control" >
@@ -131,21 +133,37 @@
   </div> 
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">联系方式:</label>
+    <label for="ph" class="col-sm-2 control-label">联系方式:</label>
     <div class="col-sm-10">
       <input type="text" name="ph" class="form-control" value="${emp.ph}" pattern="^1\d{10}$">
+      <font color="gray">以1开头的11位数字</font>
     </div>
   </div> 
   
-	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">性别:</label>
+ 	
+     	<div class="form-group">
+    <label for="sex" class="col-sm-2 control-label">性别:</label>
+     <div class="col-sm-10">
+     <div class="btn-group" data-toggle="buttons">
+  	<label class="btn btn-default active"> 
+  	<input type="radio" name="sex" autocomplete="off" value="M" checked="checked">男
+	</label> 
+	<label class="btn btn-default"> 
+	<input type="radio" name="sex" value="F" autocomplete="off">女
+	</label>
+	</div>
+	</div>
+  </div> 
+  
+	<%-- <div class="form-group">
+    <label for="sex" class="col-sm-2 control-label">性别:</label>
     <div class="col-sm-10">
       <input type="text" name="sex" class="form-control" value="${emp.sex}">
     </div>
-  </div> 
+  </div>  --%>
   
 	<div class="form-group">
-    <label for="lastname" class="col-sm-2 control-label">部门:</label>
+    <label for="dname" class="col-sm-2 control-label">部门:</label>
     <div class="col-sm-10">
     <input type="text" name="dname" class="form-control" value="${emp.dept.dname}" readonly="readonly">
      <input type="hidden" name="dept.did" value="${emp.dept.did}" class="form-control"  readonly="readonly">
@@ -156,6 +174,7 @@
     <label for="pass" class="col-sm-2 control-label">密码:</label>
     <div class="col-sm-10">
       <input type="text" name="pass" class="form-control" value="${emp.pass}" pattern="^[a-zA-Z]\w{5,17}$">
+      <font color="gray">以字母开头的6位数</font>
     </div>
   </div> 
   <div class="modal-footer">

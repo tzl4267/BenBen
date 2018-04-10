@@ -34,10 +34,10 @@ public class EmpController {
 			String fileName = mFile.getOriginalFilename();
 			int starIndex = fileName.lastIndexOf(".");
 			String fileSuffix = fileName.substring(starIndex);
-			String filePath = request.getServletContext().getRealPath("images");
+			String filePath = request.getServletContext().getRealPath("image");
 			File file = new File(filePath,fileName);
 			/*String eurl = filePath+"img/" + System.currentTimeMillis() + fileSuffix;*/
-			String eurl = "images/" + fileName;
+			String eurl = "image/" + fileName;
 			emp.setEurl(eurl);
 			/*FileUtils.copyInputStreamToFile(mFile.getInputStream(), new File(eurl));*/
 		}	
@@ -45,5 +45,6 @@ public class EmpController {
 		Emp emps = es.update_selectEmp(emp.getEid());
 		map.put("emp", emps);
 		return "selectEmp";
+		
 	}
 }

@@ -29,7 +29,7 @@ public class ProcedureInfo {
 	      private Date syx;//商业险到期时间
 	      private Character gzs;//有无车辆购置完税税证明 0:没有 1:有
 	      private Character gz;//有无改装 0:没有 1:有
-	      private SellIntention si;//卖车意向信息	     
+	      private SellIntention si;//卖车意向信息
 		@Id
 		  @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public Integer getSxid() {
@@ -66,9 +66,6 @@ public class ProcedureInfo {
 		}
 		public void setBx(Character bx) {
 			this.bx = bx;
-		}
-		public Character getbyd() {
-			return byd;
 		}
 		public void setbyd(Character byd) {
 			this.byd = byd;

@@ -72,6 +72,14 @@
 		function kkbtn(){
 			$("#kk").modal("show");
 		}
+		function MCbtn(){
+			var user="${user}";
+	    	if(user&&user!=""){
+	    		location="${pageContext.request.contextPath}/abc/SellIntentionadd";
+	    	}else{
+	    		$("#loginModal").modal("show");
+	    	}
+		}
 		
 		var code;
         function createCode() {
@@ -115,12 +123,49 @@
         }    
 		</script>
 		
+		<!-- 登陆模态框开始 -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"aria-label="Close">						
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">登陆</h4>
+				</div>
+				<div class="modal-body">
+					<form action="${pageContext.request.contextPath}/abc/login1" class="form-horizontal">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">用户名:</span>
+								<input type="hidden" name="cid" value="${s.cid}"/>
+								<input type="text" class="form-control" name="uname"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+							<span class="input-group-addon">密码</span> 
+							<input type="password"class="form-control" name="upass"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="submit" class="form-control" value="登陆"/>									
+							</div>
+						</div>
+					</form>
+				</div>
+				</div>
+				</div>
+				</div>				
+	<!--登陆模态框结束  -->	
+		
 
  	<div class="navbar navbar-inverse">
  	<div class="navbar-header">
   <img src="${pageContext.request.contextPath}/img/daohang/1.jpg" style="position: relative;left:-250px;">
   <a href="#" class="navbar-brand" style="position: relative;left:300px;top:8px;"><font size="5">地点</font></a>
-  <a href="${pageContext.request.contextPath}/abc/SellIntentionadd" class="navbar-brand middle" style="position: relative;left:480px;top:8px;"><font size="5">卖车</font></a>
+  <a href="#" onclick="MCbtn();" class="navbar-brand middle" style="position: relative;left:480px;top:8px;"><font size="5">卖车</font></a>
   <a href="${pageContext.request.contextPath}/home/list" class="navbar-brand middle" style="position: relative;left:550px;top:8px;"><font size="5">买车</font></a>
   <a href="#" onclick="denglubtn();" class="navbar-brand rela"><font>登陆</font></a>
   <a href="#" onclick="zhucebtn();" class="navbar-brand rela"><font>注册</font></a>

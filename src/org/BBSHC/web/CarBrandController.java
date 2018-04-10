@@ -38,7 +38,9 @@ public class CarBrandController {
 	  
 	  @Resource
 	  private BargainRecordService brs;
+	  
 
+	
 	  @RequestMapping("/list")
 	  public String find(ModelMap map){
 		 List<SecondCar> sc = cds.querySecondCar();
@@ -98,7 +100,7 @@ public class CarBrandController {
 	 @RequestMapping(value="/list6")
 	  public String find8(BargainRecord br){
 	
-		brs.insertBargainRecord(br);
+		brs.updateBargainRecord(br);
 	
 		  return "redirect:list5";
 	  }
